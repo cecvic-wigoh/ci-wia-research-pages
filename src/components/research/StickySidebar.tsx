@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 interface SidebarSection {
   id: string;
@@ -11,35 +11,54 @@ interface StickySidebarProps {
   sections: SidebarSection[];
 }
 
+const HEADER_OFFSET = 120;
+
 export default function StickySidebar({ sections }: StickySidebarProps) {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const isClickScrolling = useRef(false);
+  const clickTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  // Scroll-spy: find the topmost section that has scrolled past the header offset
+  const updateActiveFromScroll = useCallback(() => {
+    if (isClickScrolling.current) return;
+
+    let current = sections[0]?.id || "";
+
+    for (const section of sections) {
+      const el = document.getElementById(section.id);
+      if (el) {
+        const top = el.getBoundingClientRect().top;
+        if (top <= HEADER_OFFSET + 20) {
+          current = section.id;
+        }
+      }
+    }
+
+    setActiveSection(current);
+  }, [sections]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-100px 0px -60% 0px", threshold: 0 }
-    );
-
-    sections.forEach((section) => {
-      const el = document.getElementById(section.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [sections]);
+    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateActiveFromScroll);
+  }, [updateActiveFromScroll]);
 
   const handleClick = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      // Immediately set active and pause scroll-spy
+      setActiveSection(id);
+      isClickScrolling.current = true;
+      clearTimeout(clickTimeout.current);
+
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - HEADER_OFFSET, behavior: "smooth" });
       setIsMobileOpen(false);
+
+      // Re-enable scroll-spy after scroll settles
+      clickTimeout.current = setTimeout(() => {
+        isClickScrolling.current = false;
+      }, 800);
     }
   };
 

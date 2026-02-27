@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { ArrowDown, ExternalLink, Briefcase, GraduationCap, Users } from "lucide-react";
-import StatisticsBar from "@/components/research/StatisticsBar";
 import TabSection from "@/components/research/TabSection";
+import FacultyMosaic from "@/components/research/FacultyMosaic";
 import FounderTribute from "@/components/research/FounderTribute";
 import DepartmentCard from "@/components/research/DepartmentCard";
 import PublicationCard from "@/components/research/PublicationCard";
@@ -215,8 +215,8 @@ export default function ResearchLandingPage() {
         </div>
       </section>
 
-      {/* Statistics Bar */}
-      <StatisticsBar />
+      {/* Meet Our Faculty */}
+      <FacultyMosaic />
 
       {/* Tabbed Section */}
       <section id="explore" className="section">

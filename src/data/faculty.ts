@@ -38,6 +38,7 @@ export interface FacultyMember {
   email?: string;
   pubmedUrl?: string;
   fellowshipRequirements?: string;
+  photo?: string;
 }
 
 export const faculty: FacultyMember[] = [
@@ -46,6 +47,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Mayilvahanan Bose",
     title: "Associate Professor, Department of Molecular Oncology",
     department: "Department of Molecular Oncology",
+    photo: "/mv.png",
     departmentSlug: "molecular-oncology",
     researchFocus:
       "Translational diagnostics, biomarker discovery, and gut microbiome characterization in Indian cancers",

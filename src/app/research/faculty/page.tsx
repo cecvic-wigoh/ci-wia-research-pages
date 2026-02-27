@@ -145,67 +145,51 @@ export default function FacultyDirectoryPage() {
                   onMouseEnter={() => setHoveredSlug(member.slug)}
                   onMouseLeave={() => setHoveredSlug(null)}
                 >
-                  {/* Card with flip effect */}
-                  <div className="relative aspect-square mb-3" style={{ perspective: "600px" }}>
-                    <div
-                      className="relative w-full h-full transition-transform duration-500 ease-in-out"
-                      style={{
-                        transformStyle: "preserve-3d",
-                        transform:
-                          hoveredSlug === member.slug
-                            ? "rotateY(180deg)"
-                            : "rotateY(0deg)",
-                      }}
-                    >
-                      {/* Front: Photo */}
+                  {/* Card with crossfade */}
+                  <div className="relative aspect-square mb-3 overflow-hidden rounded-sm">
+                    {/* Photo */}
+                    {member.photo ? (
+                      <Image
+                        src={member.photo}
+                        alt={member.name}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
                       <div
-                        className="absolute inset-0 rounded-sm overflow-hidden"
-                        style={{ backfaceVisibility: "hidden" }}
+                        className={`w-full h-full bg-gradient-to-br ${
+                          gradients[index % gradients.length]
+                        } flex items-center justify-center`}
                       >
-                        {member.photo ? (
-                          <Image
-                            src={member.photo}
-                            alt={member.name}
-                            width={300}
-                            height={300}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <div
-                            className={`w-full h-full bg-gradient-to-br ${
-                              gradients[index % gradients.length]
-                            } flex items-center justify-center`}
-                          >
-                            <span className="text-5xl font-heading font-bold text-white/30">
-                              {member.initials}
-                            </span>
-                          </div>
-                        )}
+                        <span className="text-5xl font-heading font-bold text-white/30">
+                          {member.initials}
+                        </span>
                       </div>
+                    )}
 
-                      {/* Back: Details */}
-                      <div
-                        className="absolute inset-0 rounded-sm bg-[var(--ci-gray-100)] border border-[var(--ci-gray-200)] p-5 md:p-6 flex flex-col justify-start"
-                        style={{
-                          backfaceVisibility: "hidden",
-                          transform: "rotateY(180deg)",
-                        }}
-                      >
-                        <h3 className="font-heading text-base md:text-lg font-bold text-[var(--ci-gray-900)] mb-2 leading-snug">
-                          {member.name}
-                        </h3>
-                        <p className="text-sm text-[var(--ci-gray-900)] mb-3">
-                          {member.title.split(",")[0]}
+                    {/* Details overlay */}
+                    <div
+                      className={`absolute inset-0 bg-[var(--ci-gray-100)]/[0.97] p-5 md:p-6 flex flex-col justify-start transition-opacity duration-300 ease-in-out ${
+                        hoveredSlug === member.slug
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <h3 className="font-heading text-base md:text-lg font-bold text-[var(--ci-gray-900)] mb-2 leading-snug">
+                        {member.name}
+                      </h3>
+                      <p className="text-sm text-[var(--ci-gray-900)] mb-3">
+                        {member.title.split(",")[0]}
+                      </p>
+                      <p className="text-sm text-[var(--ci-gray-600)] mb-3">
+                        {member.department}
+                      </p>
+                      {member.researchInterests.length > 0 && (
+                        <p className="text-xs text-[var(--ci-gray-600)] leading-relaxed">
+                          {member.researchInterests.slice(0, 3).join(" · ")}
                         </p>
-                        <p className="text-sm text-[var(--ci-gray-600)] mb-3">
-                          {member.department}
-                        </p>
-                        {member.researchInterests.length > 0 && (
-                          <p className="text-xs text-[var(--ci-gray-600)] leading-relaxed">
-                            {member.researchInterests.slice(0, 3).join(" · ")}
-                          </p>
-                        )}
-                      </div>
+                      )}
                     </div>
                   </div>
 

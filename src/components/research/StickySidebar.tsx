@@ -78,7 +78,7 @@ export default function StickySidebar({ sections }: StickySidebarProps) {
 
       {/* Desktop: Sticky sidebar */}
       <nav
-        className="hidden lg:block sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto"
+        className="hidden lg:block w-48 sticky top-24 float-left max-h-[calc(100vh-120px)] overflow-y-auto"
         aria-label="Page sections"
       >
         <ul className="space-y-1">
@@ -86,9 +86,9 @@ export default function StickySidebar({ sections }: StickySidebarProps) {
             <li key={section.id}>
               <button
                 onClick={() => handleClick(section.id)}
-                className={`w-full text-left px-4 py-2 border-l-2 text-sm transition-all ${
+                className={`w-full text-left px-4 py-2 border-l-2 text-sm transition-colors ${
                   activeSection === section.id
-                    ? "border-[var(--ci-teal)] text-[var(--ci-blue)] font-bold bg-[var(--ci-light)]"
+                    ? "border-[var(--ci-teal)] text-[var(--ci-blue)] font-bold"
                     : "border-transparent text-[var(--ci-gray-600)] hover:text-[var(--ci-blue)] hover:border-[var(--ci-gray-200)]"
                 }`}
               >

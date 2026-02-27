@@ -2,6 +2,7 @@
 
 import { useState, use } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, Mail, ChevronDown, ChevronUp, Send } from "lucide-react";
 import Breadcrumb from "@/components/research/Breadcrumb";
 import StickySidebar from "@/components/research/StickySidebar";
@@ -92,12 +93,25 @@ export default function FacultyProfilePage({
 
         <div className="relative section-inner py-16 md:py-24">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            {/* Circular Photo Placeholder */}
-            <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-white/20 to-white/5 border-4 border-white/30 flex items-center justify-center shrink-0 shadow-2xl">
-              <span className="text-5xl font-heading font-bold text-white/60">
-                {member.initials}
-              </span>
-            </div>
+            {/* Circular Photo */}
+            {member.photo ? (
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full shrink-0 shadow-2xl overflow-hidden">
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  width={224}
+                  height={224}
+                  className="w-full h-full object-cover scale-150"
+                  priority
+                />
+              </div>
+            ) : (
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full shrink-0 shadow-2xl bg-gradient-to-br from-white/20 to-white/5 border-4 border-white/30 flex items-center justify-center">
+                <span className="text-5xl font-heading font-bold text-white/60">
+                  {member.initials}
+                </span>
+              </div>
+            )}
 
             <div className="text-center md:text-left">
               <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">

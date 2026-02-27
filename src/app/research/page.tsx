@@ -154,7 +154,7 @@ export default function ResearchLandingPage() {
                 Since 1954
               </p>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-[56px] font-bold text-[var(--ci-blue)] leading-tight mb-6">
-                Research at Cancer Institute
+                Today&apos;s Research is Tomorrow&apos;s Cure
               </h1>
               <blockquote className="border-l-4 border-[var(--ci-teal)] pl-5 mb-6">
                 <p className="font-heading text-xl md:text-2xl text-[var(--ci-gray-900)] italic leading-relaxed">

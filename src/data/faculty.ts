@@ -182,6 +182,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Jegan Thomas",
     title: "Professor & Head, Department of Molecular Oncology",
     department: "Department of Molecular Oncology",
+    photo: "/faculty/jt.jpg",
     departmentSlug: "molecular-oncology",
     researchFocus:
       "Cervical cancer screening, HPV molecular diagnostics, and DAS-ELISA technology development",
@@ -202,6 +203,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Thangarajan Rajkumar",
     title: "Professor, Department of Cancer Biology & Molecular Diagnostics",
     department: "Department of Cancer Biology & Molecular Diagnostics",
+    photo: "/faculty/tr.jpg",
     departmentSlug: "cancer-biology-molecular-diagnostics",
     researchFocus:
       "Cancer genomics, epigenetic regulation, and drug resistance mechanisms in breast and oral cancers",
@@ -223,6 +225,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Shirley Sunder Singh",
     title: "Professor, Department of Cancer Biology & Molecular Diagnostics",
     department: "Department of Cancer Biology & Molecular Diagnostics",
+    photo: "/faculty/ss.jpg",
     departmentSlug: "cancer-biology-molecular-diagnostics",
     researchFocus:
       "miRNA profiling in triple-negative breast cancer, molecular diagnostics for head and neck cancers",
@@ -243,6 +246,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Rama Jayaraj",
     title: "Associate Professor, Department of Cancer Biology & Molecular Diagnostics",
     department: "Department of Cancer Biology & Molecular Diagnostics",
+    photo: "/faculty/rj.jpg",
     departmentSlug: "cancer-biology-molecular-diagnostics",
     researchFocus:
       "Oral cancer molecular pathogenesis, salivary biomarkers for early detection",
@@ -263,6 +267,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Arvind Krishnamurthy",
     title: "Professor & Head, Clinical Trials & Statistical Unit",
     department: "Clinical Trials & Statistical Unit",
+    photo: "/faculty/ak.jpg",
     departmentSlug: "clinical-trials-statistical-unit",
     researchFocus:
       "Head and neck surgical oncology, clinical trial design, and evidence-based oncology practice",
@@ -283,6 +288,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Selvaluxmy Ganapathy",
     title: "Professor, Department of Preventive Oncology",
     department: "Department of Preventive Oncology",
+    photo: "/faculty/sg.jpg",
     departmentSlug: "preventive-oncology",
     researchFocus:
       "Community-based cervical and breast cancer screening programs, health education outreach",
@@ -304,6 +310,7 @@ export const faculty: FacultyMember[] = [
     name: "Dr. Rajaraman Swaminathan",
     title: "Head, Department of Cancer Epidemiology",
     department: "Department of Cancer Epidemiology",
+    photo: "/faculty/rs.jpg",
     departmentSlug: "cancer-epidemiology",
     researchFocus:
       "Cancer incidence trends, population-based survival analysis, and the Madras Metropolitan Tumour Registry",

@@ -2,147 +2,29 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowDown, ExternalLink, Briefcase, GraduationCap, Users } from "lucide-react";
-import TabSection from "@/components/research/TabSection";
+import { ArrowDown, ArrowRight, ExternalLink, Briefcase, GraduationCap, Users, Globe, MapPin, Microscope, Dna, BarChart3, ShieldCheck, FlaskConical } from "lucide-react";
 import FacultyMosaic from "@/components/research/FacultyMosaic";
 import FounderTribute from "@/components/research/FounderTribute";
-import DepartmentCard from "@/components/research/DepartmentCard";
 import PublicationCard from "@/components/research/PublicationCard";
 import { departments } from "@/data/departments";
 import { publications } from "@/data/publications";
 import { collaborators } from "@/data/collaborators";
 import { facilities } from "@/data/facilities";
 
-function DepartmentsTabContent() {
-  return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {departments.slice(0, 4).map((dept) => (
-          <DepartmentCard key={dept.slug} department={dept} />
-        ))}
-      </div>
-      <div className="mt-8 text-center">
-        <Link
-          href="/research/departments"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors"
-        >
-          View All Departments
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function CollaborationsTabContent() {
-  const international = collaborators.filter((c) => c.type === "international");
-  const national = collaborators.filter((c) => c.type === "national");
-
-  return (
-    <div>
-      <h3 className="font-heading text-xl font-bold text-[var(--ci-blue)] mb-4">
-        International Collaborations
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        {international.slice(0, 4).map((collab) => (
-          <div key={collab.name} className="card">
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-[var(--ci-light)] flex items-center justify-center shrink-0">
-                <span className="text-xs font-bold text-[var(--ci-blue)]">
-                  {collab.country.slice(0, 2).toUpperCase()}
-                </span>
-              </div>
-              <div>
-                <h4 className="font-heading text-base font-bold text-[var(--ci-gray-900)]">
-                  {collab.name}
-                </h4>
-                <p className="text-xs text-[var(--ci-teal-dark)] font-bold mb-1">
-                  {collab.project}
-                </p>
-                <p className="text-sm text-[var(--ci-gray-600)] line-clamp-2">
-                  {collab.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <h3 className="font-heading text-xl font-bold text-[var(--ci-blue)] mb-4">
-        National Collaborations
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {national.slice(0, 4).map((collab) => (
-          <div key={collab.name} className="card">
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-[var(--ci-light)] flex items-center justify-center shrink-0">
-                <span className="text-xs font-bold text-[var(--ci-blue)]">IN</span>
-              </div>
-              <div>
-                <h4 className="font-heading text-base font-bold text-[var(--ci-gray-900)]">
-                  {collab.name}
-                </h4>
-                <p className="text-xs text-[var(--ci-teal-dark)] font-bold mb-1">
-                  {collab.project}
-                </p>
-                <p className="text-sm text-[var(--ci-gray-600)] line-clamp-2">
-                  {collab.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-8 text-center">
-        <Link
-          href="/research/collaborations"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors"
-        >
-          View All Collaborations
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function FacilitiesTabContent() {
-  return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {facilities.slice(0, 4).map((facility) => (
-          <div key={facility.name} className="card">
-            <h4 className="font-heading text-base font-bold text-[var(--ci-blue)] mb-1">
-              {facility.name}
-            </h4>
-            <p className="text-sm text-[var(--ci-gray-600)] mb-2">
-              {facility.description}
-            </p>
-            <p className="text-xs text-[var(--ci-teal-dark)] font-bold">
-              {facility.capability}
-            </p>
-          </div>
-        ))}
-      </div>
-      <div className="mt-8 text-center">
-        <Link
-          href="/research/facilities"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors"
-        >
-          View All Facilities
-        </Link>
-      </div>
-    </div>
-  );
-}
+const deptIconMap: Record<string, React.ElementType> = {
+  microscope: Microscope,
+  dna: Dna,
+  "chart-bar": FlaskConical,
+  "shield-check": ShieldCheck,
+  "bar-chart": BarChart3,
+};
 
 export default function ResearchLandingPage() {
   const recentPubs = publications.slice(0, 4);
-
-  const tabs = [
-    { id: "departments", label: "Departments", content: <DepartmentsTabContent /> },
-    { id: "collaborations", label: "Collaborations", content: <CollaborationsTabContent /> },
-    { id: "facilities", label: "Facilities", content: <FacilitiesTabContent /> },
-  ];
+  const featuredDepts = departments.slice(0, 3);
+  const remainingDepts = departments.slice(3);
+  const topCollabs = collaborators.filter((c) => c.type === "international").slice(0, 3);
+  const topFacilities = facilities.slice(0, 3);
 
   return (
     <>
@@ -240,20 +122,231 @@ export default function ResearchLandingPage() {
       {/* Meet Our Faculty */}
       <FacultyMosaic />
 
-      {/* Tabbed Section */}
-      <section id="explore" className="section">
+      {/* Explore Our Research — Departments */}
+      <section id="explore" className="section bg-[var(--ci-gray-100)]">
         <div className="section-inner">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
+            <p className="text-[var(--ci-teal-dark)] font-bold text-sm tracking-[0.15em] uppercase mb-3">
+              Research Ecosystem
+            </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-[var(--ci-blue)] mb-4">
-              Explore Our Research
+              Explore Our Departments
             </h2>
             <p className="text-[var(--ci-gray-600)] max-w-2xl mx-auto text-lg">
-              Five departments, dozens of collaborations, and world-class
-              facilities — all dedicated to advancing cancer science and
-              improving patient outcomes.
+              Specialized departments driving discovery — from molecular
+              mechanisms to population-level impact.
             </p>
           </div>
-          <TabSection tabs={tabs} defaultTab="departments" />
+
+          {/* Featured departments — large image cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+            {featuredDepts.map((dept) => {
+              const Icon = deptIconMap[dept.icon] || Microscope;
+              return (
+                <Link
+                  key={dept.slug}
+                  href={`/research/departments/${dept.slug}`}
+                  className="group relative rounded-2xl overflow-hidden aspect-[4/5] flex flex-col justify-end"
+                >
+                  {dept.image && (
+                    <Image
+                      src={dept.image}
+                      alt={dept.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--ci-blue-dark)] via-[var(--ci-blue-dark)]/40 to-transparent" />
+                  <div className="relative z-10 p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-8 h-8 rounded-lg bg-[var(--ci-teal)]/20 backdrop-blur-sm flex items-center justify-center">
+                        <Icon className="h-4 w-4 text-[var(--ci-teal)]" />
+                      </div>
+                      <span className="text-white/50 text-xs font-medium">
+                        Est. {dept.established}
+                      </span>
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-white leading-snug mb-2">
+                      {dept.name}
+                    </h3>
+                    <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-3">
+                      {dept.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {dept.focusAreas.slice(0, 2).map((area) => (
+                        <span
+                          key={area}
+                          className="px-2.5 py-0.5 text-[10px] font-bold text-[var(--ci-teal)] bg-[var(--ci-teal)]/10 rounded-full backdrop-blur-sm border border-[var(--ci-teal)]/20"
+                        >
+                          {area}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[var(--ci-teal)] text-sm font-bold group-hover:gap-2 transition-all">
+                      Explore
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Remaining departments — horizontal cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+            {remainingDepts.map((dept) => {
+              const Icon = deptIconMap[dept.icon] || Microscope;
+              return (
+                <Link
+                  key={dept.slug}
+                  href={`/research/departments/${dept.slug}`}
+                  className="group relative rounded-2xl overflow-hidden flex h-48"
+                >
+                  {dept.image && (
+                    <Image
+                      src={dept.image}
+                      alt={dept.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--ci-blue-dark)]/95 via-[var(--ci-blue-dark)]/70 to-[var(--ci-blue-dark)]/30" />
+                  <div className="relative z-10 p-6 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-8 h-8 rounded-lg bg-[var(--ci-teal)]/20 backdrop-blur-sm flex items-center justify-center">
+                        <Icon className="h-4 w-4 text-[var(--ci-teal)]" />
+                      </div>
+                      <span className="text-white/50 text-xs font-medium">
+                        Est. {dept.established} &middot; {dept.facultyCount} Faculty
+                      </span>
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-white leading-snug mb-1.5">
+                      {dept.name}
+                    </h3>
+                    <p className="text-white/60 text-sm leading-relaxed line-clamp-2 max-w-md mb-2">
+                      {dept.description}
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-[var(--ci-teal)] text-sm font-bold group-hover:gap-2 transition-all">
+                      Explore
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/research/departments"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors"
+            >
+              View All Departments
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Collaborations + Facilities — Side by Side */}
+      <section className="section">
+        <div className="section-inner">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Collaborations */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-[var(--ci-light)] flex items-center justify-center">
+                  <Globe className="h-5 w-5 text-[var(--ci-teal-dark)]" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-xl font-bold text-[var(--ci-blue)]">
+                    Global Collaborations
+                  </h3>
+                  <p className="text-[var(--ci-gray-600)] text-sm">
+                    International research partnerships
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {topCollabs.map((collab) => (
+                  <div
+                    key={collab.name}
+                    className="group rounded-xl border border-[var(--ci-gray-200)] bg-white p-4 hover:border-[var(--ci-teal)]/30 hover:shadow-md transition-all"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[var(--ci-blue)] to-[var(--ci-blue-dark)] flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="text-[10px] font-bold text-white">
+                          {collab.country.slice(0, 2).toUpperCase()}
+                        </span>
+                      </div>
+                      <div className="min-w-0">
+                        <h4 className="font-heading text-sm font-bold text-[var(--ci-gray-900)] mb-0.5">
+                          {collab.name}
+                        </h4>
+                        <p className="text-xs text-[var(--ci-teal-dark)] font-bold mb-1">
+                          {collab.project}
+                        </p>
+                        <p className="text-xs text-[var(--ci-gray-600)] line-clamp-2">
+                          {collab.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href="/research/collaborations"
+                className="inline-flex items-center gap-1.5 mt-5 text-[var(--ci-teal-dark)] hover:text-[var(--ci-blue)] text-sm font-bold transition-colors"
+              >
+                View all collaborations
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            {/* Facilities */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-[var(--ci-light)] flex items-center justify-center">
+                  <MapPin className="h-5 w-5 text-[var(--ci-teal-dark)]" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-xl font-bold text-[var(--ci-blue)]">
+                    Core Facilities
+                  </h3>
+                  <p className="text-[var(--ci-gray-600)] text-sm">
+                    World-class research infrastructure
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {topFacilities.map((facility) => (
+                  <div
+                    key={facility.name}
+                    className="group rounded-xl border border-[var(--ci-gray-200)] bg-white p-4 hover:border-[var(--ci-teal)]/30 hover:shadow-md transition-all"
+                  >
+                    <h4 className="font-heading text-sm font-bold text-[var(--ci-blue)] mb-1">
+                      {facility.name}
+                    </h4>
+                    <p className="text-xs text-[var(--ci-gray-600)] mb-2 line-clamp-2">
+                      {facility.description}
+                    </p>
+                    <p className="text-[10px] text-[var(--ci-teal-dark)] font-bold uppercase tracking-wider">
+                      {facility.capability}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Link
+                href="/research/facilities"
+                className="inline-flex items-center gap-1.5 mt-5 text-[var(--ci-teal-dark)] hover:text-[var(--ci-blue)] text-sm font-bold transition-colors"
+              >
+                View all facilities
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

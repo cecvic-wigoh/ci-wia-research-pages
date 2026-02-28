@@ -147,7 +147,7 @@ export default function ResearchLandingPage() {
   return (
     <>
       {/* Hero: Cinematic Full-Bleed */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         {/* Background Image */}
         <Image
           src="/research-images/hero-lab.webp"
@@ -157,49 +157,81 @@ export default function ResearchLandingPage() {
           className="object-cover"
           sizes="100vw"
         />
-        {/* Dark gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ci-blue-dark)]/95 via-[var(--ci-blue-dark)]/80 to-[var(--ci-blue-dark)]/40" />
-        {/* Subtle teal accent glow */}
-        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[var(--ci-teal)]/10 to-transparent" />
+        {/* Multi-layer overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ci-blue-dark)]/95 via-[var(--ci-blue-dark)]/75 to-[var(--ci-blue-dark)]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--ci-blue-dark)]/60 via-transparent to-[var(--ci-blue-dark)]/20" />
 
         <div className="relative z-10 section-inner py-24 md:py-32 lg:py-40">
-          <div className="max-w-2xl">
-            <p className="text-[var(--ci-teal)] font-bold text-sm tracking-[0.2em] uppercase mb-5">
-              Since 1954
-            </p>
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-[60px] font-bold text-white leading-[1.1] mb-6">
-              Today&apos;s Research is{" "}
-              <span className="text-[var(--ci-teal)]">Tomorrow&apos;s Cure</span>
-            </h1>
-            <blockquote className="border-l-4 border-[var(--ci-teal)] pl-5 mb-8">
-              <p className="font-heading text-xl md:text-2xl text-white/90 italic leading-relaxed">
-                &ldquo;Early detection is the key to conquering cancer.&rdquo;
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Messaging */}
+            <div>
+              <p className="text-[var(--ci-teal)] font-bold text-sm tracking-[0.2em] uppercase mb-5">
+                Since 1954 &mdash; Cancer Institute (WIA), Chennai
               </p>
-              <footer className="mt-2 text-white/60 text-sm">
-                — Dr. S. Krishnamurthi, Pioneer of Multimodality Cancer Therapy
-              </footer>
-            </blockquote>
-            <p className="text-white/75 text-lg leading-relaxed mb-10 max-w-xl">
-              For over seven decades, Cancer Institute (WIA) has been at the
-              forefront of cancer research in India — from pioneering
-              India&apos;s first super-specialty oncology degrees to developing
-              affordable diagnostic technologies that reach the patients who
-              need them most.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#explore"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--ci-teal)] text-[var(--ci-blue-dark)] font-bold rounded-lg hover:bg-[var(--ci-teal-dark)] hover:text-white transition-colors shadow-lg shadow-[var(--ci-teal)]/20"
-              >
-                Explore Our Research
-                <ArrowDown className="h-4 w-4" />
-              </a>
-              <Link
-                href="/research/faculty"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 hover:border-white/50 transition-colors backdrop-blur-sm"
-              >
-                Meet Our Faculty
-              </Link>
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-[56px] font-bold text-white leading-[1.1] mb-6">
+                Today&apos;s Research is{" "}
+                <span className="text-[var(--ci-teal)]">Tomorrow&apos;s Cure</span>
+              </h1>
+              <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-lg">
+                Seven decades of pioneering cancer science — from India&apos;s
+                first oncology degrees to affordable diagnostics that reach
+                every patient.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#explore"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--ci-teal)] text-[var(--ci-blue-dark)] font-bold rounded-lg hover:bg-[var(--ci-teal-dark)] hover:text-white transition-colors shadow-lg shadow-[var(--ci-teal)]/25"
+                >
+                  Explore Our Research
+                  <ArrowDown className="h-4 w-4" />
+                </a>
+                <Link
+                  href="/research/faculty"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 hover:border-white/50 transition-colors backdrop-blur-sm"
+                >
+                  Meet Our Faculty
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Impact Stats */}
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              {[
+                { value: "70+", label: "Years of Research", accent: false },
+                { value: "5", label: "Research Departments", accent: true },
+                { value: "200+", label: "Publications", accent: true },
+                { value: "15+", label: "Global Collaborations", accent: false },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className={`rounded-2xl p-6 backdrop-blur-md border transition-colors ${
+                    stat.accent
+                      ? "bg-[var(--ci-teal)]/10 border-[var(--ci-teal)]/25 hover:border-[var(--ci-teal)]/50"
+                      : "bg-white/5 border-white/10 hover:border-white/25"
+                  }`}
+                >
+                  <p className={`font-heading text-4xl font-bold mb-1 ${
+                    stat.accent ? "text-[var(--ci-teal)]" : "text-white"
+                  }`}>
+                    {stat.value}
+                  </p>
+                  <p className="text-white/60 text-sm font-medium">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+
+              {/* Quote card spanning full width */}
+              <div className="col-span-2 rounded-2xl p-5 backdrop-blur-md bg-white/5 border border-white/10">
+                <blockquote className="border-l-2 border-[var(--ci-teal)] pl-4">
+                  <p className="font-heading text-white/80 italic text-base leading-relaxed">
+                    &ldquo;Early detection is the key to conquering cancer.&rdquo;
+                  </p>
+                  <footer className="mt-1.5 text-white/50 text-xs">
+                    — Dr. S. Krishnamurthi, Founder
+                  </footer>
+                </blockquote>
+              </div>
             </div>
           </div>
         </div>

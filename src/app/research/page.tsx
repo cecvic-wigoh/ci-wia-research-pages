@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ExternalLink, Briefcase, GraduationCap, Users } from "lucide-react";
 import TabSection from "@/components/research/TabSection";
 import FacultyMosaic from "@/components/research/FacultyMosaic";
@@ -145,71 +146,60 @@ export default function ResearchLandingPage() {
 
   return (
     <>
-      {/* Hero: Research Director's Message */}
-      <section className="bg-[var(--ci-light)] py-16 md:py-24 lg:py-32">
-        <div className="section-inner">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-[var(--ci-teal-dark)] font-bold text-sm tracking-widest uppercase mb-4">
-                Since 1954
-              </p>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-[56px] font-bold text-[var(--ci-blue)] leading-tight mb-6">
-                Today&apos;s Research is Tomorrow&apos;s Cure
-              </h1>
-              <blockquote className="border-l-4 border-[var(--ci-teal)] pl-5 mb-6">
-                <p className="font-heading text-xl md:text-2xl text-[var(--ci-gray-900)] italic leading-relaxed">
-                  &ldquo;Early detection is the key to conquering cancer.&rdquo;
-                </p>
-                <footer className="mt-2 text-[var(--ci-gray-600)] text-sm">
-                  — Dr. S. Krishnamurthi, Pioneer of Multimodality Cancer Therapy
-                </footer>
-              </blockquote>
-              <p className="text-[var(--ci-gray-600)] text-lg leading-relaxed mb-8">
-                For over seven decades, Cancer Institute (WIA) has been at the
-                forefront of cancer research in India — from pioneering
-                India&apos;s first super-specialty oncology degrees to developing
-                affordable diagnostic technologies that reach the patients who
-                need them most. Founded by the Women&apos;s India Association,
-                our research is driven by a singular belief: that world-class
-                science and compassionate care are not mutually exclusive.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="#explore"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors"
-                >
-                  Explore Our Research
-                  <ArrowDown className="h-4 w-4" />
-                </a>
-                <Link
-                  href="/research/faculty"
-                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] font-bold rounded-lg hover:bg-[var(--ci-blue)] hover:text-white transition-colors"
-                >
-                  Meet Our Faculty
-                </Link>
-              </div>
-            </div>
+      {/* Hero: Cinematic Full-Bleed */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <Image
+          src="/research-images/hero-lab.webp"
+          alt="Cancer Institute research laboratory"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Dark gradient overlay for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ci-blue-dark)]/95 via-[var(--ci-blue-dark)]/80 to-[var(--ci-blue-dark)]/40" />
+        {/* Subtle teal accent glow */}
+        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[var(--ci-teal)]/10 to-transparent" />
 
-            {/* Research Director Portrait Placeholder */}
-            <div className="hidden lg:flex justify-center">
-              <div className="relative">
-                <div className="w-80 h-96 rounded-2xl bg-gradient-to-br from-[var(--ci-blue)] via-[var(--ci-blue-light)] to-[var(--ci-blue-dark)] flex items-end justify-center overflow-hidden shadow-2xl">
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: 'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 60%), radial-gradient(circle at 70% 30%, rgba(35,205,192,0.2) 0%, transparent 50%)',
-                    }} />
-                  </div>
-                  <div className="relative text-center pb-8 px-6">
-                    <p className="text-white/60 text-sm mb-2">The Founding Vision</p>
-                    <p className="font-heading text-white text-lg italic leading-snug">
-                      &ldquo;Start where I ended and progress to reach greater heights.&rdquo;
-                    </p>
-                    <p className="text-[var(--ci-teal)] text-sm mt-2 font-bold">
-                      Dr. S. Krishnamurthi
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <div className="relative z-10 section-inner py-24 md:py-32 lg:py-40">
+          <div className="max-w-2xl">
+            <p className="text-[var(--ci-teal)] font-bold text-sm tracking-[0.2em] uppercase mb-5">
+              Since 1954
+            </p>
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-[60px] font-bold text-white leading-[1.1] mb-6">
+              Today&apos;s Research is{" "}
+              <span className="text-[var(--ci-teal)]">Tomorrow&apos;s Cure</span>
+            </h1>
+            <blockquote className="border-l-4 border-[var(--ci-teal)] pl-5 mb-8">
+              <p className="font-heading text-xl md:text-2xl text-white/90 italic leading-relaxed">
+                &ldquo;Early detection is the key to conquering cancer.&rdquo;
+              </p>
+              <footer className="mt-2 text-white/60 text-sm">
+                — Dr. S. Krishnamurthi, Pioneer of Multimodality Cancer Therapy
+              </footer>
+            </blockquote>
+            <p className="text-white/75 text-lg leading-relaxed mb-10 max-w-xl">
+              For over seven decades, Cancer Institute (WIA) has been at the
+              forefront of cancer research in India — from pioneering
+              India&apos;s first super-specialty oncology degrees to developing
+              affordable diagnostic technologies that reach the patients who
+              need them most.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#explore"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--ci-teal)] text-[var(--ci-blue-dark)] font-bold rounded-lg hover:bg-[var(--ci-teal-dark)] hover:text-white transition-colors shadow-lg shadow-[var(--ci-teal)]/20"
+              >
+                Explore Our Research
+                <ArrowDown className="h-4 w-4" />
+              </a>
+              <Link
+                href="/research/faculty"
+                className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 hover:border-white/50 transition-colors backdrop-blur-sm"
+              >
+                Meet Our Faculty
+              </Link>
             </div>
           </div>
         </div>

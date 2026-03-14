@@ -1,4 +1,3 @@
-import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -23,12 +22,12 @@ export async function generateMetadata({
   };
 }
 
-export default function FounderPage({
+export default async function FounderPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = use(params);
+  const { slug } = await params;
   const founder = founders.find((f) => f.slug === slug);
   if (!founder) notFound();
 

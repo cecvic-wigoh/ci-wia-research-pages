@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowRight, ExternalLink, Briefcase, GraduationCap, Users, Globe, MapPin, Microscope, Dna, BarChart3, ShieldCheck, FlaskConical } from "lucide-react";
 import FacultyMosaic from "@/components/research/FacultyMosaic";
 import FounderTribute from "@/components/research/FounderTribute";
+import HeroFounders from "@/components/research/HeroFounders";
 import PublicationCard from "@/components/research/PublicationCard";
 import { departments } from "@/data/departments";
 import { publications } from "@/data/publications";
@@ -28,8 +29,8 @@ export default function ResearchLandingPage() {
 
   return (
     <>
-      {/* Hero: Cinematic Full-Bleed */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Hero: Cinematic Narrative */}
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
         {/* Background Image */}
         <Image
           src="/research-images/hero-lab.webp"
@@ -39,83 +40,60 @@ export default function ResearchLandingPage() {
           className="object-cover"
           sizes="100vw"
         />
-        {/* Multi-layer overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ci-blue-dark)]/95 via-[var(--ci-blue-dark)]/75 to-[var(--ci-blue-dark)]/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--ci-blue-dark)]/60 via-transparent to-[var(--ci-blue-dark)]/20" />
+        {/* Overlays — center-out radial for dramatic lighting */}
+        <div className="absolute inset-0 bg-[var(--ci-blue-dark)]/90" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_45%,transparent_0%,var(--ci-blue-dark)_100%)] opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--ci-blue-dark)]/40 via-transparent to-[var(--ci-blue-dark)]/80" />
 
-        <div className="relative z-10 section-inner py-24 md:py-32 lg:py-40">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Messaging */}
-            <div>
-              <p className="text-[var(--ci-teal)] font-bold text-sm tracking-[0.2em] uppercase mb-5">
-                Since 1954 &mdash; Cancer Institute (WIA), Chennai
-              </p>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-[56px] font-bold text-white leading-[1.1] mb-6">
-                Today&apos;s Research is{" "}
-                <span className="text-[var(--ci-teal)]">Tomorrow&apos;s Cure</span>
-              </h1>
-              <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-lg">
-                Seven decades of pioneering cancer science — from India&apos;s
-                first oncology degrees to affordable diagnostics that reach
-                every patient.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="#explore"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--ci-teal)] text-[var(--ci-blue-dark)] font-bold rounded-lg hover:bg-[var(--ci-teal-dark)] hover:text-white transition-colors shadow-lg shadow-[var(--ci-teal)]/25"
-                >
-                  Explore Our Research
-                  <ArrowDown className="h-4 w-4" />
-                </a>
-                <Link
-                  href="/research/faculty"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 hover:border-white/50 transition-colors backdrop-blur-sm"
-                >
-                  Meet Our Faculty
-                </Link>
-              </div>
-            </div>
+        {/* Subtle decorative accent line at top */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-[var(--ci-teal)]/60 to-transparent" />
 
-            {/* Right: Impact Stats */}
-            <div className="hidden lg:grid grid-cols-2 gap-4">
-              {[
-                { value: "70+", label: "Years of Research", accent: false },
-                { value: "5", label: "Research Departments", accent: true },
-                { value: "200+", label: "Publications", accent: true },
-                { value: "15+", label: "Global Collaborations", accent: false },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className={`rounded-2xl p-6 backdrop-blur-md border transition-colors ${
-                    stat.accent
-                      ? "bg-[var(--ci-teal)]/10 border-[var(--ci-teal)]/25 hover:border-[var(--ci-teal)]/50"
-                      : "bg-white/5 border-white/10 hover:border-white/25"
-                  }`}
-                >
-                  <p className={`font-heading text-4xl font-bold mb-1 ${
-                    stat.accent ? "text-[var(--ci-teal)]" : "text-white"
-                  }`}>
-                    {stat.value}
-                  </p>
-                  <p className="text-white/60 text-sm font-medium">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+        <div className="relative z-10 section-inner py-16 md:py-20 lg:py-24 flex flex-col items-center text-center">
+          {/* Eyebrow — establishment marker */}
+          <p className="text-[var(--ci-teal)]/70 text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.35em] uppercase mb-6 md:mb-8">
+            <span className="hidden sm:inline">Est. 1954 &middot; Cancer Institute (WIA) &middot; Chennai</span>
+            <span className="sm:hidden">Cancer Institute (WIA) &middot; Est. 1954</span>
+          </p>
 
-              {/* Quote card spanning full width */}
-              <div className="col-span-2 rounded-2xl p-5 backdrop-blur-md bg-white/5 border border-white/10">
-                <blockquote className="border-l-2 border-[var(--ci-teal)] pl-4">
-                  <p className="font-heading text-white/80 italic text-base leading-relaxed">
-                    &ldquo;Early detection is the key to conquering cancer.&rdquo;
-                  </p>
-                  <footer className="mt-1.5 text-white/50 text-xs">
-                    — Dr. S. Krishnamurthi, Founder
-                  </footer>
-                </blockquote>
-              </div>
-            </div>
+          {/* Headline */}
+          <h1 className="font-heading text-[22px] sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-white leading-[1.15] mb-3 max-w-3xl break-words">
+            Seven Decades of Pioneering{" "}
+            <span className="text-[var(--ci-teal)]">Cancer Science</span>
+          </h1>
+
+          <p className="text-white/50 text-sm md:text-base leading-relaxed mb-8 md:mb-10 max-w-lg px-2 sm:px-0">
+            From India&apos;s first oncology degrees to affordable care for
+            every patient — built by three visionaries who gave their lives
+            to this mission.
+          </p>
+
+          {/* Founders Triptych — the centrepiece */}
+          <HeroFounders />
+
+          {/* CTAs */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8 md:mt-10">
+            <a
+              href="#explore"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--ci-teal)] text-[var(--ci-blue-dark)] font-bold rounded-lg hover:bg-[var(--ci-teal-dark)] hover:text-white transition-colors shadow-lg shadow-[var(--ci-teal)]/25 cursor-pointer"
+            >
+              Explore Our Research
+              <ArrowDown className="h-4 w-4" />
+            </a>
+            <Link
+              href="/research/faculty"
+              className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white/80 font-bold rounded-lg hover:bg-white/10 hover:border-white/40 hover:text-white transition-colors backdrop-blur-sm cursor-pointer"
+            >
+              Meet Our Faculty
+            </Link>
           </div>
+        </div>
+
+        {/* Bottom scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+          <span className="text-white/30 text-[10px] tracking-[0.3em] uppercase">
+            Their legacy continues
+          </span>
+          <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent" />
         </div>
       </section>
 

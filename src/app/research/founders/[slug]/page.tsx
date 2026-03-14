@@ -1,3 +1,4 @@
+import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -8,8 +9,13 @@ export function generateStaticParams() {
   return founders.map((f) => ({ slug: f.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const founder = founders.find((f) => f.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const founder = founders.find((f) => f.slug === slug);
   if (!founder) return {};
   return {
     title: `${founder.name} — Cancer Institute (WIA)`,
@@ -17,8 +23,13 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function FounderPage({ params }: { params: { slug: string } }) {
-  const founder = founders.find((f) => f.slug === params.slug);
+export default function FounderPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
+  const founder = founders.find((f) => f.slug === slug);
   if (!founder) notFound();
 
   return (

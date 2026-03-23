@@ -18,8 +18,10 @@ const ADYAR_COORDS = createCoordinates(80.26, 13.0);
 
 export default function WorldMap({
   collaborators,
+  isStatic = false,
 }: {
   collaborators: Collaborator[];
+  isStatic?: boolean;
 }) {
   const [geoData, setGeoData] = useState<object | null>(null);
   const [, setActive] = useState("");
@@ -66,133 +68,153 @@ export default function WorldMap({
             </linearGradient>
           </defs>
 
-          <ZoomableGroup
-            center={createCoordinates(65, 20)}
-            zoom={1.25}
-          >
-            {/* Country outlines */}
-            <Geographies geography={geoData}>
-              {({ geographies }) =>
-                geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    fill="rgba(255,255,255,0.07)"
-                    stroke="rgba(255,255,255,0.15)"
-                    strokeWidth={0.4}
+          {(() => {
+            const mapContent = (
+              <>
+                {/* Country outlines */}
+                <Geographies geography={geoData}>
+                  {({ geographies }) =>
+                    geographies.map((geo) => (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill="rgba(255,255,255,0.07)"
+                        stroke="rgba(255,255,255,0.15)"
+                        strokeWidth={0.4}
+                        style={{
+                          default: { outline: "none" },
+                          hover: isStatic
+                            ? { outline: "none" }
+                            : { fill: "rgba(255,255,255,0.10)", outline: "none" },
+                          pressed: { outline: "none" },
+                        }}
+                      />
+                    ))
+                  }
+                </Geographies>
+
+                {/* Arc lines from Adyar to each collaborator */}
+                {collaborators.map((collaborator) => (
+                  <Line
+                    key={`arc-${collaborator.name}`}
+                    from={ADYAR_COORDS}
+                    to={createCoordinates(collaborator.lng, collaborator.lat)}
+                    stroke="url(#arcGradient)"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    fill="none"
                     style={{
-                      default: { outline: "none" },
-                      hover: { fill: "rgba(255,255,255,0.10)", outline: "none" },
-                      pressed: { outline: "none" },
+                      filter: "drop-shadow(0 0 2px rgba(35,205,192,0.4))",
                     }}
                   />
-                ))
-              }
-            </Geographies>
+                ))}
 
-            {/* Arc lines from Adyar to each collaborator */}
-            {collaborators.map((collaborator) => (
-              <Line
-                key={`arc-${collaborator.name}`}
-                from={ADYAR_COORDS}
-                to={createCoordinates(collaborator.lng, collaborator.lat)}
-                stroke="url(#arcGradient)"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                fill="none"
-                style={{
-                  filter: "drop-shadow(0 0 2px rgba(35,205,192,0.4))",
-                }}
-              />
-            ))}
+                {/* Collaborator markers */}
+                {collaborators.map((collaborator) => (
+                  <Marker
+                    key={collaborator.name}
+                    coordinates={createCoordinates(collaborator.lng, collaborator.lat)}
+                  >
+                    <circle
+                      r={7}
+                      fill="rgba(35,205,192,0.12)"
+                      className="animate-pulse"
+                    />
+                    <circle
+                      r={3.5}
+                      fill="var(--ci-teal)"
+                      stroke="white"
+                      strokeWidth={1}
+                      className={isStatic ? "" : "cursor-pointer"}
+                      style={{
+                        filter: "drop-shadow(0 0 4px rgba(35,205,192,0.6))",
+                      }}
+                      {...(isStatic
+                        ? {}
+                        : {
+                            "data-tooltip-id": "map-tooltip",
+                            "data-tooltip-html": `<strong>${collaborator.name}</strong><br/><span style="color:#9ca3af">${collaborator.city}, ${collaborator.country}</span><br/><span style="font-size:11px;color:#9ca3af">${collaborator.project}</span>`,
+                            onMouseEnter: () => setActive(collaborator.name),
+                            onMouseLeave: () => setActive(""),
+                          })}
+                    />
+                  </Marker>
+                ))}
 
-            {/* Collaborator markers */}
-            {collaborators.map((collaborator) => (
-              <Marker
-                key={collaborator.name}
-                coordinates={createCoordinates(collaborator.lng, collaborator.lat)}
+                {/* Hub marker — Cancer Institute (WIA), Adyar — always visible label */}
+                <Marker coordinates={ADYAR_COORDS}>
+                  <circle
+                    r={16}
+                    fill="rgba(35,205,192,0.08)"
+                    className="animate-pulse"
+                  />
+                  <circle
+                    r={10}
+                    fill="rgba(35,205,192,0.15)"
+                  />
+                  <circle
+                    r={5}
+                    fill="var(--ci-teal)"
+                    stroke="white"
+                    strokeWidth={2}
+                    style={{
+                      filter: "drop-shadow(0 0 8px rgba(35,205,192,0.8))",
+                    }}
+                  />
+                  <g transform="translate(12, -20)">
+                    <rect
+                      x={0}
+                      y={0}
+                      width={140}
+                      height={36}
+                      rx={6}
+                      fill="rgba(0,0,0,0.7)"
+                      stroke="var(--ci-teal)"
+                      strokeWidth={1}
+                      style={{
+                        filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.3))",
+                      }}
+                    />
+                    <text
+                      x={10}
+                      y={15}
+                      fontSize={9}
+                      fontWeight={700}
+                      fill="white"
+                      fontFamily="var(--font-heading), serif"
+                    >
+                      Cancer Institute (WIA)
+                    </text>
+                    <text
+                      x={10}
+                      y={28}
+                      fontSize={7.5}
+                      fill="var(--ci-teal)"
+                    >
+                      Adyar, Chennai · Research Hub
+                    </text>
+                  </g>
+                </Marker>
+              </>
+            );
+
+            if (isStatic) {
+              return (
+                <g transform="translate(-80, -40) scale(1.25)">
+                  {mapContent}
+                </g>
+              );
+            }
+
+            return (
+              <ZoomableGroup
+                center={createCoordinates(65, 20)}
+                zoom={1.25}
               >
-                <circle
-                  r={7}
-                  fill="rgba(35,205,192,0.12)"
-                  className="animate-pulse"
-                />
-                <circle
-                  r={3.5}
-                  fill="var(--ci-teal)"
-                  stroke="white"
-                  strokeWidth={1}
-                  className="cursor-pointer"
-                  style={{
-                    filter: "drop-shadow(0 0 4px rgba(35,205,192,0.6))",
-                  }}
-                  data-tooltip-id="map-tooltip"
-                  data-tooltip-html={`<strong>${collaborator.name}</strong><br/><span style="color:#9ca3af">${collaborator.city}, ${collaborator.country}</span><br/><span style="font-size:11px;color:#9ca3af">${collaborator.project}</span>`}
-                  onMouseEnter={() => setActive(collaborator.name)}
-                  onMouseLeave={() => setActive("")}
-                />
-              </Marker>
-            ))}
-
-            {/* Hub marker — Cancer Institute (WIA), Adyar — always visible label */}
-            <Marker coordinates={ADYAR_COORDS}>
-              {/* Large outer pulse */}
-              <circle
-                r={16}
-                fill="rgba(35,205,192,0.08)"
-                className="animate-pulse"
-              />
-              {/* Medium ring */}
-              <circle
-                r={10}
-                fill="rgba(35,205,192,0.15)"
-              />
-              {/* Inner marker — larger than collaborator markers */}
-              <circle
-                r={5}
-                fill="var(--ci-teal)"
-                stroke="white"
-                strokeWidth={2}
-                style={{
-                  filter: "drop-shadow(0 0 8px rgba(35,205,192,0.8))",
-                }}
-              />
-              {/* Always-visible name card */}
-              <g transform="translate(12, -20)">
-                <rect
-                  x={0}
-                  y={0}
-                  width={140}
-                  height={36}
-                  rx={6}
-                  fill="rgba(0,0,0,0.7)"
-                  stroke="var(--ci-teal)"
-                  strokeWidth={1}
-                  style={{
-                    filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.3))",
-                  }}
-                />
-                <text
-                  x={10}
-                  y={15}
-                  fontSize={9}
-                  fontWeight={700}
-                  fill="white"
-                  fontFamily="var(--font-heading), serif"
-                >
-                  Cancer Institute (WIA)
-                </text>
-                <text
-                  x={10}
-                  y={28}
-                  fontSize={7.5}
-                  fill="var(--ci-teal)"
-                >
-                  Adyar, Chennai · Research Hub
-                </text>
-              </g>
-            </Marker>
-          </ZoomableGroup>
+                {mapContent}
+              </ZoomableGroup>
+            );
+          })()}
         </ComposableMap>
 
         <Tooltip

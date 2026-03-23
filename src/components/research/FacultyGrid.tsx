@@ -29,6 +29,7 @@ export default function FacultyGrid() {
             <Link
               key={person.slug}
               href={`/research/people/${person.slug}`}
+              aria-label={person.name}
               className="relative w-[120px] h-[120px] lg:w-[130px] lg:h-[130px] rounded-full overflow-hidden group"
             >
               {person.photo ? (
@@ -57,6 +58,7 @@ export default function FacultyGrid() {
           {Array.from({ length: Math.max(0, TOTAL_SLOTS - internalPeople.length) }).map((_, i) => (
             <div
               key={`placeholder-${i}`}
+              aria-hidden="true"
               className="w-[120px] h-[120px] lg:w-[130px] lg:h-[130px] rounded-full"
               style={{
                 background: gradients[(internalPeople.length + i) % gradients.length],

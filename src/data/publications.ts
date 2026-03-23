@@ -159,7 +159,7 @@ export const publications: Publication[] = [
     volume: "284-285",
     pages: "45-58",
     department: "cancer-biology-molecular-diagnostics",
-    cancerTypes: ["head-neck-cancer"],
+    cancerTypes: ["head-and-neck-cancer"],
   },
   {
     id: "pub-12",

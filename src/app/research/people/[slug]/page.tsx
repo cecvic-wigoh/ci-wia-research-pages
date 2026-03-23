@@ -11,6 +11,7 @@ import TagPill from "@/components/research/TagPill";
 import ProjectTable from "@/components/research/ProjectTable";
 import TeamMemberGallery from "@/components/research/TeamMemberGallery";
 import PublicationCard from "@/components/research/PublicationCard";
+import RecentDiscoveries from "@/components/research/RecentDiscoveries";
 import { people } from "@/data/people";
 import { publications } from "@/data/publications";
 import { cancerTypes } from "@/data/cancerTypes";
@@ -156,7 +157,7 @@ export default function PersonProfilePage({
         ]}
       />
 
-      {/* RecentDiscoveries component — added in Phase 3 */}
+      <RecentDiscoveries filterBy={{ type: "person", slug: member.slug }} />
 
       {/* Main Content with Sidebar */}
       <div className="section-inner py-8">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/research/Breadcrumb";
 import DonationCta from "@/components/research/DonationCta";
+import RecentDiscoveries from "@/components/research/RecentDiscoveries";
 import TagPill from "@/components/research/TagPill";
 import { cancerTypes } from "@/data/cancerTypes";
 import { people } from "@/data/people";
@@ -169,6 +170,9 @@ export default async function CancerTypeDetailPage({
           </div>
         </div>
       </section>
+
+      {/* Recent Discoveries */}
+      <RecentDiscoveries filterBy={{ type: "cancerType", slug: cancerType.slug }} />
 
       {/* Donation CTA */}
       <DonationCta

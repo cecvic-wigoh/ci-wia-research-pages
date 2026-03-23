@@ -6,7 +6,6 @@ import { people } from "@/data/people";
 import { cancerTypes } from "@/data/cancerTypes";
 import { founders } from "@/data/founders";
 import { institutionStats } from "@/data/statistics";
-import PersonCard from "@/components/research/PersonCard";
 import CancerTypeCard from "@/components/research/CancerTypeCard";
 import StatisticsBar from "@/components/research/StatisticsBar";
 import WorldMap from "@/components/research/WorldMap";
@@ -14,8 +13,6 @@ import { collaborators } from "@/data/collaborators";
 
 export default function ResearchLandingPage() {
   const internalPeople = people.filter((p) => p.category === "internal");
-  const displayedPeople = internalPeople.slice(0, 4);
-  const remainingPeople = internalPeople.length - displayedPeople.length;
 
   const displayedCancers = cancerTypes.slice(0, 4);
   const remainingCancers = cancerTypes.length - displayedCancers.length;
@@ -109,23 +106,37 @@ export default function ResearchLandingPage() {
             and epidemiology — united by a mission to conquer cancer through
             rigorous science.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayedPeople.map((person) => (
-              <PersonCard key={person.slug} person={person} />
-            ))}
-            {remainingPeople > 0 && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {internalPeople.map((person) => (
               <Link
-                href="/research/people"
-                className="flex flex-col items-center justify-center border-2 border-dashed border-[var(--ci-gray-200)] rounded-lg p-6 hover:border-[var(--ci-teal)] transition-colors"
+                key={person.slug}
+                href={`/research/people/${person.slug}`}
+                className="bg-[var(--ci-gray-100)] rounded-lg p-4 text-center hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 group"
               >
-                <span className="text-4xl font-bold text-[var(--ci-blue)] mb-2">
-                  +{remainingPeople}
-                </span>
-                <span className="text-[var(--ci-teal-dark)] font-bold flex items-center gap-1">
-                  View All <ArrowRight className="h-4 w-4" />
-                </span>
+                <div className="w-12 h-12 rounded-full bg-[var(--ci-blue)] text-white font-heading font-bold text-sm flex items-center justify-center mx-auto mb-2 group-hover:bg-[var(--ci-blue-dark)] transition-colors">
+                  {person.initials}
+                </div>
+                <p className="font-bold text-xs text-[var(--ci-gray-900)] leading-tight mb-0.5">
+                  {person.name.replace("Dr. ", "Dr. ").length > 18
+                    ? person.name.split(" ").slice(0, 2).join(" ").replace("Dr.", "Dr.")
+                    : person.name}
+                </p>
+                <p className="text-[10px] text-[var(--ci-gray-600)] leading-tight">
+                  {person.department}
+                </p>
               </Link>
-            )}
+            ))}
+            <Link
+              href="/research/people"
+              className="flex flex-col items-center justify-center border-2 border-dashed border-[var(--ci-gray-200)] rounded-lg p-4 hover:border-[var(--ci-teal)] transition-colors"
+            >
+              <span className="text-2xl font-bold text-[var(--ci-blue)] mb-1">
+                +{people.length - internalPeople.length}
+              </span>
+              <span className="text-[var(--ci-teal-dark)] text-xs font-bold flex items-center gap-1">
+                View All <ArrowRight className="h-3 w-3" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>

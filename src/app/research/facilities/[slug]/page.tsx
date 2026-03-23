@@ -27,7 +27,7 @@ export default async function FacilityDetailPage({
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--ci-blue-dark)] via-[var(--ci-blue)] to-[var(--ci-blue-light)]">
           {facility.image && (
             <div
-              className="absolute inset-0 opacity-20"
+              className="absolute inset-0 opacity-30"
               style={{
                 backgroundImage: `url(${facility.image})`,
                 backgroundSize: "cover",
@@ -68,16 +68,35 @@ export default async function FacilityDetailPage({
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
                 Equipment &amp; Instruments
               </h2>
-              <div className="space-y-14">
-                {facility.equipmentGroups.map((group: EquipmentGroup) => (
+              <div className="space-y-16">
+                {facility.equipmentGroups.map((group: EquipmentGroup, groupIndex: number) => (
                   <div key={group.name}>
-                    <h3 className="font-heading text-xl font-bold text-[var(--ci-gray-900)] mb-4">
-                      {group.name}
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {group.items.map((item) => (
-                        <EquipmentCard key={item.name} item={item} />
-                      ))}
+                    {/* Group header with image */}
+                    <div className={`flex flex-col lg:flex-row gap-8 items-center mb-8 ${groupIndex % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}>
+                      {group.image && (
+                        <div className="lg:w-2/5 w-full">
+                          <div className="aspect-[16/10] rounded-xl overflow-hidden shadow-lg">
+                            <img
+                              src={group.image}
+                              alt={group.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      )}
+                      <div className={group.image ? "lg:w-3/5" : "w-full"}>
+                        <h3 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-3">
+                          {group.name}
+                        </h3>
+                        <p className="text-[var(--ci-gray-600)] text-sm leading-relaxed">
+                          {group.items.length} instrument{group.items.length !== 1 ? "s" : ""} available for researcher use
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                          {group.items.map((item) => (
+                            <EquipmentCard key={item.name} item={item} />
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -85,20 +104,33 @@ export default async function FacilityDetailPage({
             </>
           ) : (
             <>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
-                Capabilities
-              </h2>
-              <div className="space-y-3">
-                {facility.capabilities.map((capability, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <span className="text-[var(--ci-teal)] mr-2 shrink-0">
-                      ✓
-                    </span>
-                    <p className="text-[var(--ci-gray-600)] leading-relaxed">
-                      {capability}
-                    </p>
+              <div className="flex flex-col lg:flex-row gap-10 items-start">
+                {facility.image && (
+                  <div className="lg:w-2/5 w-full">
+                    <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-lg sticky top-28">
+                      <img
+                        src={facility.image}
+                        alt={facility.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
-                ))}
+                )}
+                <div className={facility.image ? "lg:w-3/5" : "w-full"}>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
+                    Capabilities
+                  </h2>
+                  <div className="space-y-3">
+                    {facility.capabilities.map((capability, index) => (
+                      <div key={index} className="flex items-start gap-3 bg-[var(--ci-gray-100)] rounded-lg p-4">
+                        <span className="text-[var(--ci-teal)] shrink-0 font-bold">✓</span>
+                        <p className="text-[var(--ci-gray-900)] text-sm leading-relaxed">
+                          {capability}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </>
           )}

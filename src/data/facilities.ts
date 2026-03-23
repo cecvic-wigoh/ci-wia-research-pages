@@ -22,6 +22,7 @@ export const facilities: Facility[] = [
     equipmentGroups: [
       {
         name: "Sequencing & Genomics",
+        image: "/equipment/sequencer.jpg",
         items: [
           {
             name: "Illumina NextSeq 2000",
@@ -45,6 +46,7 @@ export const facilities: Facility[] = [
       },
       {
         name: "Flow Cytometry",
+        image: "/equipment/flow-cytometry.jpg",
         items: [
           {
             name: "BD FACSAria III Cell Sorter",
@@ -62,6 +64,7 @@ export const facilities: Facility[] = [
       },
       {
         name: "Microscopy & Imaging",
+        image: "/equipment/microscopy.jpg",
         items: [
           {
             name: "Zeiss LSM 880 Confocal Microscope",
@@ -79,6 +82,7 @@ export const facilities: Facility[] = [
       },
       {
         name: "Molecular Biology",
+        image: "/equipment/molecular-biology.jpg",
         items: [
           {
             name: "QIAcube Connect Automated Extraction",

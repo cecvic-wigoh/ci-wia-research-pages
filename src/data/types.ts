@@ -64,6 +64,7 @@ export interface CancerType {
 
 export interface EquipmentGroup {
   name: string;
+  image?: string;
   items: { name: string; description: string; icon: string }[];
 }
 

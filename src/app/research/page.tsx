@@ -62,32 +62,47 @@ export default function ResearchLandingPage() {
       </section>
 
       {/* 3. Founders Highlight */}
-      <section className="bg-[var(--ci-light)] py-16 px-6">
-        <h2 className="font-heading text-3xl font-bold text-[var(--ci-blue)] text-center mb-10">
+      <section className="bg-[var(--ci-light)] py-20 px-6">
+        <h2 className="font-heading text-3xl font-bold text-[var(--ci-blue)] text-center mb-3">
           Our Founders &amp; Legacy
         </h2>
-        <div className="flex justify-center gap-8 flex-wrap">
+        <p className="text-center text-[var(--ci-gray-600)] mb-12 max-w-2xl mx-auto">
+          Three visionaries whose conviction, sacrifice, and science built one of India&apos;s most enduring institutions of cancer care.
+        </p>
+        <div className="flex justify-center gap-8 flex-wrap max-w-5xl mx-auto">
           {founders.map((founder) => (
-            <div
+            <Link
               key={founder.slug}
-              className="bg-white rounded-lg p-6 w-56 text-center shadow"
+              href={`/research/founders/${founder.slug}`}
+              className="bg-white rounded-xl overflow-hidden w-72 shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
             >
-              <div className="w-16 h-16 rounded-full bg-[var(--ci-blue)] text-white font-heading font-bold text-xl flex items-center justify-center mx-auto mb-4">
-                {founder.initials}
+              {/* Photo */}
+              <div className="w-full h-72 overflow-hidden bg-[var(--ci-gray-100)]">
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
-              <p className="font-bold text-[var(--ci-gray-900)] mb-1">
-                {founder.name}
-              </p>
-              <p className="text-sm text-[var(--ci-gray-600)] mb-3">
-                {founder.title}
-              </p>
-              <Link
-                href={`/research/founders/${founder.slug}`}
-                className="text-[var(--ci-blue)] text-sm font-bold hover:underline"
-              >
-                Read story &rarr;
-              </Link>
-            </div>
+              {/* Info */}
+              <div className="p-5 text-center">
+                <p className="font-heading font-bold text-lg text-[var(--ci-gray-900)] mb-0.5">
+                  {founder.name}
+                </p>
+                <p className="text-sm text-[var(--ci-teal-dark)] font-semibold mb-1">
+                  {founder.title}
+                </p>
+                <p className="text-xs text-[var(--ci-gray-600)] mb-3">
+                  {founder.years}
+                </p>
+                <p className="text-xs text-[var(--ci-gray-600)] italic leading-relaxed mb-3 line-clamp-2">
+                  &ldquo;{founder.quote}&rdquo;
+                </p>
+                <span className="text-[var(--ci-blue)] text-sm font-bold group-hover:underline inline-flex items-center gap-1">
+                  Read story <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       </section>

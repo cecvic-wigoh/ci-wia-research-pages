@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. V. Shanta — The Mother of Oncology in India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Marcellus&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg:         #0E1214;
+    --bg-mid:     #0A1018;
+    --warm-white: #F2F6F8;
+    --cream:      #E8EFF3;
+    --steel:      #8BA3B0;
+    --steel-dark: #4A6470;
+    --teal:       #1E6B7A;
+    --teal-light: #2E9AAD;
+    --teal-glow:  #3DBBD0;
+    --gold:       #C4A35A;
+    --gold-light: #DFC07A;
+    --dusty:      #C0D0D8;
+    --smoke:      #5A7080;
+    --ink:        #080C10;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* noise overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.55;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 25%, rgba(30,107,122,0.2) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 70% at 15% 75%, rgba(10,40,55,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 85% 55%, rgba(196,163,90,0.07) 0%, transparent 60%);
+  }
+
+  /* subtle grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,107,122,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,107,122,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 880px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(0.6rem, 1.1vw, 0.78rem);
+    letter-spacing: 0.38em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.3s forwards;
+  }
+
+  .hero-eyebrow span {
+    display: inline-block;
+    width: 36px;
+    height: 1px;
+    background: var(--teal-glow);
+    vertical-align: middle;
+    margin: 0 10px;
+    opacity: 0.6;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--warm-white);
+    margin-bottom: 0.35rem;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0.5s forwards;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--teal-glow);
+    font-weight: 300;
+  }
+
+  .hero-title-tag {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(0.65rem, 1.1vw, 0.8rem);
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.65s forwards;
+  }
+
+  .hero-dates {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    color: var(--steel);
+    letter-spacing: 0.08em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.8s forwards;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 70px;
+    background: linear-gradient(to bottom, transparent, var(--teal-light), transparent);
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 1.1s forwards;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.3vw, 1.65rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 1.3s forwards;
+  }
+
+  .hero-quote-attr {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+    font-family: 'Marcellus', serif;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 1.6s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 2.1s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    color: var(--smoke);
+    text-transform: uppercase;
+    font-family: 'Marcellus', serif;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--smoke), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── SHARED ── */
+  section {
+    padding: clamp(5rem, 9vw, 9rem) clamp(1.5rem, 6vw, 5rem);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .full-bleed { max-width: none; padding-left: 0; padding-right: 0; }
+
+  .section-label {
+    font-family: 'Marcellus', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.38em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--teal-light), transparent);
+    max-width: 110px;
+    opacity: 0.45;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 2.5rem;
+  }
+
+  h2 em { font-style: italic; color: var(--teal-glow); }
+
+  p {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.88;
+    color: var(--dusty);
+    margin-bottom: 1.5rem;
+  }
+
+  p strong { color: var(--cream); font-weight: 400; }
+
+  /* ── ORIGIN GRID ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+  .pull-quote {
+    border-left: 2px solid var(--teal-light);
+    padding: 1.5rem 0 1.5rem 2rem;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .pull-quote cite {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+    font-style: normal;
+    font-family: 'Marcellus', serif;
+  }
+
+  /* ── DARK BAND ── */
+  .dark-band {
+    background: var(--ink);
+    padding: clamp(5rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+    border-top: 1px solid rgba(30,107,122,0.18);
+    border-bottom: 1px solid rgba(30,107,122,0.18);
+  }
+
+  .dark-band-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin-top: 3.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--teal-light), rgba(30,107,122,0.25), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3.2rem;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--teal-light);
+    box-shadow: 0 0 14px rgba(46,154,173,0.6);
+  }
+
+  .timeline-year {
+    font-family: 'Marcellus', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-body {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    line-height: 1.75;
+    color: var(--smoke);
+    margin-bottom: 0;
+  }
+
+  /* ── STAT BLOCKS ── */
+  .stat-block {
+    background: rgba(30,107,122,0.07);
+    border: 1px solid rgba(30,107,122,0.25);
+    border-top: 2px solid var(--teal-light);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--teal-glow);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-family: 'Marcellus', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    color: var(--dusty);
+    text-transform: uppercase;
+  }
+
+  .inst-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: clamp(3rem, 5vw, 6rem);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) { .inst-grid { grid-template-columns: 1fr; } }
+
+  /* ── LARGE QUOTE ── */
+  .large-quote-section {
+    padding: clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem);
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(30,107,122,0.1) 0%, transparent 70%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .large-quote-section::before {
+    content: '\201C';
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(12rem, 22vw, 18rem);
+    color: rgba(30,107,122,0.07);
+    line-height: 1;
+    pointer-events: none;
+    font-weight: 300;
+  }
+
+  .large-quote-inner {
+    max-width: 840px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .large-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.55rem, 3.3vw, 2.55rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 2.5rem;
+  }
+
+  .large-quote-source {
+    font-family: 'Marcellus', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+  }
+
+  /* ── HONORS ── */
+  .honors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: rgba(30,107,122,0.12);
+    border: 1px solid rgba(30,107,122,0.15);
+  }
+
+  .honor-card {
+    background: var(--bg);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .honor-card:hover { background: #121A20; }
+
+  .honor-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--teal-light);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .honor-card:hover::before { transform: scaleX(1); }
+
+  .honor-icon { font-size: 1.4rem; margin-bottom: 1rem; opacity: 0.65; }
+
+  .honor-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--warm-white);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .honor-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--smoke);
+    margin-bottom: 0;
+  }
+
+  /* ── NEHRU INTERLUDE ── */
+  .nehru-band {
+    background: linear-gradient(135deg, #060A0D 0%, #0C1820 50%, #060A0D 100%);
+    padding: clamp(4rem, 7vw, 7rem) clamp(1.5rem, 6vw, 5rem);
+    border-top: 1px solid rgba(30,107,122,0.14);
+    border-bottom: 1px solid rgba(30,107,122,0.14);
+  }
+
+  .nehru-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .nehru-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--dusty);
+    margin-bottom: 1.8rem;
+  }
+
+  .nehru-source {
+    font-family: 'Marcellus', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--teal-light);
+    text-transform: uppercase;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    padding: clamp(6rem, 12vw, 11rem) clamp(1.5rem, 6vw, 5rem);
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(30,107,122,0.08) 0%, transparent 60%),
+      var(--bg);
+    border-top: 1px solid rgba(30,107,122,0.12);
+    max-width: none;
+  }
+
+  .closing-inner { max-width: 740px; margin: 0 auto; }
+
+  .closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    color: var(--warm-white);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .closing-title em { color: var(--teal-glow); font-style: italic; }
+
+  .closing-body {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.9;
+    color: var(--dusty);
+    margin-bottom: 1.5rem;
+  }
+
+  .teal-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--teal-light);
+    margin: 3rem auto;
+    opacity: 0.55;
+  }
+
+  .institute-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .institute-badge span:first-child {
+    font-family: 'Marcellus', serif;
+    font-size: 0.63rem;
+    letter-spacing: 0.4em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+  }
+
+  .institute-badge span:last-child {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--smoke);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem clamp(1.5rem, 4vw, 4rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(6,10,13,0.92) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .nav-logo {
+    font-family: 'Marcellus', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    color: var(--teal-glow);
+    text-transform: uppercase;
+    pointer-events: all;
+  }
+
+  .nav-sub {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--smoke);
+  }
+
+  /* ── DROP CAP ── */
+  .drop-cap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5em;
+    font-weight: 300;
+    line-height: 0.75;
+    float: left;
+    margin-right: 0.1em;
+    margin-top: 0.05em;
+    color: var(--teal-light);
+  }
+
+  /* ── DIVIDER ── */
+  .fine-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(30,107,122,0.22), transparent);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.5; }
+    50%       { transform: scaleY(0.7); opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.30s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Cancer Institute (WIA)</div>
+  <div class="nav-sub">Est. 1954 · Adyar, Chennai</div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span></span>
+      In Eternal Memory
+      <span></span>
+    </div>
+
+    <h1 class="hero-name">Dr. <em>V. Shanta</em></h1>
+
+    <div class="hero-title-tag">The Mother of Oncology in India</div>
+    <div class="hero-dates">11 March 1927 &nbsp;&nbsp; 19 January 2021</div>
+
+    <div class="hero-divider"></div>
+
+    <p class="hero-quote">
+      "Fear not cancer diagnosis, but its delay."
+    </p>
+    <div class="hero-quote-attr">Her favourite mantra. Her life's mission.</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Her Story</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ ORIGIN ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">The Beginning</div>
+    <h2>Born into a family of<br>Nobel Laureates. She chose<br><em>a different kind of greatness</em>.</h2>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <p class="drop-cap reveal reveal-delay-1">
+        <strong>On March 11, 1927</strong>, in Mylapore, Chennai, Viswanathan Shanta was born into a
+        family that carried the weight of extraordinary minds. Her grand uncle was Sir C. V. Raman,
+        the only Asian to win the Nobel Prize in Physics. Her maternal uncle was Subrahmanyan
+        Chandrasekhar, the astrophysicist who would go on to win the Nobel Prize in 1983. Science
+        ran through her blood. But the path she chose was her own.
+      </p>
+      <p class="reveal reveal-delay-2">
+        By the age of twelve, she had made up her mind: she would become a doctor. She studied at
+        Madras Medical College and earned her MBBS in 1949, her DGO in 1952, and her MD in
+        Obstetrics and Gynecology in 1955. The conventional path for a woman of her calibre and
+        era was clear: gynecology, a government posting, a secure career.
+      </p>
+      <p class="reveal reveal-delay-3">
+        <strong>She did not take the conventional path.</strong>
+      </p>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <blockquote class="pull-quote">
+        <p>"I jumped at the opportunity and joined the Institute. It was truly a turning point
+        in my career, made possible by the indomitable courage of Dr. Muthulakshmi Reddy.
+        She was a legend in her lifetime."</p>
+        <cite>Dr. V. Shanta, ASCO Post, 2019</cite>
+      </blockquote>
+
+      <p style="margin-top: 2rem; font-style: italic; color: var(--smoke); font-size: 1rem; line-height: 1.8;">
+        As a student, she had witnessed a cancer specialist dismiss a dying patient with the words:
+        "Pass the case on to better surgeons." She was dumbfounded. That moment planted a seed that
+        would grow into sixty-five years of defiance against cancer's cruelty.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ THE CHOICE ══════════════════════ -->
+<div class="dark-band full-bleed">
+  <div class="dark-band-inner">
+    <div class="reveal">
+      <div class="section-label">The Choice That Changed Everything</div>
+      <h2>She turned down a<br>government post to live<br><em>in a hut</em>.</h2>
+    </div>
+
+    <div class="two-col" style="margin-top: 2.5rem;">
+      <div>
+        <p class="reveal">
+          In April 1955, the Madras Public Service Commission had selected her as Assistant Surgeon
+          at the Women and Children's Hospital, a prestigious government post that most doctors of her
+          generation would have gratefully accepted. <strong>She declined it.</strong>
+        </p>
+        <p class="reveal reveal-delay-1">
+          Instead, she walked into the Cancer Institute (WIA), a year-old institution that occupied
+          a small hut in Adyar, had twelve beds, minimal equipment, and exactly two doctors. One of
+          them was Dr. S. Krishnamurthi, a visionary who had returned from the United States to fight
+          cancer in India and who had been her mentor during her internship. The other, from April 13,
+          1955 onward, was Dr. V. Shanta.
+        </p>
+        <p class="reveal reveal-delay-2">
+          For the first year, she worked without pay. Voluntarily. When the institute eventually
+          offered her Rs. 200 per month, she moved into the campus itself. <strong>She would not
+          leave for sixty-six years.</strong> She lived, worked, operated, and gave in that same
+          compound until the last day of her life.
+        </p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <p style="font-style: italic; color: var(--steel); font-size: 1.05rem; line-height: 1.85; margin-bottom: 1.5rem;">
+          "We had a hard time, no doubt, but the excitement of creating something new and working
+          scientifically in a collaborative spirit of inquiry kept us going."
+        </p>
+        <p style="font-family: 'Marcellus', serif; font-size: 0.68rem; letter-spacing: 0.25em; color: var(--teal-glow); text-transform: uppercase; margin-bottom: 2rem;">
+          Dr. V. Shanta on the early years
+        </p>
+        <p style="color: var(--smoke); font-size: 1rem; line-height: 1.8;">
+          She trained in oncology in Toronto, Canada, shortly after joining. In the 1960s, she
+          studied advanced cancer care in the United Kingdom. She brought back knowledge that
+          did not yet exist in India, and she used every bit of it.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ TIMELINE ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Six Decades of Firsts</div>
+    <h2>What she built,<br><em>year after year</em>.</h2>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-year">1955</div>
+      <div class="timeline-title">Joined the Institute, Never Left</div>
+      <div class="timeline-body">Moved onto the campus on April 13, 1955. One of only two doctors. Worked voluntarily for a year. Made it her home, her mission, her entire world.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1960s</div>
+      <div class="timeline-title">First Successful Combination Therapy Trials in India</div>
+      <div class="timeline-body">Led India's first successful trials of combination cancer therapy, achieving a dramatic breakthrough in the treatment of oral cancer. Published findings in international journals and placed the institute on the global oncology map.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1974</div>
+      <div class="timeline-title">India's First Regional Cancer Research and Treatment Centre</div>
+      <div class="timeline-body">Under her scientific leadership, the Cancer Institute (WIA) became the first in South India recognised as a Regional Cancer Centre by the Government of India, a designation that unlocked national resources and credibility.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1980</div>
+      <div class="timeline-title">Director, Cancer Institute (WIA)</div>
+      <div class="timeline-body">Appointed Director, a position she held until 1997. She built international partnerships in Europe, North America, and Japan and equipped the institute with state-of-the-art research and imaging facilities. The 12-bed hut was becoming a world-class institution.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1981</div>
+      <div class="timeline-title">Founded the Madras Metropolitan Tumour Registry</div>
+      <div class="timeline-body">Established one of the most rigorous cancer data registries in Asia. She believed you cannot fight what you cannot measure. This registry, maintained to this day, feeds into national cancer policy and WHO global data on cancer incidence and survival.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1984</div>
+      <div class="timeline-title">First MCh and DM in Oncology in India</div>
+      <div class="timeline-body">Under her leadership, the institute launched India's first postgraduate oncology degrees recognised by the Medical Council of India, creating a pipeline of specialists where none had existed.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1986</div>
+      <div class="timeline-title">Padma Shri</div>
+      <div class="timeline-body">India's fourth-highest civilian honour, awarded in recognition of her growing national contribution to cancer medicine and public health policy.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2000</div>
+      <div class="timeline-title">India's First Hereditary Cancer Clinic</div>
+      <div class="timeline-body">Recognised that cancer runs in families and that families deserved to know. Opened India's first dedicated hereditary cancer clinic, offering genetic counselling and early screening to those at highest risk.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2005</div>
+      <div class="timeline-title">Ramon Magsaysay Award</div>
+      <div class="timeline-body">Asia's most prestigious prize, often called the Asian Nobel. The citation noted that the institute under her care provided free or subsidised treatment to 60% of its 100,000 annual patients. She dedicated the award entirely to the institute.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2006 & 2016</div>
+      <div class="timeline-title">Padma Bhushan and Padma Vibhushan</div>
+      <div class="timeline-body">India's third and second highest civilian honours, awarded a decade apart for a life of expanding, deepening, and unrelenting service. She was 89 when the Padma Vibhushan reached her hands.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ NEHRU QUOTE ══════════════════════ -->
+<div class="nehru-band full-bleed">
+  <div class="nehru-inner reveal">
+    <p class="nehru-quote">
+      "I must say that I have been somewhat bowled over by my visit to the Cancer Institute.
+      The progress since then has been phenomenal, extraordinarily rapid, not in terms of brick
+      and mortar but in quality of work. It is an inspiring example of good work done."
+    </p>
+    <div class="nehru-source">Pandit Jawaharlal Nehru, 1961, on visiting the Cancer Institute (WIA)</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ INSTITUTE GROWTH ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">What She Built</div>
+    <h2>From twelve beds in a hut<br>to a <em>world-class institution</em>.</h2>
+  </div>
+
+  <div class="inst-grid">
+    <div>
+      <p class="drop-cap reveal">
+        <strong>When Dr. Shanta arrived in 1955</strong>, the Cancer Institute had twelve beds,
+        minimal infrastructure, and an ethos that felt almost impractical for the time: treat
+        everyone, regardless of what they can pay. She did not question the ethos. She built
+        around it. She raised donations. She argued with governments. She wrote letters to
+        corporates seeking funds on the very last day of her life, at 93, her secretary by her side.
+      </p>
+      <p class="reveal reveal-delay-1">
+        She introduced chemotherapy and radiation therapy to India. She tailored treatment
+        protocols specifically for Indian patients, whose biology, access to care, and
+        presentation of disease often differed from Western counterparts. She pioneered cervical
+        cancer screening in rural districts, training local health workers to take Pap smears
+        and identify abnormalities. She established the Tamil Nadu Cancer Registry Project,
+        the largest population-based cancer registry in the world by the population it covers.
+      </p>
+      <p class="reveal reveal-delay-2">
+        <strong>She started India's first paediatric oncology department.</strong> Because children
+        were getting cancer too, and they had no one fighting for them specifically. She created
+        that place and those specialists. She kept the institute's treatment free or subsidised
+        for over sixty percent of patients throughout her tenure, battling the tide of
+        commercialisation of medicine that she spoke about with visible anguish.
+      </p>
+      <p class="reveal reveal-delay-3">
+        Not a single case file has been lost since 1955. Patient follow-up exceeds ninety percent,
+        a benchmark almost unheard of in the Indian context. This was not an accident. It was
+        Dr. Shanta's insistence that every patient was a person whose story deserved to be
+        told and remembered.
+      </p>
+    </div>
+
+    <div>
+      <div class="stat-block reveal">
+        <div class="stat-number">65+</div>
+        <div class="stat-label">Years of continuous service at the institute</div>
+      </div>
+      <div class="stat-block reveal reveal-delay-1">
+        <div class="stat-number">1st</div>
+        <div class="stat-label">Paediatric oncology department in India</div>
+      </div>
+      <div class="stat-block reveal reveal-delay-2">
+        <div class="stat-number">90%+</div>
+        <div class="stat-label">Patient follow-up rate, a national benchmark</div>
+      </div>
+      <div class="stat-block reveal reveal-delay-3">
+        <div class="stat-number">60%</div>
+        <div class="stat-label">Patients treated free or subsidised under her leadership</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ LARGE QUOTE ══════════════════════ -->
+<div class="large-quote-section full-bleed">
+  <div class="large-quote-inner reveal">
+    <p class="large-quote-text">
+      "The younger generation must ensure that the wonderful
+      technologic advances they have are used not because they
+      are available, but because they add value and are cost-effective.
+      Take important decisions for your patients as you would
+      take for your dear ones."
+    </p>
+    <div class="large-quote-source">Dr. V. Shanta, on the next generation of oncologists</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ THE HUMAN ══════════════════════ -->
+<div class="dark-band full-bleed">
+  <div class="dark-band-inner">
+    <div class="reveal">
+      <div class="section-label">The Person Behind the Pioneer</div>
+      <h2>She did not believe in<br><em>keeping cancer at a distance</em>.</h2>
+    </div>
+
+    <div style="max-width: 750px; margin-top: 2.5rem;">
+      <p class="reveal">
+        Dr. Shanta despised the way cancer was spoken about, the casual usage of its name as a
+        metaphor for irreversible failure, for things that cannot be fixed. <strong>She believed
+        that framing was a form of cruelty.</strong> It made patients give up before they had
+        begun. She spent decades pushing a counter-message: early cancers are curable. She said
+        it in clinics, in conferences, in rural health camps in Tamil Nadu's districts.
+        She meant every word.
+      </p>
+      <p class="reveal reveal-delay-1">
+        She saw patients at 78, still performing surgery, still on call twenty-four hours a day.
+        She chose to be medically managed within the institute's own campus when she fell ill
+        near the end, not wanting to be moved to a private hospital. This was her home. This
+        was her place. She had lived there since April 13, 1955, and she had no intention of
+        leaving it even in her final hours.
+      </p>
+      <p class="reveal reveal-delay-2">
+        She was deeply distressed by the commercialisation of medicine, <strong>a doctor who
+        watched healthcare become something people feared not just for its illness but for its
+        cost.</strong> She worked tirelessly to secure government subsidies on anticancer drugs,
+        to win rail and road travel concessions for patients attending regular follow-ups, to
+        raise donations from corporations so that the institute's founding promise, "service
+        to all," could remain more than a motto.
+      </p>
+      <p class="reveal reveal-delay-3">
+        On January 18, 2021, she complained of chest pain. She was rushed to a hospital, though
+        she had asked to stay in her own institute. She died early the next morning, January 19,
+        2021, at the age of ninety-three. Her secretary later recalled that even in her final
+        days, she had been dictating letters seeking donations for the institute she loved.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HONORS ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Recognition</div>
+    <h2>The honours she received.<br><em>And the ones she could not be given</em>.</h2>
+  </div>
+
+  <div class="honors-grid reveal" style="margin-top: 2.5rem;">
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Padma Shri, 1986</div>
+      <div class="honor-desc">India's fourth-highest civilian honour, recognising her early contributions to cancer medicine and public health in India.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Ramon Magsaysay Award, 2005</div>
+      <div class="honor-desc">Asia's most prestigious prize. She dedicated it entirely to the institute. The citation noted the institute's service to 100,000 patients annually, with over 60% receiving free or subsidised treatment.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Padma Bhushan, 2006</div>
+      <div class="honor-desc">India's third-highest civilian honour, awarded for a lifetime of transformative contribution to oncology and equitable healthcare.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Padma Vibhushan, 2016</div>
+      <div class="honor-desc">India's second-highest civilian honour. She was 89. Her work had not slowed. India had finally caught up with what she had been doing for sixty years.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">WHO Advisory Committee on Cancer</div>
+      <div class="honor-desc">Served on the World Health Organization's Advisory Committee on Cancer from 1986 to 2005, shaping global cancer policy with a steady focus on low and middle-income countries.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Mother of Oncology in India</div>
+      <div class="honor-desc">Not an official title. Not an award. A name given to her by the field she built, from the ground up, over sixty-five years. No medal can hold that weight.</div>
+    </div>
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ CLOSING ══════════════════════ -->
+<div class="closing full-bleed">
+  <div class="closing-inner">
+    <div class="reveal">
+      <div class="section-label" style="justify-content: center;">
+        <span style="width: 36px; height: 1px; background: var(--teal-light); opacity: 0.5; display: inline-block;"></span>
+        Her Legacy
+        <span style="width: 36px; height: 1px; background: var(--teal-light); opacity: 0.5; display: inline-block;"></span>
+      </div>
+    </div>
+
+    <h2 class="closing-title reveal">
+      She moved in on April 13, 1955.<br>
+      <em>She never needed to leave.</em>
+    </h2>
+
+    <p class="closing-body reveal reveal-delay-1">
+      She arrived at a hut with twelve beds. She stayed until it was a world-class institution
+      with over 650. She chose no fanfare, no private practice, no comfort that was not
+      also available to the patients in her care. She ate what she asked others to eat.
+      She stayed when it was hard to stay.
+    </p>
+
+    <p class="closing-body reveal reveal-delay-2">
+      The children who came to India's first paediatric oncology department, the rural women
+      whose cervical cancers were caught early because she trained health workers in distant
+      districts, the thousands whose treatment was free because she kept writing letters
+      and knocking on doors until someone listened, they are her legacy.
+    </p>
+
+    <div class="teal-rule reveal"></div>
+
+    <p class="closing-body reveal reveal-delay-1" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.6rem); color: var(--cream);">
+      She will ever be remembered as the Mother of Oncology in India.
+      And in every patient who walks through these gates without fear,
+      her mantra lives on: Fear not cancer diagnosis, but its delay.
+    </p>
+
+    <div class="institute-badge reveal reveal-delay-2">
+      <span>Cancer Institute (WIA)</span>
+      <span>Adyar, Chennai · Est. 1954</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

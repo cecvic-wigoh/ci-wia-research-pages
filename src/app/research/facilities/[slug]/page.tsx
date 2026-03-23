@@ -42,7 +42,7 @@ export default async function FacilityDetailPage({
           />
         </div>
 
-        <div className="relative section-inner py-16 md:py-24">
+        <div className="relative section-inner py-24">
           <Breadcrumb
             items={[
               { label: "Facilities", href: "/research/facilities" },
@@ -66,7 +66,7 @@ export default async function FacilityDetailPage({
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
                 Equipment &amp; Instruments
               </h2>
-              <div className="space-y-10">
+              <div className="space-y-14">
                 {facility.equipmentGroups.map((group: EquipmentGroup) => (
                   <div key={group.name}>
                     <h3 className="font-heading text-xl font-bold text-[var(--ci-gray-900)] mb-4">
@@ -86,11 +86,11 @@ export default async function FacilityDetailPage({
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
                 Capabilities
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {facility.capabilities.map((capability, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <span className="text-[var(--ci-teal)] mt-1 shrink-0">
-                      ●
+                    <span className="text-[var(--ci-teal)] mr-2 shrink-0">
+                      ✓
                     </span>
                     <p className="text-[var(--ci-gray-600)] leading-relaxed">
                       {capability}
@@ -104,7 +104,7 @@ export default async function FacilityDetailPage({
       </section>
 
       {/* Contact / Access CTA */}
-      <section className="bg-[var(--ci-light)] py-12">
+      <section className="border-t border-gray-200 mt-16 pt-12">
         <div className="section-inner">
           <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-4">
             Access &amp; Booking

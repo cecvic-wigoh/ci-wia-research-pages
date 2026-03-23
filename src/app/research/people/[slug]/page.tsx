@@ -88,7 +88,7 @@ export default function PersonProfilePage({
                   alt={member.name}
                   width={224}
                   height={224}
-                  className="w-full h-full object-cover scale-150"
+                  className="w-full h-full object-cover object-top"
                   priority
                 />
               </div>

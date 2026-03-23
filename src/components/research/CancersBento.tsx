@@ -58,7 +58,7 @@ export default function CancersBento() {
   const overflow = cancerTypes.slice(9);      // Rare Cancers + any future
 
   return (
-    <section className="py-24 px-6">
+    <section className="bg-white py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-ci-blue font-[family-name:var(--font-heading)] text-center mb-10">
           Cancers We Study

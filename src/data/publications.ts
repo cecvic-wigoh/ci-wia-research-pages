@@ -1,15 +1,4 @@
-export interface Publication {
-  id: string;
-  authors: string;
-  title: string;
-  journal: string;
-  year: number;
-  volume?: string;
-  pages?: string;
-  doi?: string;
-  department: string;
-  highlightAuthor?: string;
-}
+import { Publication } from "./types";
 
 export const publications: Publication[] = [
   {
@@ -25,6 +14,7 @@ export const publications: Publication[] = [
     doi: "10.1038/s41522-025-00651-w",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["colon-cancer"],
   },
   {
     id: "pub-2",
@@ -39,6 +29,7 @@ export const publications: Publication[] = [
     doi: "10.1038/s41598-024-81223-y",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["colon-cancer"],
   },
   {
     id: "pub-3",
@@ -53,6 +44,7 @@ export const publications: Publication[] = [
     doi: "10.1186/s12866-024-03573-7",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["colon-cancer"],
   },
   {
     id: "pub-4",
@@ -65,6 +57,7 @@ export const publications: Publication[] = [
     doi: "10.1128/spectrum.01419-24",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["colon-cancer"],
   },
   {
     id: "pub-5",
@@ -79,6 +72,7 @@ export const publications: Publication[] = [
     doi: "10.14740/jcgo959",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["ovarian-womens-cancers"],
   },
   {
     id: "pub-6",
@@ -93,6 +87,7 @@ export const publications: Publication[] = [
     doi: "10.1016/j.ijmmb.2024.100600",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["colon-cancer"],
   },
   {
     id: "pub-7",
@@ -107,6 +102,7 @@ export const publications: Publication[] = [
     doi: "10.3389/fmicb.2023.1285840",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["ovarian-womens-cancers"],
   },
   {
     id: "pub-8",
@@ -121,6 +117,7 @@ export const publications: Publication[] = [
     doi: "10.1099/acmi.0.000638.v3",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["colon-cancer"],
   },
   {
     id: "pub-9",
@@ -135,6 +132,7 @@ export const publications: Publication[] = [
     doi: "10.1016/j.lansea.2023.100229",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["ovarian-womens-cancers"],
   },
   {
     id: "pub-10",
@@ -149,8 +147,8 @@ export const publications: Publication[] = [
     doi: "10.1016/j.jviromet.2022.114591",
     department: "molecular-oncology",
     highlightAuthor: "Bose M",
+    cancerTypes: ["ovarian-womens-cancers"],
   },
-  // Placeholder publications from other departments
   {
     id: "pub-11",
     authors: "Rajendran S, Sundaramurthy R, Ganapathy K, et al.",
@@ -161,6 +159,7 @@ export const publications: Publication[] = [
     volume: "284-285",
     pages: "45-58",
     department: "cancer-biology-molecular-diagnostics",
+    cancerTypes: ["head-neck-cancer"],
   },
   {
     id: "pub-12",
@@ -172,6 +171,7 @@ export const publications: Publication[] = [
     volume: "118",
     pages: "102-113",
     department: "clinical-trials-statistical-unit",
+    cancerTypes: ["ovarian-womens-cancers"],
   },
   {
     id: "pub-13",
@@ -183,6 +183,7 @@ export const publications: Publication[] = [
     volume: "48",
     pages: "234-241",
     department: "preventive-oncology",
+    cancerTypes: ["ovarian-womens-cancers"],
   },
   {
     id: "pub-14",
@@ -205,5 +206,6 @@ export const publications: Publication[] = [
     volume: "199",
     pages: "321-335",
     department: "cancer-biology-molecular-diagnostics",
+    cancerTypes: ["breast-cancer"],
   },
 ];

@@ -172,6 +172,7 @@ export const cancerTypes: CancerType[] = [
     slug: "childrens-cancers",
     name: "Children's Cancers",
     icon: "👶",
+    image: "/cancers/childrens-cancers.jpg",
     description:
       "Our paediatric oncology program addresses the unique biology of childhood cancers, focusing on improving cure rates while reducing long-term treatment toxicity.",
     overviewHtml:
@@ -277,6 +278,7 @@ export const cancerTypes: CancerType[] = [
     slug: "ovarian-womens-cancers",
     name: "Ovarian & Women's Cancers",
     icon: "♀️",
+    image: "/cancers/ovarian-womens-cancers.jpg",
     description:
       "Our women's cancer program addresses ovarian, cervical, and endometrial cancers through innovative early-detection methods and PARP-inhibitor–based therapies.",
     overviewHtml:

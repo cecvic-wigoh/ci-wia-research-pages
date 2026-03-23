@@ -11,7 +11,6 @@ export default function NewsPage() {
   const [selectedCancerType, setSelectedCancerType] = useState("");
   const [selectedResearcher, setSelectedResearcher] = useState("");
 
-  // Gather unique cancer types and researchers referenced in news
   const availableCancerTypes = useMemo(() => {
     const slugs = new Set(newsItems.flatMap((n) => n.taggedCancerTypes));
     return cancerTypes.filter((ct) => slugs.has(ct.slug));
@@ -49,19 +48,14 @@ export default function NewsPage() {
     <>
       <Breadcrumb items={[{ label: "News & Discoveries" }]} />
 
-      <section className="section">
-        <div className="section-inner">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold text-[var(--ci-blue)] mb-4">
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-[var(--ci-blue)] mb-10">
             News &amp; Discoveries
           </h1>
-          <p className="text-[var(--ci-gray-600)] max-w-3xl text-lg mb-10 leading-relaxed">
-            Stay up to date with the latest research breakthroughs,
-            clinical trial results, and scientific discoveries from the
-            Cancer Institute.
-          </p>
 
           {/* Filter bar */}
-          <div className="mb-8 space-y-4">
+          <div className="mb-10 space-y-4">
             <div className="flex flex-col sm:flex-row gap-4">
               <select
                 value={selectedCancerType}
@@ -106,23 +100,38 @@ export default function NewsPage() {
           </div>
 
           {/* News list */}
-          <div className="space-y-6">
-            {filteredNews.length > 0 ? (
-              filteredNews.map((item) => (
-                <NewsCard key={item.slug} newsItem={item} />
-              ))
-            ) : (
-              <div className="text-center py-16">
-                <p className="text-[var(--ci-gray-600)] text-lg mb-2">
-                  No articles found matching your filters.
-                </p>
-                <p className="text-[var(--ci-gray-600)] text-sm">
-                  Try broadening your selection or clear filters to see all
-                  articles.
-                </p>
-              </div>
-            )}
-          </div>
+          {filteredNews.length > 0 ? (
+            <div>
+              {/* Lead story */}
+              <NewsCard
+                newsItem={filteredNews[0]}
+                variant="default"
+              />
+
+              {/* Remaining stories as newspaper rows */}
+              {filteredNews.length > 1 && (
+                <div className="mt-10">
+                  {filteredNews.slice(1).map((item) => (
+                    <NewsCard
+                      key={item.slug}
+                      newsItem={item}
+                      variant="list"
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-[var(--ci-gray-600)] text-lg mb-2">
+                No articles found matching your filters.
+              </p>
+              <p className="text-[var(--ci-gray-600)] text-sm">
+                Try broadening your selection or clear filters to see all
+                articles.
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </>

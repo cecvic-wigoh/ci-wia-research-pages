@@ -9,6 +9,8 @@ import { institutionStats } from "@/data/statistics";
 import PersonCard from "@/components/research/PersonCard";
 import CancerTypeCard from "@/components/research/CancerTypeCard";
 import StatisticsBar from "@/components/research/StatisticsBar";
+import WorldMap from "@/components/research/WorldMap";
+import { collaborators } from "@/data/collaborators";
 
 export default function ResearchLandingPage() {
   const internalPeople = people.filter((p) => p.category === "internal");
@@ -170,10 +172,8 @@ export default function ResearchLandingPage() {
             partnerships — advancing cancer science through shared expertise,
             data, and clinical trials across 4 continents.
           </p>
-          <div className="bg-[var(--ci-light)] rounded-lg p-8 text-center mb-8">
-            <p className="text-[var(--ci-gray-600)] text-lg">
-              Interactive world map — see all partnerships
-            </p>
+          <div className="mb-8">
+            <WorldMap collaborators={collaborators} />
           </div>
           <div className="text-center">
             <Link

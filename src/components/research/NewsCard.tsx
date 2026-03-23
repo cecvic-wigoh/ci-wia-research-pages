@@ -45,17 +45,28 @@ export default function NewsCard({
     return (
       <Link
         href={`/research/news/${newsItem.slug}`}
-        className="block p-4 rounded-lg hover:bg-[var(--ci-gray-50)] transition-colors"
+        className="block rounded-lg overflow-hidden hover:shadow-md transition-shadow border border-[var(--ci-gray-200)] group"
       >
-        <p className="text-xs text-[var(--ci-gray-600)] mb-1">
-          {formattedDate}
-        </p>
-        <h3 className="font-heading text-sm font-bold text-[var(--ci-blue)] mb-1 leading-snug">
-          {newsItem.headline}
-        </h3>
-        <p className="text-xs text-[var(--ci-gray-600)] line-clamp-2">
-          {newsItem.teaser}
-        </p>
+        {newsItem.heroImage && (
+          <div className="aspect-video overflow-hidden">
+            <img
+              src={newsItem.heroImage}
+              alt={newsItem.headline}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        )}
+        <div className="p-4">
+          <p className="text-xs text-[var(--ci-gray-600)] mb-1">
+            {formattedDate}
+          </p>
+          <h3 className="font-heading text-sm font-bold text-[var(--ci-blue)] mb-1 leading-snug">
+            {newsItem.headline}
+          </h3>
+          <p className="text-xs text-[var(--ci-gray-600)] line-clamp-2">
+            {newsItem.teaser}
+          </p>
+        </div>
       </Link>
     );
   }
@@ -66,9 +77,17 @@ export default function NewsCard({
       href={`/research/news/${newsItem.slug}`}
       className="flex flex-col md:flex-row gap-8 group"
     >
-      {/* Image placeholder */}
+      {/* Image */}
       <div className="md:w-1/2">
-        <div className="aspect-video bg-gradient-to-br from-[var(--ci-blue)]/10 to-[var(--ci-blue)]/5 rounded-lg" />
+        <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-[var(--ci-blue)]/10 to-[var(--ci-blue)]/5">
+          {newsItem.heroImage && (
+            <img
+              src={newsItem.heroImage}
+              alt={newsItem.headline}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          )}
+        </div>
       </div>
 
       {/* Content */}

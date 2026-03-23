@@ -78,10 +78,20 @@ export default async function NewsDetailPage({
             ))}
           </div>
 
-          {/* Hero image placeholder */}
-          <div className="border border-gray-200 rounded-lg aspect-video mt-8 flex items-center justify-center">
-            <span className="text-gray-300 text-sm">Hero Image</span>
-          </div>
+          {/* Hero image */}
+          {newsItem.heroImage ? (
+            <div className="rounded-lg overflow-hidden aspect-video mt-8">
+              <img
+                src={newsItem.heroImage}
+                alt={newsItem.headline}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className="border border-gray-200 rounded-lg aspect-video mt-8 flex items-center justify-center">
+              <span className="text-gray-300 text-sm">Hero Image</span>
+            </div>
+          )}
 
           {/* Body */}
           <div

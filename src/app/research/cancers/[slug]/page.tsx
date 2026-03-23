@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Breadcrumb from "@/components/research/Breadcrumb";
+import { ArrowRight } from "lucide-react";
 import DonationCta from "@/components/research/DonationCta";
-import RecentDiscoveries from "@/components/research/RecentDiscoveries";
-import TagPill from "@/components/research/TagPill";
 import { cancerTypes } from "@/data/cancerTypes";
 import { people } from "@/data/people";
 
@@ -27,46 +25,55 @@ export default async function CancerTypeDetailPage({
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      {/* Hero — full-bleed image with overlay */}
+      <section className="relative min-h-[500px] flex items-center justify-center text-center px-6 overflow-hidden">
         {cancerType.image ? (
           <div className="absolute inset-0">
-            <img src={cancerType.image} alt="" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-[var(--ci-blue)]/80" />
+            <img
+              src={cancerType.image}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-ci-blue-dark/70 via-ci-blue-dark/60 to-ci-blue-dark/90" />
           </div>
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--ci-blue-dark)] via-[var(--ci-blue)] to-[var(--ci-blue-light)]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-ci-blue-dark via-ci-blue to-ci-blue-light" />
         )}
 
-        <div className="relative z-10 section-inner">
-          <Breadcrumb
-            items={[
-              { label: "Cancers", href: "/research/cancers" },
-              { label: cancerType.name },
-            ]}
-          />
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
-            {cancerType.icon} {cancerType.name}
+        <div className="relative z-10 max-w-3xl mx-auto py-24">
+          <p className="text-6xl mb-4">{cancerType.icon}</p>
+          <h1 className="font-[family-name:var(--font-heading)] text-4xl md:text-6xl font-bold text-white uppercase tracking-wider mb-6">
+            {cancerType.name}
           </h1>
-          <p className="text-white/85 max-w-3xl text-lg leading-relaxed">
-            {cancerType.overviewHtml}
+          <p className="text-white/70 text-lg leading-relaxed max-w-xl mx-auto mb-8">
+            {cancerType.description}
           </p>
+          <a
+            href="#research-themes"
+            className="inline-block bg-ci-blue-dark/80 border border-white/20 text-white px-8 py-3 rounded font-bold hover:bg-ci-blue-dark transition-colors"
+          >
+            Learn More
+          </a>
         </div>
       </section>
 
-      {/* Impact Stats */}
-      <section className="bg-white py-12 px-6">
-        <div className="section-inner">
-          <div className="flex justify-around items-center flex-wrap gap-8">
+      {/* Impact Stats — dark bar */}
+      <section className="bg-ci-blue-dark py-8 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {cancerType.impactStats.map((stat, index) => (
               <div
                 key={index}
-                className={`text-center ${index < cancerType.impactStats.length - 1 ? "border-r border-gray-200 pr-8" : ""}`}
+                className={`text-center py-4 px-3 rounded-lg ${
+                  index === 0
+                    ? "bg-ci-teal-dark text-white"
+                    : "bg-white/5 text-white"
+                }`}
               >
-                <div className="text-3xl font-bold text-[var(--ci-blue)]">
+                <div className="text-3xl md:text-4xl font-bold">
                   {stat.value}
                 </div>
-                <div className="text-sm text-[var(--ci-gray-600)]">
+                <div className="text-xs uppercase tracking-wider mt-1 opacity-70">
                   {stat.label}
                 </div>
               </div>
@@ -75,33 +82,50 @@ export default async function CancerTypeDetailPage({
         </div>
       </section>
 
-      {/* Researchers */}
+      {/* Our Researchers — horizontal card row */}
       {researchers.length > 0 && (
-        <section className="section">
-          <div className="section-inner py-12">
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
-              Our Researchers
-            </h2>
-            <div className="flex flex-wrap gap-6">
+        <section className="py-16 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-3xl font-bold text-ci-gray-900">
+                Our Researchers
+              </h2>
+              <Link
+                href="/research/people"
+                className="text-ci-teal-dark font-bold text-sm inline-flex items-center gap-1 hover:text-ci-blue transition-colors"
+              >
+                See all <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
               {researchers.map((person) => (
                 <Link
                   key={person.slug}
                   href={`/research/people/${person.slug}`}
-                  className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow border border-[var(--ci-gray-200)]"
+                  className="shrink-0 w-56 group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--ci-blue)] to-[var(--ci-blue-dark)] flex items-center justify-center shrink-0">
-                    <span className="text-sm font-bold text-white">
-                      {person.initials}
-                    </span>
+                  <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-ci-blue-light to-ci-blue border-2 border-ci-teal/20 mb-3">
+                    {person.photo ? (
+                      <img
+                        src={person.photo}
+                        alt={person.name}
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span className="text-3xl font-bold text-white/60">
+                          {person.initials}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <div className="font-bold text-[var(--ci-gray-900)] text-sm">
-                      {person.name}
-                    </div>
-                    <div className="text-xs text-[var(--ci-gray-600)]">
-                      {person.department}
-                    </div>
-                  </div>
+                  <h3 className="font-bold text-ci-blue text-sm group-hover:text-ci-teal-dark transition-colors">
+                    {person.name}
+                  </h3>
+                  <p className="text-xs text-ci-gray-600 mt-0.5">
+                    {person.department}
+                  </p>
                 </Link>
               ))}
             </div>
@@ -109,25 +133,35 @@ export default async function CancerTypeDetailPage({
         </section>
       )}
 
-      {/* Research Themes */}
-      <section className="section">
-        <div className="section-inner py-12">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
-            Research Themes
-          </h2>
-          <div className="space-y-6">
+      {/* Research Themes — 2x3 card grid */}
+      <section id="research-themes" className="py-16 px-6 bg-ci-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-3xl font-bold text-ci-gray-900">
+              Research Themes
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {cancerType.researchThemes.map((theme, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <span className="text-[var(--ci-blue)] font-bold text-lg shrink-0 w-8">
-                  {index + 1}.
-                </span>
-                <div>
-                  <h3 className="font-bold text-[var(--ci-gray-900)] mb-1">
-                    {theme.title}
-                  </h3>
-                  <p className="text-[var(--ci-gray-600)] leading-relaxed">
-                    {theme.description}
-                  </p>
+              <div
+                key={index}
+                className="bg-white rounded-lg p-6 border border-ci-gray-200 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-ci-teal/10 flex items-center justify-center shrink-0">
+                    <span className="text-ci-teal-dark font-bold text-sm">
+                      {index + 1}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-ci-gray-900 text-sm mb-2">
+                      {theme.title}
+                    </h3>
+                    <p className="text-xs text-ci-gray-600 leading-relaxed">
+                      {theme.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -135,40 +169,46 @@ export default async function CancerTypeDetailPage({
         </div>
       </section>
 
-      {/* Clinical Trials */}
-      <section className="section bg-[var(--ci-gray-50)]">
-        <div className="section-inner py-12">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
-            Clinical Trials
-          </h2>
-          <div className="space-y-4">
+      {/* Clinical Trials — dark background */}
+      <section className="bg-ci-blue-dark py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="font-[family-name:var(--font-heading)] text-2xl md:text-3xl font-bold text-white">
+              Clinical Trials
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {cancerType.clinicalTrials.map((trial, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 border-l-4 border-[var(--ci-teal)] shadow-sm"
+                className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-colors"
               >
-                <h3 className="font-bold text-[var(--ci-gray-900)] mb-2">
-                  {trial.title}
-                </h3>
-                <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-[var(--ci-gray-600)]">
-                  <span>
-                    <strong>Status:</strong> {trial.status}
-                  </span>
-                  <span>
-                    <strong>PI:</strong> {trial.pi}
-                  </span>
-                  <span>
-                    <strong>ID:</strong> {trial.id}
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <p className="text-white/40 text-xs uppercase tracking-wider">
+                    {trial.id}
+                  </p>
+                  <span
+                    className={`shrink-0 text-[10px] font-bold uppercase px-2.5 py-1 rounded ${
+                      trial.status === "Recruiting"
+                        ? "bg-ci-teal text-white"
+                        : "bg-green-500 text-white"
+                    }`}
+                  >
+                    {trial.status}
                   </span>
                 </div>
+                <h3 className="font-bold text-white text-sm leading-tight mb-2">
+                  {trial.title}
+                </h3>
+                <p className="text-white/50 text-xs">
+                  PI: {trial.pi}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Recent Discoveries */}
-      <RecentDiscoveries filterBy={{ type: "cancerType", slug: cancerType.slug }} />
 
       {/* Donation CTA */}
       <DonationCta

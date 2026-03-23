@@ -42,7 +42,7 @@ export default function ProjectTable({ projects }: ProjectTableProps) {
                     className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-bold ${
                       project.status === "ongoing"
                         ? "bg-green-100 text-green-700"
-                        : "bg-gray-100 text-gray-600"
+                        : "bg-ci-light text-ci-blue"
                     }`}
                   >
                     {project.status === "ongoing" ? "Ongoing" : "Completed"}
@@ -69,7 +69,7 @@ export default function ProjectTable({ projects }: ProjectTableProps) {
                 className={`inline-block px-2.5 py-0.5 rounded-full font-bold ${
                   project.status === "ongoing"
                     ? "bg-green-100 text-green-700"
-                    : "bg-gray-100 text-gray-600"
+                    : "bg-ci-light text-ci-blue"
                 }`}
               >
                 {project.status === "ongoing" ? "Ongoing" : "Completed"}

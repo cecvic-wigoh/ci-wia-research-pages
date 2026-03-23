@@ -6,15 +6,12 @@ import { people } from "@/data/people";
 import { cancerTypes } from "@/data/cancerTypes";
 import { founders } from "@/data/founders";
 import { collaborators } from "@/data/collaborators";
-import CancerTypeCard from "@/components/research/CancerTypeCard";
 import StatisticsBar from "@/components/research/StatisticsBar";
 import WorldMap from "@/components/research/WorldMap";
 import DonationCta from "@/components/research/DonationCta";
 
 export default function ResearchLandingPage() {
   const internalPeople = people.filter((p) => p.category === "internal");
-  const displayedCancers = cancerTypes.slice(0, 4);
-  const remainingCancers = cancerTypes.length - displayedCancers.length;
 
   return (
     <>
@@ -195,7 +192,7 @@ export default function ResearchLandingPage() {
         </div>
       </section>
 
-      {/* 6. Cancers We Study — Photo Card Grid */}
+      {/* 6. Cancers We Study — All 10, featured + grid */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-[var(--ci-blue)] font-[family-name:var(--font-heading)] mb-4">
@@ -205,23 +202,64 @@ export default function ResearchLandingPage() {
             Our research is organized around the cancers that affect our
             patients — enabling targeted discovery from bench to bedside.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayedCancers.map((ct) => (
-              <CancerTypeCard key={ct.slug} cancerType={ct} />
-            ))}
-            {remainingCancers > 0 && (
+
+          {/* Featured hero card — first cancer type */}
+          {cancerTypes[0] && (
+            <Link
+              href={`/research/cancers/${cancerTypes[0].slug}`}
+              className="relative block rounded-lg overflow-hidden group mb-6"
+            >
+              <div className="aspect-[21/9]">
+                {cancerTypes[0].image ? (
+                  <img
+                    src={cancerTypes[0].image}
+                    alt={cancerTypes[0].name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[var(--ci-blue)] to-[var(--ci-blue-dark)]" />
+                )}
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                <p className="text-sm text-[var(--ci-teal)] font-bold uppercase tracking-wider mb-2">Featured</p>
+                <h3 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-heading)]">
+                  {cancerTypes[0].name}
+                </h3>
+                <p className="text-white/80 mt-2 max-w-2xl leading-relaxed">
+                  {cancerTypes[0].description}
+                </p>
+              </div>
+            </Link>
+          )}
+
+          {/* Remaining cancer types — compact 2-row grid */}
+          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {cancerTypes.slice(1).map((ct) => (
               <Link
-                href="/research/cancers"
-                className="relative aspect-[4/3] rounded-lg overflow-hidden flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-[var(--ci-blue)] transition-colors group"
+                key={ct.slug}
+                href={`/research/cancers/${ct.slug}`}
+                className="relative rounded-lg overflow-hidden group aspect-square"
               >
-                <span className="text-4xl font-bold text-[var(--ci-blue)] mb-2">
-                  +{remainingCancers}
-                </span>
-                <span className="text-[var(--ci-blue)] font-bold flex items-center gap-1 text-sm">
-                  View All <ArrowRight className="h-4 w-4" />
-                </span>
+                {ct.image ? (
+                  <img
+                    src={ct.image}
+                    alt={ct.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[var(--ci-blue)] to-[var(--ci-blue-dark)] flex items-center justify-center">
+                    <span className="text-3xl">{ct.icon}</span>
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3">
+                  <h3 className="text-sm font-bold text-white leading-tight">
+                    {ct.name}
+                  </h3>
+                </div>
               </Link>
-            )}
+            ))}
           </div>
         </div>
       </section>

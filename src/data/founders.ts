@@ -22,7 +22,7 @@ export const founders: Founder[] = [
     contribution:
       "India's first woman legislator and medical graduate from a co-educational institution. Founded Cancer Institute (WIA) in 1954 through the Women's India Association, making it the first comprehensive cancer center in South India.",
     initials: "MR",
-    image: "/research-images/founders/muthulakshmi-reddy.jpg",
+    image: "/founders/dr-muthulakshmi-reddy.jpg",
     heroSubtitle: "A Legacy That Never Dies",
     bio: [
       "On July 30, 1886, in the small princely state of Pudukkottai in Tamil Nadu, a girl was born who would one day change the fate of thousands. Her father, Narayanaswami Iyer, was principal of the Maharaja's College. Her mother, Chandrammal, was a former devadasi. In that conservative, rigid society, this union was itself an act of defiance — and Muthulakshmi inherited every ounce of it.",
@@ -42,7 +42,7 @@ export const founders: Founder[] = [
     contribution:
       "Son of Dr. Muthulakshmi Reddy, he transformed Cancer Institute into a world-class research center. Introduced India's first DM (Medical Oncology) and MCh (Surgical Oncology) degrees in 1984, and established the Madras Metropolitan Tumour Registry.",
     initials: "SK",
-    image: "/research-images/founders/krishnamurthi.jpg",
+    image: "/founders/dr-s-krishnamurthi.jpg",
     heroSubtitle: "The Architect of Indian Oncology",
     bio: [
       "On September 12, 1919, Sundara Krishnamurthi was born to Dr. Sundara Reddy and Dr. Muthulakshmi Reddy, India's first woman medical graduate. Growing up in that household was not merely an education in medicine — it was an education in what medicine was for.",
@@ -62,7 +62,7 @@ export const founders: Founder[] = [
     contribution:
       "Served Cancer Institute for over 60 years. Under her stewardship, 60% of patients received free or subsidized care. Recipient of the Ramon Magsaysay Award and Padma Vibhushan, India's second-highest civilian honor.",
     initials: "VS",
-    image: "/research-images/founders/v-shanta.jpg",
+    image: "/founders/dr-v-shanta.jpg",
     heroSubtitle: "The Mother of Oncology in India",
     bio: [
       "On March 11, 1927, in Mylapore, Chennai, Viswanathan Shanta was born into a family of extraordinary minds. Her grand uncle was Sir C. V. Raman, the Nobel Prize-winning physicist. Her maternal uncle was Subrahmanyan Chandrasekhar, who would win the Nobel Prize in Physics in 1983. Science ran through her blood, but the path she chose was her own.",

@@ -1,4 +1,4 @@
-import type { Project } from "@/data/faculty";
+import type { Project } from "@/data/types";
 
 interface ProjectTableProps {
   projects: Project[];

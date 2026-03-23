@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import type { Publication } from "@/data/publications";
+import type { Publication } from "@/data/types";
 
 interface PublicationCardProps {
   publication: Publication;

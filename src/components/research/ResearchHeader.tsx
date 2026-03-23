@@ -7,12 +7,14 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "Research Home", href: "/research" },
-  { label: "Departments", href: "/research/departments" },
-  { label: "Faculty", href: "/research/faculty" },
-  { label: "Facilities", href: "/research/facilities" },
-  { label: "Collaborations", href: "/research/collaborations" },
-  { label: "Publications", href: "/research/publications" },
+  { href: "/research", label: "Research Home" },
+  { href: "/research/people", label: "People" },
+  { href: "/research/cancers", label: "Cancers" },
+  { href: "/research/facilities", label: "Facilities" },
+  { href: "/research/collaborations", label: "Collaborations" },
+  { href: "/research/publications", label: "Publications" },
+  { href: "/research/news", label: "News" },
+  { href: "/research/leadership", label: "Leadership" },
 ];
 
 export default function ResearchHeader() {

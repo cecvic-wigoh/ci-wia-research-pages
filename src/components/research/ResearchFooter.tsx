@@ -3,11 +3,13 @@ import Image from "next/image";
 
 const quickLinks = [
   { label: "Research Home", href: "/research" },
-  { label: "Departments", href: "/research/departments" },
-  { label: "Faculty Directory", href: "/research/faculty" },
+  { label: "People", href: "/research/people" },
+  { label: "Cancers", href: "/research/cancers" },
   { label: "Publications", href: "/research/publications" },
   { label: "Facilities", href: "/research/facilities" },
   { label: "Collaborations", href: "/research/collaborations" },
+  { label: "News", href: "/research/news" },
+  { label: "Leadership", href: "/research/leadership" },
 ];
 
 const institutionalLinks = [

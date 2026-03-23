@@ -44,7 +44,7 @@ export default function FacilitiesPage() {
                     {facility.description}
                   </p>
                   <p className="text-xs text-[var(--ci-teal-dark)] font-bold">
-                    {facility.capability}
+                    {facility.capabilities[0]}
                   </p>
                 </div>
               );

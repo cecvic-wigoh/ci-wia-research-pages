@@ -2,28 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowDown, ArrowRight, ExternalLink, Briefcase, GraduationCap, Users, Globe, MapPin, Microscope, Dna, BarChart3, ShieldCheck, FlaskConical } from "lucide-react";
-import FacultyMosaic from "@/components/research/FacultyMosaic";
+import { ArrowDown, ArrowRight, ExternalLink, Briefcase, GraduationCap, Users, Globe, MapPin } from "lucide-react";
+import PersonMosaic from "@/components/research/PersonMosaic";
 import FounderTribute from "@/components/research/FounderTribute";
 import HeroFounders from "@/components/research/HeroFounders";
 import PublicationCard from "@/components/research/PublicationCard";
-import { departments } from "@/data/departments";
 import { publications } from "@/data/publications";
 import { collaborators } from "@/data/collaborators";
 import { facilities } from "@/data/facilities";
 
-const deptIconMap: Record<string, React.ElementType> = {
-  microscope: Microscope,
-  dna: Dna,
-  "chart-bar": FlaskConical,
-  "shield-check": ShieldCheck,
-  "bar-chart": BarChart3,
-};
-
 export default function ResearchLandingPage() {
   const recentPubs = publications.slice(0, 4);
-  const featuredDepts = departments.slice(0, 3);
-  const remainingDepts = departments.slice(3);
   const topCollabs = collaborators.filter((c) => c.type === "international").slice(0, 3);
   const topFacilities = facilities.slice(0, 3);
 
@@ -80,10 +69,10 @@ export default function ResearchLandingPage() {
               <ArrowDown className="h-4 w-4" />
             </a>
             <Link
-              href="/research/faculty"
+              href="/research/people"
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white/80 font-bold rounded-lg hover:bg-white/10 hover:border-white/40 hover:text-white transition-colors backdrop-blur-sm cursor-pointer"
             >
-              Meet Our Faculty
+              Meet Our People
             </Link>
           </div>
         </div>
@@ -97,139 +86,11 @@ export default function ResearchLandingPage() {
         </div>
       </section>
 
-      {/* Meet Our Faculty */}
-      <FacultyMosaic />
-
-      {/* Explore Our Research — Departments */}
-      <section id="explore" className="section bg-[var(--ci-gray-100)]">
-        <div className="section-inner">
-          <div className="text-center mb-12">
-            <p className="text-[var(--ci-teal-dark)] font-bold text-sm tracking-[0.15em] uppercase mb-3">
-              Research Ecosystem
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-[var(--ci-blue)] mb-4">
-              Explore Our Departments
-            </h2>
-            <p className="text-[var(--ci-gray-600)] max-w-2xl mx-auto text-lg">
-              Specialized departments driving discovery — from molecular
-              mechanisms to population-level impact.
-            </p>
-          </div>
-
-          {/* Featured departments — large image cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
-            {featuredDepts.map((dept) => {
-              const Icon = deptIconMap[dept.icon] || Microscope;
-              return (
-                <Link
-                  key={dept.slug}
-                  href={`/research/departments/${dept.slug}`}
-                  className="group relative rounded-2xl overflow-hidden aspect-[4/5] flex flex-col justify-end"
-                >
-                  {dept.image && (
-                    <Image
-                      src={dept.image}
-                      alt={dept.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--ci-blue-dark)] via-[var(--ci-blue-dark)]/40 to-transparent" />
-                  <div className="relative z-10 p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-8 h-8 rounded-lg bg-[var(--ci-teal)]/20 backdrop-blur-sm flex items-center justify-center">
-                        <Icon className="h-4 w-4 text-[var(--ci-teal)]" />
-                      </div>
-                      <span className="text-white/50 text-xs font-medium">
-                        Est. {dept.established}
-                      </span>
-                    </div>
-                    <h3 className="font-heading text-lg font-bold text-white leading-snug mb-2">
-                      {dept.name}
-                    </h3>
-                    <p className="text-white/60 text-sm leading-relaxed line-clamp-2 mb-3">
-                      {dept.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mb-3">
-                      {dept.focusAreas.slice(0, 2).map((area) => (
-                        <span
-                          key={area}
-                          className="px-2.5 py-0.5 text-[10px] font-bold text-[var(--ci-teal)] bg-[var(--ci-teal)]/10 rounded-full backdrop-blur-sm border border-[var(--ci-teal)]/20"
-                        >
-                          {area}
-                        </span>
-                      ))}
-                    </div>
-                    <span className="inline-flex items-center gap-1 text-[var(--ci-teal)] text-sm font-bold group-hover:gap-2 transition-all">
-                      Explore
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Remaining departments — horizontal cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
-            {remainingDepts.map((dept) => {
-              const Icon = deptIconMap[dept.icon] || Microscope;
-              return (
-                <Link
-                  key={dept.slug}
-                  href={`/research/departments/${dept.slug}`}
-                  className="group relative rounded-2xl overflow-hidden flex h-48"
-                >
-                  {dept.image && (
-                    <Image
-                      src={dept.image}
-                      alt={dept.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--ci-blue-dark)]/95 via-[var(--ci-blue-dark)]/70 to-[var(--ci-blue-dark)]/30" />
-                  <div className="relative z-10 p-6 flex flex-col justify-center">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-8 h-8 rounded-lg bg-[var(--ci-teal)]/20 backdrop-blur-sm flex items-center justify-center">
-                        <Icon className="h-4 w-4 text-[var(--ci-teal)]" />
-                      </div>
-                      <span className="text-white/50 text-xs font-medium">
-                        Est. {dept.established} &middot; {dept.facultyCount} Faculty
-                      </span>
-                    </div>
-                    <h3 className="font-heading text-lg font-bold text-white leading-snug mb-1.5">
-                      {dept.name}
-                    </h3>
-                    <p className="text-white/60 text-sm leading-relaxed line-clamp-2 max-w-md mb-2">
-                      {dept.description}
-                    </p>
-                    <span className="inline-flex items-center gap-1 text-[var(--ci-teal)] text-sm font-bold group-hover:gap-2 transition-all">
-                      Explore
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="text-center">
-            <Link
-              href="/research/departments"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors"
-            >
-              View All Departments
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Meet Our People */}
+      <PersonMosaic />
 
       {/* Collaborations + Facilities — Side by Side */}
-      <section className="section">
+      <section id="explore" className="section">
         <div className="section-inner">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Collaborations */}
@@ -311,7 +172,7 @@ export default function ResearchLandingPage() {
                       {facility.description}
                     </p>
                     <p className="text-[10px] text-[var(--ci-teal-dark)] font-bold uppercase tracking-wider">
-                      {facility.capability}
+                      {facility.capabilities[0]}
                     </p>
                   </div>
                 ))}

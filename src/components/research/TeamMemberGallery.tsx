@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import type { TeamMember } from "@/data/faculty";
+import type { TeamMember } from "@/data/types";
 
 interface TeamMemberGalleryProps {
   members: TeamMember[];

@@ -26,10 +26,6 @@ const sidebarSections = [
   { id: "contact", label: "Contact" },
 ];
 
-export function generateStaticParams() {
-  return people.map((person) => ({ slug: person.slug }));
-}
-
 export default function PersonProfilePage({
   params,
 }: {

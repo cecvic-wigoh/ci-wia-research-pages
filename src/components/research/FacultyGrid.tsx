@@ -14,6 +14,15 @@ const gradients = [
 
 const TOTAL_SLOTS = 14;
 
+const placeholderPhotos = [
+  "/faculty/placeholder-1.jpg",
+  "/faculty/placeholder-2.jpg",
+  "/faculty/placeholder-3.jpg",
+  "/faculty/placeholder-4.jpg",
+  "/faculty/placeholder-5.jpg",
+  "/faculty/placeholder-6.jpg",
+];
+
 export default function FacultyGrid() {
   const internalPeople = people.filter((p) => p.category === "internal");
 
@@ -54,16 +63,19 @@ export default function FacultyGrid() {
             </Link>
           ))}
 
-          {/* Placeholder slots */}
+          {/* Placeholder slots with stock photos */}
           {Array.from({ length: Math.max(0, TOTAL_SLOTS - internalPeople.length) }).map((_, i) => (
             <div
               key={`placeholder-${i}`}
               aria-hidden="true"
-              className="w-[120px] h-[120px] lg:w-[130px] lg:h-[130px] rounded-full"
-              style={{
-                background: gradients[(internalPeople.length + i) % gradients.length],
-              }}
-            />
+              className="w-[120px] h-[120px] lg:w-[130px] lg:h-[130px] rounded-full overflow-hidden opacity-70"
+            >
+              <img
+                src={placeholderPhotos[i % placeholderPhotos.length]}
+                alt=""
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
           ))}
         </div>
       </div>

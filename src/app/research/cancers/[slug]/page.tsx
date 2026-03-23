@@ -28,33 +28,24 @@ export default async function CancerTypeDetailPage({
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--ci-blue-dark)] via-[var(--ci-blue)] to-[var(--ci-blue-light)]">
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "radial-gradient(ellipse at 20% 80%, rgba(35,205,192,0.4) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(27,168,157,0.3) 0%, transparent 50%)",
-            }}
-          />
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, white 1px, transparent 1px)",
-              backgroundSize: "30px 30px",
-            }}
-          />
-        </div>
+      <section className="relative py-32 px-6 overflow-hidden">
+        {cancerType.image ? (
+          <div className="absolute inset-0">
+            <img src={cancerType.image} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-[var(--ci-blue)]/80" />
+          </div>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--ci-blue-dark)] via-[var(--ci-blue)] to-[var(--ci-blue-light)]" />
+        )}
 
-        <div className="relative section-inner py-16 md:py-24">
+        <div className="relative z-10 section-inner">
           <Breadcrumb
             items={[
               { label: "Cancers", href: "/research/cancers" },
               { label: cancerType.name },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
             {cancerType.icon} {cancerType.name}
           </h1>
           <p className="text-white/85 max-w-3xl text-lg leading-relaxed">
@@ -64,12 +55,15 @@ export default async function CancerTypeDetailPage({
       </section>
 
       {/* Impact Stats */}
-      <section className="bg-[var(--ci-light)] py-12">
+      <section className="bg-white py-12 px-6">
         <div className="section-inner">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+          <div className="flex justify-around items-center flex-wrap gap-8">
             {cancerType.impactStats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-[var(--ci-teal)] mb-1">
+              <div
+                key={index}
+                className={`text-center ${index < cancerType.impactStats.length - 1 ? "border-r border-gray-200 pr-8" : ""}`}
+              >
+                <div className="text-3xl font-bold text-[var(--ci-blue)]">
                   {stat.value}
                 </div>
                 <div className="text-sm text-[var(--ci-gray-600)]">
@@ -123,8 +117,10 @@ export default async function CancerTypeDetailPage({
           </h2>
           <div className="space-y-6">
             {cancerType.researchThemes.map((theme, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <span className="text-[var(--ci-teal)] mt-1 shrink-0">●</span>
+              <div key={index} className="flex items-start gap-4">
+                <span className="text-[var(--ci-blue)] font-bold text-lg shrink-0 w-8">
+                  {index + 1}.
+                </span>
                 <div>
                   <h3 className="font-bold text-[var(--ci-gray-900)] mb-1">
                     {theme.title}

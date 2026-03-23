@@ -3,8 +3,16 @@ import { ArrowRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-ci-blue to-ci-blue-dark py-32 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-32 px-6 overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src="/cancer-hero.webp"
+          alt=""
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-ci-blue-dark/90 via-ci-blue-dark/70 to-ci-blue-dark/40" />
+      </div>
+      <div className="relative max-w-6xl mx-auto">
         <h1 className="text-5xl md:text-6xl font-bold text-white max-w-4xl font-[family-name:var(--font-heading)] leading-tight">
           Seven Decades of Pioneering Cancer Research
         </h1>

@@ -25,19 +25,21 @@ export default async function FacilityDetailPage({
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--ci-blue-dark)] via-[var(--ci-blue)] to-[var(--ci-blue-light)]">
+          {facility.image && (
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage: `url(${facility.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
+          )}
           <div
             className="absolute inset-0 opacity-20"
             style={{
               backgroundImage:
                 "radial-gradient(ellipse at 20% 80%, rgba(35,205,192,0.4) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(27,168,157,0.3) 0%, transparent 50%)",
-            }}
-          />
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, white 1px, transparent 1px)",
-              backgroundSize: "30px 30px",
             }}
           />
         </div>

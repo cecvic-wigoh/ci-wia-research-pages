@@ -10,7 +10,7 @@ export const facilities: Facility[] = [
     overview:
       "The Core Research Equipment facility at Cancer Institute (WIA) provides investigators with access to state-of-the-art instrumentation essential for modern cancer research. Maintained by dedicated technical staff, the facility supports projects spanning genomics, proteomics, cell biology, and molecular diagnostics. Researchers across all departments can reserve instrument time and receive training on equipment operation and data analysis.",
     icon: "🔬",
-    image: "",
+    image: "/facilities/research-equipment-1.jpeg",
     capabilities: [
       "Next-generation and third-generation sequencing for whole-genome, exome, and targeted panels",
       "Multi-parameter flow cytometric analysis and cell sorting",
@@ -106,7 +106,7 @@ export const facilities: Facility[] = [
     overview:
       "The GMP Manufacturing Facility enables Cancer Institute (WIA) to translate laboratory discoveries into clinical-grade cellular therapies. Designed to meet national and international regulatory standards, the facility supports the production of CAR-T cells, dendritic cell vaccines, and other advanced therapy medicinal products. Rigorous quality control and environmental monitoring ensure product safety and consistency throughout the manufacturing process.",
     icon: "🏭",
-    image: "",
+    image: "/facilities/gmp-facility.jpeg",
     capabilities: [
       "Cleanroom suites classified to ISO 7 and ISO 5 standards for aseptic processing",
       "Closed-system cell expansion and activation using automated bioreactors",
@@ -126,7 +126,7 @@ export const facilities: Facility[] = [
     overview:
       "The Clinical Trials Unit at Cancer Institute (WIA) provides end-to-end support for interventional and observational clinical studies. With an 8-bed dedicated trial ward, on-site research pharmacy, and experienced clinical research coordinators, the unit manages all aspects of trial conduct from regulatory submissions to data management. The unit has a strong track record in oncology trials spanning chemotherapy, targeted therapy, and immunotherapy protocols.",
     icon: "🏥",
-    image: "",
+    image: "/facilities/clinical-trials-1.jpeg",
     capabilities: [
       "8-bed clinical trial ward with continuous monitoring capabilities",
       "On-site research pharmacy for investigational drug storage and dispensing",
@@ -146,7 +146,7 @@ export const facilities: Facility[] = [
     overview:
       "The Biorepository at Cancer Institute (WIA) maintains a curated collection of human biospecimens linked to detailed clinical and pathological annotations. Specimens are collected under IRB-approved protocols with informed consent and processed according to standardized operating procedures to ensure specimen integrity. The repository serves as a critical resource for biomarker discovery, validation studies, and collaborative research projects nationally and internationally.",
     icon: "🧊",
-    image: "",
+    image: "/facilities/biorepository.jpeg",
     capabilities: [
       "Formalin-fixed paraffin-embedded (FFPE) and fresh-frozen tissue collections across major cancer types",
       "Matched blood, serum, plasma, and buffy coat specimen banking",
@@ -166,7 +166,7 @@ export const facilities: Facility[] = [
     overview:
       "The Preclinical Disease Models facility provides researchers with validated model systems to study cancer biology and evaluate therapeutic candidates before clinical translation. The platform encompasses both cell-based and organism-based approaches, enabling investigators to assess drug responses, resistance mechanisms, and combination strategies in controlled experimental settings. All work is conducted under institutional ethical oversight with emphasis on the 3Rs principles.",
     icon: "🧫",
-    image: "",
+    image: "/facilities/disease-models-1.jpeg",
     capabilities: [
       "Patient-derived organoid and spheroid culture systems for personalized drug sensitivity testing",
       "Established cancer cell line panels representing major tumor types treated at the institute",

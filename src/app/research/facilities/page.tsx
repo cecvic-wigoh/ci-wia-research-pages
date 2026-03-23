@@ -58,8 +58,18 @@ export default function FacilitiesPage() {
 
             {/* Visual Side */}
             <div className="lg:w-1/2">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--ci-blue)]/10 to-[var(--ci-blue)]/5 flex items-center justify-center">
-                <span className="text-6xl">{facility.icon}</span>
+              <div className="aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--ci-blue)]/10 to-[var(--ci-blue)]/5">
+                {facility.image ? (
+                  <img
+                    src={facility.image}
+                    alt={facility.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-6xl">{facility.icon}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>

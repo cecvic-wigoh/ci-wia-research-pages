@@ -24,7 +24,7 @@ export default function FoundersLegacy() {
       <div className="relative max-w-6xl mx-auto text-center">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-bold text-white font-[family-name:var(--font-heading)]">
-          Our Cinematic Legacy
+          Our Legacy
         </h2>
         <p className="text-white/60 text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
           Three visionaries whose conviction, sacrifice, and science built one

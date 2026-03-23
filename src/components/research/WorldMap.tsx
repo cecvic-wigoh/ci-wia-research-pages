@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -12,14 +12,38 @@ import {
 import { Tooltip } from "react-tooltip";
 import type { Collaborator } from "@/data/types";
 
-const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
-
 export default function WorldMap({
   collaborators,
 }: {
   collaborators: Collaborator[];
 }) {
+  const [geoData, setGeoData] = useState<object | null>(null);
   const [, setActive] = useState("");
+
+  useEffect(() => {
+    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+      .then((res) => res.json())
+      .then((data) => setGeoData(data))
+      .catch(() => {
+        // Fallback: try local
+        fetch("/countries-110m.json")
+          .then((res) => res.json())
+          .then((data) => setGeoData(data));
+      });
+  }, []);
+
+  if (!geoData) {
+    return (
+      <div className="relative rounded-lg overflow-hidden bg-[var(--ci-blue-dark)]">
+        <div className="hidden sm:flex items-center justify-center" style={{ height: 400 }}>
+          <p className="text-white/40 text-sm">Loading map...</p>
+        </div>
+        <div className="sm:hidden py-8 text-center">
+          <p className="text-white/60 text-sm">View on a larger screen to see the interactive map</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative rounded-lg overflow-hidden bg-[var(--ci-blue-dark)]">
@@ -34,7 +58,7 @@ export default function WorldMap({
             center={createCoordinates(10, 20)}
             zoom={1}
           >
-            <Geographies geography={GEO_URL}>
+            <Geographies geography={geoData}>
               {({ geographies }) =>
                 geographies.map((geo) => (
                   <Geography

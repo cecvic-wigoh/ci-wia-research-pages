@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { people } from "@/data/people";
 
@@ -23,18 +26,47 @@ const placeholderPhotos = [
   "/faculty/placeholder-6.jpg",
 ];
 
+const tabs = [
+  { key: "internal", label: "Adyar Cancer Institute Faculty" },
+  { key: "adjunct", label: "International Adjunct Faculty" },
+] as const;
+
+type TabKey = (typeof tabs)[number]["key"];
+
 export default function FacultyGrid() {
+  const [activeTab, setActiveTab] = useState<TabKey>("internal");
+
   const internalPeople = people.filter((p) => p.category === "internal");
+  const adjunctPeople = people.filter((p) => p.category === "adjunct");
+  const activePeople = activeTab === "internal" ? internalPeople : adjunctPeople;
+  const totalSlots = activeTab === "internal" ? TOTAL_SLOTS : Math.max(adjunctPeople.length, 7);
 
   return (
     <section className="bg-white py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-ci-blue font-[family-name:var(--font-heading)] text-center mb-12">
+        <h2 className="text-4xl font-bold text-ci-blue font-[family-name:var(--font-heading)] text-center mb-8">
           Meet Our Faculty and Scientists
         </h2>
 
+        {/* Tabs */}
+        <div className="flex justify-center gap-2 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-colors ${
+                activeTab === tab.key
+                  ? "bg-ci-blue text-white"
+                  : "bg-ci-gray-100 text-ci-gray-600 hover:bg-ci-gray-200"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4 justify-items-center">
-          {internalPeople.map((person, i) => (
+          {activePeople.map((person, i) => (
             <Link
               key={person.slug}
               href={`/research/people/${person.slug}`}
@@ -64,7 +96,7 @@ export default function FacultyGrid() {
           ))}
 
           {/* Placeholder slots with stock photos */}
-          {Array.from({ length: Math.max(0, TOTAL_SLOTS - internalPeople.length) }).map((_, i) => (
+          {Array.from({ length: Math.max(0, totalSlots - activePeople.length) }).map((_, i) => (
             <div
               key={`placeholder-${i}`}
               aria-hidden="true"

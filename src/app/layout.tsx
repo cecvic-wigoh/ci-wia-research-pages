@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ptSansNarrow.variable} ${ptSerif.variable} antialiased`}
+        className={`${ptSansNarrow.variable} ${ptSerif.variable} ${ptSansNarrow.className} antialiased`}
       >
         {children}
       </body>

@@ -4,8 +4,8 @@ import Breadcrumb from "@/components/research/Breadcrumb";
 
 export default function CancersPage() {
   return (
-    <section className="section">
-      <div className="section-inner">
+    <section className="py-24 px-6">
+      <div className="max-w-7xl mx-auto">
         <Breadcrumb
           items={[
             { label: "Research", href: "/research" },

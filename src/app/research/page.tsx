@@ -11,10 +11,7 @@ export default function ResearchLandingPage() {
       {/* 1. Hero */}
       <HeroSection />
 
-      {/* 2. Founders & Legacy */}
-      <FoundersLegacy />
-
-      {/* 3. Research Intro */}
+      {/* 2. Research Intro */}
       <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-ci-gray-600 text-lg leading-relaxed">
@@ -27,14 +24,17 @@ export default function ResearchLandingPage() {
         </div>
       </section>
 
-      {/* 4. Statistics */}
+      {/* 3. Statistics */}
       <StatisticsBar />
 
-      {/* 5. Faculty Grid */}
+      {/* 4. Faculty Grid */}
       <FacultyGrid />
 
-      {/* 6. Cancers We Study */}
+      {/* 5. Cancers We Study */}
       <CancersBento />
+
+      {/* 6. Our Legacy */}
+      <FoundersLegacy />
 
       {/* 7. Global Collaborations */}
       <GlobalCollaborations />

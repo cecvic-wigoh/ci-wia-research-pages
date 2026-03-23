@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import type { TeamMember } from "@/data/types";
 
 interface TeamMemberGalleryProps {
@@ -9,53 +8,59 @@ interface TeamMemberGalleryProps {
 }
 
 export default function TeamMemberGallery({ members }: TeamMemberGalleryProps) {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const toggleExpand = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-      {members.map((member, index) => (
-        <div key={index} className="flex flex-col items-center">
+    <div className="flex flex-wrap justify-center gap-6">
+      {members.map((member, index) => {
+        const isActive = activeIndex === index;
+        return (
           <button
-            onClick={() => toggleExpand(index)}
-            className="flex flex-col items-center text-center group w-full"
-            aria-expanded={expandedIndex === index}
+            key={index}
+            onClick={() => setActiveIndex(isActive ? null : index)}
+            className={`
+              flex flex-col items-center text-center w-36 md:w-40 rounded-xl p-4 transition-all duration-300
+              ${isActive
+                ? "bg-white shadow-xl shadow-black/10 -translate-y-2 ring-1 ring-ci-gray-200"
+                : "bg-transparent hover:-translate-y-1"
+              }
+            `}
+            aria-expanded={isActive}
           >
             {/* Circular Photo Placeholder */}
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-[var(--ci-blue-light)] to-[var(--ci-blue)] flex items-center justify-center mb-3 group-hover:shadow-lg transition-shadow ring-2 ring-transparent group-hover:ring-[var(--ci-teal)]">
-              <span className="text-xl font-heading font-bold text-white/80">
+            <div
+              className={`
+                w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-3 transition-shadow
+                ${isActive
+                  ? "bg-gradient-to-br from-ci-blue to-ci-blue-dark ring-3 ring-ci-teal/30 shadow-lg"
+                  : "bg-gradient-to-br from-ci-blue-light to-ci-blue ring-2 ring-transparent"
+                }
+              `}
+            >
+              <span className="text-lg md:text-xl font-heading font-bold text-white/80">
                 {member.initials}
               </span>
             </div>
 
-            <h4 className="font-heading text-sm font-bold text-[var(--ci-gray-900)] mb-0.5 leading-tight">
+            <h4 className="font-heading text-sm font-bold text-ci-gray-900 mb-0.5 leading-tight">
               {member.name}
             </h4>
-            <p className="text-xs text-[var(--ci-gray-600)] mb-0.5">
+            <p className="text-xs text-ci-gray-600 mb-0.5">
               {member.qualification}
             </p>
-            <p className="text-xs text-[var(--ci-teal-dark)] font-bold">
+            <p className="text-xs text-ci-teal-dark font-bold">
               {member.role}
             </p>
 
-            <ChevronDown
-              className={`h-4 w-4 mt-1 text-[var(--ci-gray-600)] transition-transform ${
-                expandedIndex === index ? "rotate-180" : ""
-              }`}
-            />
+            {/* Expanded research description */}
+            {isActive && (
+              <p className="mt-3 text-xs text-ci-gray-600 leading-relaxed border-t border-ci-gray-200 pt-3">
+                {member.research}
+              </p>
+            )}
           </button>
-
-          {/* Expanded description */}
-          {expandedIndex === index && (
-            <div className="mt-3 p-3 bg-[var(--ci-light)] rounded-lg text-xs text-[var(--ci-gray-900)] leading-relaxed w-full">
-              {member.research}
-            </div>
-          )}
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

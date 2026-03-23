@@ -5,13 +5,16 @@ import { Search, X } from "lucide-react";
 import Breadcrumb from "@/components/research/Breadcrumb";
 import PublicationCard from "@/components/research/PublicationCard";
 import { publications } from "@/data/publications";
-import { departments } from "@/data/departments";
 
 export default function PublicationsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [visibleCount, setVisibleCount] = useState(10);
+
+  const departments = useMemo(() => {
+    return [...new Set(publications.map((p) => p.department))].sort();
+  }, []);
 
   const years = useMemo(() => {
     const uniqueYears = [...new Set(publications.map((p) => p.year))];
@@ -106,8 +109,11 @@ export default function PublicationsPage() {
               >
                 <option value="">All Departments</option>
                 {departments.map((dept) => (
-                  <option key={dept.slug} value={dept.slug}>
-                    {dept.name}
+                  <option key={dept} value={dept}>
+                    {dept
+                      .split("-")
+                      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                      .join(" ")}
                   </option>
                 ))}
               </select>

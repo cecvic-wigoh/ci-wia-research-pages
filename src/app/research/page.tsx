@@ -5,112 +5,184 @@ import { ArrowRight } from "lucide-react";
 import { people } from "@/data/people";
 import { cancerTypes } from "@/data/cancerTypes";
 import { founders } from "@/data/founders";
-import { institutionStats } from "@/data/statistics";
-import CancerTypeCard from "@/components/research/CancerTypeCard";
+import { collaborators } from "@/data/collaborators";
 import StatisticsBar from "@/components/research/StatisticsBar";
 import WorldMap from "@/components/research/WorldMap";
-import { collaborators } from "@/data/collaborators";
+import DonationCta from "@/components/research/DonationCta";
 
 export default function ResearchLandingPage() {
   const internalPeople = people.filter((p) => p.category === "internal");
 
-  const displayedCancers = cancerTypes.slice(0, 4);
-  const remainingCancers = cancerTypes.length - displayedCancers.length;
-
   return (
     <>
       {/* 1. Hero */}
-      <section className="bg-gradient-to-br from-[var(--ci-blue)] to-[var(--ci-blue-dark)] py-24 px-6 text-center">
-        <p className="text-[var(--ci-teal)] uppercase tracking-widest text-sm mb-6">
-          CANCER INSTITUTE (WIA), ADYAR
-        </p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-white max-w-3xl mx-auto mb-6 leading-tight">
-          Seven Decades of Pioneering Cancer Research
-        </h1>
-        <p className="text-white/85 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          From India&apos;s first comprehensive cancer centre to a global research
-          hub — advancing discovery, training the next generation, and delivering
-          compassionate care since 1954.
-        </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Link
-            href="/research/people"
-            className="bg-[var(--ci-teal)] text-[var(--ci-blue-dark)] px-6 py-3 rounded font-bold hover:bg-[var(--ci-teal-dark)] transition-colors"
-          >
-            Meet Our Researchers
-          </Link>
-          <Link
-            href="/research/cancers"
-            className="border border-white text-white px-6 py-3 rounded font-bold hover:bg-white/10 transition-colors"
-          >
-            Cancers We Study
-          </Link>
-        </div>
-      </section>
-
-      {/* 2. Research Intro */}
-      <section className="py-16 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-[var(--ci-gray-600)] text-lg leading-relaxed">
-            Cancer Institute (WIA) has been at the forefront of cancer research
-            in India for over seven decades. Our research program spans molecular
-            oncology, translational diagnostics, and clinical trials — bridging
-            laboratory discovery with patient care across the full spectrum of
-            cancer types.
+      <section className="bg-gradient-to-br from-[var(--ci-blue)] to-[var(--ci-blue-dark)] py-32 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold text-white max-w-4xl font-[family-name:var(--font-heading)]">
+            Transforming Cancer Research
+          </h1>
+          <p className="text-lg text-white/80 max-w-2xl mt-6">
+            From India&apos;s first comprehensive cancer centre to a global
+            research hub — advancing discovery, training the next generation, and
+            delivering compassionate care since 1954.
           </p>
+          <div className="flex gap-6 mt-10">
+            <a
+              href="#legacy"
+              className="text-white/90 hover:text-white inline-flex items-center gap-2 text-sm"
+            >
+              Learn how we drive innovation &rarr;
+            </a>
+            <Link
+              href="/research/people"
+              className="border-2 border-white text-white px-6 py-3 rounded font-bold hover:bg-white/10 transition-colors"
+            >
+              Browse Faculty Directory
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 3. Founders Highlight */}
-      <section className="bg-[var(--ci-light)] py-20 px-6">
-        <h2 className="font-heading text-3xl font-bold text-[var(--ci-blue)] text-center mb-3">
-          Our Founders &amp; Legacy
-        </h2>
-        <p className="text-center text-[var(--ci-gray-600)] mb-12 max-w-2xl mx-auto">
-          Three visionaries whose conviction, sacrifice, and science built one of India&apos;s most enduring institutions of cancer care.
-        </p>
-        <div className="flex justify-center gap-8 flex-wrap max-w-5xl mx-auto">
-          {founders.map((founder) => (
+      {/* 2. Alternating Split — Research Legacy */}
+      <section id="legacy" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+          {/* Left */}
+          <div className="lg:w-1/2">
+            <h2 className="text-4xl font-bold text-[var(--ci-blue)] font-[family-name:var(--font-heading)]">
+              Seven Decades of Discovery
+            </h2>
+            <h3 className="text-lg font-bold text-[var(--ci-gray-900)] mt-8 mb-2">
+              The right diagnosis the first time
+            </h3>
+            <p className="text-[var(--ci-gray-600)] leading-relaxed">
+              At Cancer Institute (WIA), our multidisciplinary teams bring
+              together pathologists, radiologists, and clinician-scientists to
+              deliver precise, comprehensive diagnoses. This commitment to
+              accuracy ensures that every patient&apos;s treatment plan is built
+              on a foundation of expert consensus and cutting-edge diagnostics.
+            </p>
+            <h3 className="text-lg font-bold text-[var(--ci-gray-900)] mt-8 mb-2">
+              India&apos;s first comprehensive cancer centre
+            </h3>
+            <p className="text-[var(--ci-gray-600)] leading-relaxed">
+              Founded in 1954, Cancer Institute (WIA) was the first of its kind
+              in India — uniting research, education, and patient care under one
+              roof. Over seven decades, we have trained thousands of oncologists,
+              published landmark studies, and served millions of patients from
+              across the country.
+            </p>
             <Link
-              key={founder.slug}
-              href={`/research/founders/${founder.slug}`}
-              className="bg-white rounded-xl overflow-hidden w-72 shadow hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+              href="/research/founders"
+              className="border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] px-6 py-3 rounded inline-flex items-center gap-2 mt-8 hover:bg-[var(--ci-blue)] hover:text-white transition-colors font-bold"
             >
-              {/* Photo */}
-              <div className="w-full h-72 overflow-hidden bg-[var(--ci-gray-100)]">
+              Why Cancer Institute &rarr;
+            </Link>
+          </div>
+          {/* Right */}
+          <div className="lg:w-1/2">
+            <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--ci-blue)]/10 to-[var(--ci-blue)]/5" />
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Alternating Split (Flipped) — Global Mission */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row-reverse gap-16 items-center">
+          {/* Photo placeholder */}
+          <div className="lg:w-1/2">
+            <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gradient-to-br from-[var(--ci-blue)]/10 to-[var(--ci-blue)]/5" />
+          </div>
+          {/* Text */}
+          <div className="lg:w-1/2">
+            <h2 className="text-4xl font-bold text-[var(--ci-blue)] font-[family-name:var(--font-heading)]">
+              World-class research for every patient
+            </h2>
+            <p className="text-[var(--ci-gray-600)] leading-relaxed mt-6">
+              Our translational research programs bridge the gap between
+              laboratory discovery and clinical practice. From molecular
+              oncology and genomic profiling to novel therapeutics and clinical
+              trials, we are committed to turning scientific breakthroughs into
+              treatments that reach patients — regardless of where they come
+              from or what they can afford.
+            </p>
+            <Link
+              href="/research/collaborations"
+              className="border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] px-6 py-3 rounded inline-flex items-center gap-2 mt-8 hover:bg-[var(--ci-blue)] hover:text-white transition-colors font-bold"
+            >
+              International collaborations &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Founders — Photo Cards with Overlay */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-[var(--ci-blue)] font-[family-name:var(--font-heading)]">
+            Our Founders
+          </h2>
+          <p className="text-[var(--ci-gray-600)] text-lg mt-4 max-w-3xl">
+            Three visionaries whose conviction, sacrifice, and science built one
+            of India&apos;s most enduring institutions of cancer care.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+            {founders.map((founder) => (
+              <Link
+                key={founder.slug}
+                href={`/research/founders/${founder.slug}`}
+                className="relative aspect-[3/4] rounded-lg overflow-hidden group"
+              >
                 <img
                   src={founder.image}
                   alt={founder.name}
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
-              </div>
-              {/* Info */}
-              <div className="p-5 text-center">
-                <p className="font-heading font-bold text-lg text-[var(--ci-gray-900)] mb-0.5">
-                  {founder.name}
-                </p>
-                <p className="text-sm text-[var(--ci-teal-dark)] font-semibold mb-1">
-                  {founder.title}
-                </p>
-                <p className="text-xs text-[var(--ci-gray-600)] mb-3">
-                  {founder.years}
-                </p>
-                <p className="text-xs text-[var(--ci-gray-600)] italic leading-relaxed mb-3 line-clamp-2">
-                  &ldquo;{founder.quote}&rdquo;
-                </p>
-                <span className="text-[var(--ci-blue)] text-sm font-bold group-hover:underline inline-flex items-center gap-1">
-                  Read story <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </div>
-            </Link>
-          ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
+                    {founder.name}
+                  </p>
+                  <p className="text-sm text-white/80 mt-1">{founder.title}</p>
+                  <p className="text-xs text-white/60 mt-0.5">
+                    {founder.years}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 4. Stats Band */}
-      <StatisticsBar />
+      {/* 5. Cancers — Clean Link Grid */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16">
+          {/* Left */}
+          <div className="lg:w-5/12">
+            <h2 className="text-4xl font-bold text-[var(--ci-blue)] font-[family-name:var(--font-heading)]">
+              Cancers we study
+            </h2>
+            <p className="text-[var(--ci-gray-600)] text-lg mt-4">
+              Our research is organized around the cancers that affect our
+              patients — enabling targeted discovery from bench to bedside.
+            </p>
+          </div>
+          {/* Right */}
+          <div className="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
+            {cancerTypes.map((ct) => (
+              <Link
+                key={ct.slug}
+                href={`/research/cancers/${ct.slug}`}
+                className="text-[var(--ci-blue)] hover:underline flex items-center justify-between py-3 border-b border-gray-100 group"
+              >
+                <span>{ct.name}</span>
+                <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-[var(--ci-blue)] transition-colors" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* 5. Meet Our Faculty and Scientists */}
+      {/* 6. Faculty Mosaic */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           {/* Left — Text */}
@@ -141,7 +213,7 @@ export default function ResearchLandingPage() {
             </Link>
           </div>
 
-          {/* Right — 4×4 Photo Mosaic */}
+          {/* Right — 4x4 Photo Mosaic */}
           <div className="lg:w-7/12 grid grid-cols-4 gap-2">
             {(() => {
               const gradients = [
@@ -157,7 +229,6 @@ export default function ResearchLandingPage() {
               const totalSlots = 16;
               const slots: React.ReactNode[] = [];
 
-              // Fill with real photos first
               internalPeople.forEach((person, i) => {
                 slots.push(
                   <Link
@@ -179,7 +250,6 @@ export default function ResearchLandingPage() {
                         {person.initials}
                       </div>
                     )}
-                    {/* Hover overlay with name */}
                     <div className="absolute inset-0 bg-[var(--ci-blue)]/0 group-hover:bg-[var(--ci-blue)]/70 transition-colors duration-200 flex items-end p-2">
                       <p className="text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200 leading-tight">
                         {person.name}
@@ -189,7 +259,6 @@ export default function ResearchLandingPage() {
                 );
               });
 
-              // Fill remaining slots with soft gradient placeholders
               for (let i = internalPeople.length; i < totalSlots; i++) {
                 slots.push(
                   <div
@@ -208,70 +277,38 @@ export default function ResearchLandingPage() {
         </div>
       </section>
 
-      {/* 6. Cancers We Study */}
-      <section className="bg-[var(--ci-gray-100)] py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-heading text-3xl font-bold text-[var(--ci-blue)] mb-4">
-            Cancers We Study
-          </h2>
-          <p className="text-[var(--ci-gray-600)] text-lg mb-8 max-w-3xl">
-            Our research is organized around the cancers that affect our
-            patients — enabling targeted discovery from bench to bedside.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {displayedCancers.map((ct) => (
-              <CancerTypeCard key={ct.slug} cancerType={ct} />
-            ))}
-            {remainingCancers > 0 && (
-              <Link
-                href="/research/cancers"
-                className="flex flex-col items-center justify-center border-2 border-dashed border-[var(--ci-gray-200)] rounded-lg p-6 bg-white hover:border-[var(--ci-teal)] transition-colors"
-              >
-                <span className="text-4xl font-bold text-[var(--ci-blue)] mb-2">
-                  +{remainingCancers}
-                </span>
-                <span className="text-[var(--ci-teal-dark)] font-bold flex items-center gap-1">
-                  View All <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-            )}
-          </div>
-        </div>
-      </section>
+      {/* 7. Stats */}
+      <StatisticsBar />
 
-      {/* 7. Global Collaborations Preview */}
-      <section className="py-16 px-6">
+      {/* 8. Donation CTA */}
+      <DonationCta
+        cancerTypeName="Cancer Research"
+        donationUrl="#donate"
+        donationCta="Fuel groundbreaking cancer research"
+        donationDescription="Your donation powers the future of cancer medicine and helps save lives."
+      />
+
+      {/* 9. Global Collaborations Preview */}
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-heading text-3xl font-bold text-[var(--ci-blue)] mb-4">
+          <h2 className="text-4xl font-bold text-[var(--ci-blue)] font-[family-name:var(--font-heading)]">
             Global Collaborations
           </h2>
-          <p className="text-[var(--ci-gray-600)] text-lg mb-8 max-w-3xl">
+          <p className="text-[var(--ci-gray-600)] text-lg mt-4 max-w-3xl">
             Cancer Institute is part of a worldwide network of research
             partnerships — advancing cancer science through shared expertise,
             data, and clinical trials across 4 continents.
           </p>
-          <div className="mb-8">
+          <Link
+            href="/research/collaborations"
+            className="border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] px-6 py-3 rounded inline-flex items-center gap-2 mt-8 hover:bg-[var(--ci-blue)] hover:text-white transition-colors font-bold"
+          >
+            Explore all partnerships &rarr;
+          </Link>
+          <div className="mt-12">
             <WorldMap collaborators={collaborators} />
           </div>
-          <div className="text-center">
-            <Link
-              href="/research/collaborations"
-              className="inline-block bg-[var(--ci-blue)] text-white px-6 py-3 rounded font-bold hover:bg-[var(--ci-blue-dark)] transition-colors"
-            >
-              Explore All Partnerships &rarr;
-            </Link>
-          </div>
         </div>
-      </section>
-
-      {/* 8. Founder Quote Strip */}
-      <section className="bg-[var(--ci-blue-dark)] py-12 px-6 text-center">
-        <p className="font-heading italic text-white text-lg max-w-3xl mx-auto mb-4 leading-relaxed">
-          &ldquo;{founders[1].quote}&rdquo;
-        </p>
-        <p className="text-white/70 text-sm">
-          &mdash; {founders[1].name}, Founder
-        </p>
       </section>
     </>
   );

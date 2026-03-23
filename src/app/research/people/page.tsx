@@ -68,8 +68,8 @@ export default function PeopleDirectoryPage() {
       <Breadcrumb items={[{ label: "People" }]} />
 
       {/* Header */}
-      <section className="section-inner py-12 md:py-16">
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-[var(--ci-gray-900)] mb-4 tracking-tight">
+      <section className="section-inner py-24 px-6">
+        <h1 className="font-heading text-4xl md:text-5xl font-bold text-[var(--ci-gray-900)] mb-4 tracking-tight text-left">
           Our Researchers
         </h1>
         <p className="text-[var(--ci-gray-600)] text-lg max-w-3xl leading-relaxed">
@@ -126,7 +126,7 @@ export default function PeopleDirectoryPage() {
       <section className="section">
         <div className="section-inner">
           {filteredPeople.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {filteredPeople.map((person) => (
                 <PersonCard key={person.slug} person={person} />
               ))}

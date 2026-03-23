@@ -5,6 +5,7 @@ export const cancerTypes: CancerType[] = [
     slug: "breast-cancer",
     name: "Breast Cancer",
     icon: "🎗️",
+    image: "/cancers/breast-cancer.jpg",
     description:
       "Our breast cancer program integrates molecular subtyping, targeted therapy trials, and survivorship research to improve outcomes across all stages of disease.",
     overviewHtml:
@@ -66,6 +67,7 @@ export const cancerTypes: CancerType[] = [
     slug: "blood-cancers",
     name: "Blood Cancers",
     icon: "🩸",
+    image: "/cancers/blood-cancers.jpg",
     description:
       "Our haematological malignancy research covers leukaemias, lymphomas, and myelomas, with a focus on precision medicine and novel CAR-T cell therapies.",
     overviewHtml:
@@ -115,6 +117,7 @@ export const cancerTypes: CancerType[] = [
     slug: "lung-cancer",
     name: "Lung Cancer",
     icon: "🫁",
+    image: "/cancers/lung-cancer.jpg",
     description:
       "Our lung cancer program focuses on targeted therapy for driver mutations common in South Asian never-smokers and advanced immunotherapy approaches.",
     overviewHtml:
@@ -218,6 +221,7 @@ export const cancerTypes: CancerType[] = [
     slug: "head-and-neck-cancer",
     name: "Head & Neck Cancer",
     icon: "🔬",
+    image: "/cancers/head-and-neck-cancer.jpg",
     description:
       "India bears the highest global burden of head and neck cancers. Our program combines de-intensification strategies with novel immunotherapy approaches.",
     overviewHtml:
@@ -322,6 +326,7 @@ export const cancerTypes: CancerType[] = [
     slug: "colon-cancer",
     name: "Colon Cancer",
     icon: "🧬",
+    image: "/cancers/colon-cancer.jpg",
     description:
       "Our colorectal cancer program investigates the rising incidence of young-onset disease in India and develops precision medicine strategies for advanced-stage patients.",
     overviewHtml:
@@ -376,6 +381,7 @@ export const cancerTypes: CancerType[] = [
     slug: "gastric-cancer",
     name: "Gastric Cancer",
     icon: "🫄",
+    image: "/cancers/gastric-cancer.jpg",
     description:
       "Our gastric cancer research addresses the high incidence of stomach cancer in southern India through molecular classification and novel perioperative treatment regimens.",
     overviewHtml:
@@ -419,6 +425,7 @@ export const cancerTypes: CancerType[] = [
     slug: "bone-cancers",
     name: "Bone Cancers",
     icon: "🦴",
+    image: "/cancers/bone-cancers.jpg",
     description:
       "Our bone cancer program combines limb-salvage surgery innovation with targeted therapies for osteosarcoma, Ewing sarcoma, and chondrosarcoma.",
     overviewHtml:
@@ -468,6 +475,7 @@ export const cancerTypes: CancerType[] = [
     slug: "rare-cancers",
     name: "Rare Cancers",
     icon: "💎",
+    image: "/cancers/rare-cancers.jpg",
     description:
       "Our rare cancers program provides multidisciplinary expertise for uncommon malignancies including neuroendocrine tumours, sarcomas, and cancers of unknown primary.",
     overviewHtml:

@@ -3,6 +3,9 @@ import { founders } from "@/data/founders";
 
 const timelineYears = ["1954", "1960", "1984", "2000", "2010", "2021"];
 
+// Display order: Krishnamurthi (left), Muthulakshmi (center), V. Shanta (right)
+const displayOrder = [founders[1], founders[0], founders[2]];
+
 export default function FoundersLegacy() {
   return (
     <section className="relative bg-ci-blue-dark py-24 px-6 overflow-hidden">
@@ -30,7 +33,7 @@ export default function FoundersLegacy() {
 
         {/* Founder cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 items-end">
-          {founders.map((founder, i) => {
+          {displayOrder.map((founder, i) => {
             const isCenter = i === 1;
             return (
               <div

@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Muthulakshmi Reddy  A Legacy That Never Dies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Marcellus&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5EFE4;
+    --warm-white: #FAF7F2;
+    --sepia: #8B6B47;
+    --deep-sepia: #5C3D1E;
+    --crimson: #8B1A2B;
+    --crimson-light: #B5273E;
+    --gold: #C9973E;
+    --gold-light: #E8C06A;
+    --charcoal: #2A2320;
+    --ink: #1A1614;
+    --smoke: #6B5E55;
+    --dusty: #D4C4B0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(139,26,43,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 20% 80%, rgba(90,50,20,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 60%, rgba(201,151,62,0.08) 0%, transparent 60%);
+  }
+
+  /* Horizontal rule lines decorative */
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(139,107,71,0.06) 79px, rgba(139,107,71,0.06) 80px);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 860px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.3s forwards;
+  }
+
+  .hero-eyebrow span {
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 12px;
+    opacity: 0.7;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--warm-white);
+    margin-bottom: 0.4rem;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0.5s forwards;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold-light);
+    font-weight: 300;
+  }
+
+  .hero-dates {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--dusty);
+    letter-spacing: 0.08em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 0.7s forwards;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 1s forwards;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--cream);
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
+    opacity: 0;
+    animation: fadeUp 1.4s ease 1.2s forwards;
+  }
+
+  .hero-quote-attr {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-family: 'Marcellus', serif;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 1.5s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 2s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--smoke);
+    text-transform: uppercase;
+    font-family: 'Marcellus', serif;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--smoke), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 6vw, 5rem);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .full-bleed {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-label {
+    font-family: 'Marcellus', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    max-width: 120px;
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 2.5rem;
+  }
+
+  h2 em { font-style: italic; color: var(--gold-light); }
+
+  p {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.85;
+    color: var(--dusty);
+    margin-bottom: 1.5rem;
+  }
+
+  p strong { color: var(--cream); font-weight: 400; }
+
+  /* ── ORIGIN ── */
+  .origin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 7rem);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .origin { grid-template-columns: 1fr; }
+  }
+
+  .origin-text {}
+
+  .origin-aside {
+    padding-top: 1rem;
+  }
+
+  .pull-quote {
+    border-left: 2px solid var(--gold);
+    padding: 1.5rem 0 1.5rem 2rem;
+    margin: 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .pull-quote cite {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-style: normal;
+    font-family: 'Marcellus', serif;
+  }
+
+  /* ── DARK BAND ── */
+  .dark-band {
+    background: #100D0B;
+    padding: clamp(5rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem);
+    border-top: 1px solid rgba(139,107,71,0.15);
+    border-bottom: 1px solid rgba(139,107,71,0.15);
+  }
+
+  .dark-band-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── MILESTONES TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold), rgba(201,151,62,0.3), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3.2rem;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(201,151,62,0.5);
+  }
+
+  .timeline-year {
+    font-family: 'Marcellus', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-body {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    line-height: 1.75;
+    color: var(--smoke);
+    margin-bottom: 0;
+  }
+
+  /* ── CANCER INSTITUTE SECTION ── */
+  .institute-grid {
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: clamp(3rem, 5vw, 6rem);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .institute-grid { grid-template-columns: 1fr; }
+  }
+
+  .stat-block {
+    background: rgba(139,26,43,0.08);
+    border: 1px solid rgba(139,26,43,0.3);
+    border-top: 2px solid var(--crimson);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--crimson-light);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-family: 'Marcellus', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--dusty);
+    text-transform: uppercase;
+  }
+
+  /* ── LARGE QUOTE ── */
+  .large-quote-section {
+    padding: clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem);
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(139,26,43,0.12) 0%, transparent 70%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .large-quote-section::before {
+    content: '\201C';
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(12rem, 25vw, 20rem);
+    color: rgba(201,151,62,0.05);
+    line-height: 1;
+    pointer-events: none;
+    font-weight: 300;
+  }
+
+  .large-quote-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .large-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--cream);
+    margin-bottom: 2.5rem;
+  }
+
+  .large-quote-source {
+    font-family: 'Marcellus', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ── HONORS ── */
+  .honors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: rgba(139,107,71,0.15);
+    border: 1px solid rgba(139,107,71,0.15);
+  }
+
+  .honor-card {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+  }
+
+  .honor-card:hover {
+    background: #1E1815;
+  }
+
+  .honor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .honor-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .honor-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+
+  .honor-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--warm-white);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .honor-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--smoke);
+    margin-bottom: 0;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    padding: clamp(6rem, 12vw, 11rem) clamp(1.5rem, 6vw, 5rem);
+    background: 
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,151,62,0.06) 0%, transparent 60%),
+      var(--ink);
+    border-top: 1px solid rgba(139,107,71,0.12);
+    max-width: none;
+  }
+
+  .closing-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .closing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    color: var(--warm-white);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .closing-title em { color: var(--gold-light); font-style: italic; }
+
+  .closing-body {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    line-height: 1.9;
+    color: var(--dusty);
+    margin-bottom: 1.5rem;
+  }
+
+  .gold-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 3rem auto;
+    opacity: 0.6;
+  }
+
+  .institute-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .institute-badge span:first-child {
+    font-family: 'Marcellus', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .institute-badge span:last-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--smoke);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: scaleY(1); opacity: 0.5; }
+    50%       { transform: scaleY(0.7); opacity: 1; }
+  }
+
+  /* Scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+  /* ── FINE DIVIDER ── */
+  .fine-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(139,107,71,0.25), transparent);
+    margin: 0;
+  }
+
+  /* ── TOP NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem clamp(1.5rem, 4vw, 4rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,8,7,0.9) 0%, transparent 100%);
+    backdrop-filter: blur(0px);
+    pointer-events: none;
+  }
+
+  .nav-logo {
+    font-family: 'Marcellus', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    pointer-events: all;
+  }
+
+  .nav-sub {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--smoke);
+  }
+
+  /* ── INDENT TEXT ── */
+  .text-indent {
+    text-indent: 2rem;
+  }
+
+  /* ── FIRST LETTER ── */
+  .drop-cap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5em;
+    font-weight: 300;
+    line-height: 0.75;
+    float: left;
+    margin-right: 0.1em;
+    margin-top: 0.05em;
+    color: var(--gold);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Cancer Institute (WIA)</div>
+  <div class="nav-sub">Est. 1954 · Adyar, Chennai</div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span></span>
+      In Eternal Memory
+      <span></span>
+    </div>
+
+    <h1 class="hero-name">
+      Dr. <em>Muthulakshmi</em><br>Reddy
+    </h1>
+    <div class="hero-dates">30 July 1886 &nbsp;&nbsp; 22 July 1968</div>
+
+    <div class="hero-divider"></div>
+
+    <p class="hero-quote">
+      "She telescoped into her lifespan a sequence of endeavour and achievements
+      that would have ordinarily taken several generations."
+    </p>
+    <div class="hero-quote-attr"> Shri R. Venkataraman, Vice President of India, 1985</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Her Story</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ ORIGIN ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">The Beginning</div>
+    <h2>Born into a world<br>that did not expect <em>her</em></h2>
+  </div>
+
+  <div class="origin">
+    <div class="origin-text">
+      <p class="drop-cap reveal reveal-delay-1">
+        <strong>On July 30, 1886</strong>, in the small princely state of Pudukkottai in Tamil Nadu,
+        a girl was born who would one day change the fate of thousands. Her father,
+        Narayanaswami Iyer, was principal of the Maharaja's College. Her mother, Chandrammal,
+        was a former devadasi. In that conservative, rigid society, this union was itself an act
+        of defiance  and Muthulakshmi inherited every ounce of it.
+      </p>
+      <p class="reveal reveal-delay-2">
+        The family was ostracised. Whispers followed them. Yet Muthulakshmi studied. She burned
+        through textbooks. When she passed her matriculation examination with distinction, she
+        did something no girl had done before  she applied to Maharaja's College. Parents of
+        boys threatened to pull their children out. The college refused. There were protests.
+        There was outrage.
+      </p>
+      <p class="reveal reveal-delay-3">
+        But the Raja of Pudukkottai, Martanda Bhairava Thondaman, looked at the results and
+        overruled them all. The doors opened. Muthulakshmi walked through. <strong>She never
+        looked back.</strong>
+      </p>
+    </div>
+
+    <div class="origin-aside reveal reveal-delay-2">
+      <blockquote class="pull-quote">
+        <p>"No woman, rich or poor, should remain uneducated. That was not a belief she held
+         it was a fire she lived."</p>
+        <cite>From records of the Women's Indian Association</cite>
+      </blockquote>
+
+      <p style="margin-top: 2rem; font-style: italic; color: var(--smoke); font-size: 1rem;">
+        She went on to Madras Medical College in 1907  the first female student in Surgery.
+        She graduated in 1912. She became the first woman House Surgeon at the Government
+        Maternity and Ophthalmic Hospital. First. Always first.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ DARK BAND  MILESTONES ══════════════════════ -->
+<div class="dark-band full-bleed">
+  <div class="dark-band-inner">
+    <div class="reveal">
+      <div class="section-label">A Life of Firsts</div>
+      <h2>The walls she walked<br>through <em>so others wouldn't have to</em></h2>
+    </div>
+
+    <div class="timeline" style="margin-top: 3.5rem;">
+
+      <div class="timeline-item">
+        <div class="timeline-year">1907</div>
+        <div class="timeline-title">First Woman at Madras Medical College</div>
+        <div class="timeline-body">Enrolled in Surgery  a department that had never admitted a woman. She did not merely attend; she excelled, setting a precedent that could not be undone.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1914</div>
+        <div class="timeline-title">A Marriage of Equals</div>
+        <div class="timeline-body">When she married Dr. Sundara Reddy, she set a condition no woman had dared to set: "You must always respect me as an equal and never cross my wishes." He agreed. She held him to it.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1917</div>
+        <div class="timeline-title">Co-Founder, Women's Indian Association</div>
+        <div class="timeline-body">Alongside Annie Besant, she co-founded the WIA  giving Indian women their first organised political voice. She wrote, she spoke, she legislated. She turned quiet suffering into loud policy.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1927</div>
+        <div class="timeline-title">India's First Woman Legislator</div>
+        <div class="timeline-body">Nominated to the Madras Legislative Council, she was unanimously elected Deputy President. She used the floor to raise the age of marriage, protect women's property rights, and propose the historic Devadasi Abolition Bill.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1931</div>
+        <div class="timeline-title">Avvai Home  Shelter Without Walls</div>
+        <div class="timeline-body">Three girls fleeing forced dedication as devadasis came to her with nowhere to go. She opened her own home in Adyar and called it Avvai Home  a sanctuary for destitute women, orphan children, abandoned babies, and unwed mothers. No questions. No judgment.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1947</div>
+        <div class="timeline-title">Her Name on the First Flag</div>
+        <div class="timeline-body">When India's leaders gathered to hoist the first national flag at the Red Fort on Independence Day, they chose to inscribe her name on that flag. Not as a title. As a tribute to everything she had given this country.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1954</div>
+        <div class="timeline-title">A Small Hut. A Monumental Dream.</div>
+        <div class="timeline-body">She founded the Cancer Institute (WIA)  the first dedicated cancer centre in South India. It began as a small hut in Adyar. A government minister told her, "Why a cancer hospital? People only die of cancer." She built it anyway.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1956</div>
+        <div class="timeline-title">Padma Bhushan</div>
+        <div class="timeline-body">India's third-highest civilian honour, awarded in recognition of a life that had already honoured India a hundredfold over. She was 70 years old. She was still working.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ CANCER INSTITUTE ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Her Greatest Monument</div>
+    <h2>Built from grief.<br>Driven by <em>love</em>.</h2>
+  </div>
+
+  <div class="institute-grid">
+    <div>
+      <p class="reveal drop-cap">
+        <strong>It began with a sister.</strong> As a young doctor, Dr. Muthulakshmi watched helplessly
+        as her own sister died from a misdiagnosed case of rectal cancer. In the era of colonial India,
+        there were no resources, no specialists, no hope for cancer patients. The grief never left her.
+        Neither did the resolve.
+      </p>
+      <p class="reveal reveal-delay-1">
+        Decades later, when she approached the Government of Tamil Nadu for land to build a cancer
+        centre, a minister looked at her and asked, "Why a cancer hospital? People only die of cancer."
+        That single, callous sentence could have ended the dream. Instead, it hardened her purpose.
+        <strong>She built it with voluntary women's groups, personal fundraising, and sheer will.</strong>
+      </p>
+      <p class="reveal reveal-delay-2">
+        In 1954, in a small hut in Adyar, Chennai, the Cancer Institute (WIA) opened its doors. No
+        fanfare. No government subsidy. Just twelve beds, a handful of nurses, and the conviction that
+        cancer patients  rich and poor, high-caste and low  deserved to be seen and treated as human
+        beings. The ethos she embedded from the very first day has never changed: <strong>"Service above self.
+        Service without social or economic divide."</strong>
+      </p>
+      <p class="reveal reveal-delay-3">
+        Today, the institute she began in a hut is one of the largest cancer centres in India. It is
+        the first in the country to offer postgraduate degrees in oncology sub-specialities recognised
+        by the Medical Council of India. It treats over a lakh patients every year. Between 20 and 25
+        percent of patients receive treatment completely free. Everyone else is subsidised. The doors
+        are never closed on the basis of a bank balance.
+      </p>
+    </div>
+
+    <div>
+      <div class="stat-block reveal">
+        <div class="stat-number">675+</div>
+        <div class="stat-label">Patient care beds today</div>
+      </div>
+      <div class="stat-block reveal reveal-delay-1">
+        <div class="stat-number">1954</div>
+        <div class="stat-label">Founded in a single hut, Adyar</div>
+      </div>
+      <div class="stat-block reveal reveal-delay-2">
+        <div class="stat-number">70+</div>
+        <div class="stat-label">Years of uninterrupted service</div>
+      </div>
+      <div class="stat-block reveal reveal-delay-3">
+        <div class="stat-number">1st</div>
+        <div class="stat-label">Specialised cancer centre in South India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ LARGE QUOTE ══════════════════════ -->
+<div class="large-quote-section full-bleed">
+  <div class="large-quote-inner reveal">
+    <p class="large-quote-text">
+      "Laws and legislation are there only for sanction.
+      It is up to us women to energise these and
+      implement them into action."
+    </p>
+    <div class="large-quote-source"> Dr. Muthulakshmi Reddy</div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HER HUMANITY ══════════════════════ -->
+<div class="dark-band full-bleed">
+  <div class="dark-band-inner">
+    <div class="reveal">
+      <div class="section-label">The Woman Behind the Icon</div>
+      <h2>She was not a symbol.<br>She was <em>a person who refused to stop</em>.</h2>
+    </div>
+
+    <div style="max-width: 740px; margin-top: 2.5rem;">
+      <p class="reveal">
+        We speak of her today in the language of monuments and milestones  first woman legislator,
+        Padma Bhushan, founder, pioneer. But the truth of Dr. Muthulakshmi Reddy is rawer than any
+        title. <strong>She was a daughter born into shame, who chose dignity.</strong> She was a
+        student who was turned away, who kept returning. She was a doctor who lost a sister and chose,
+        instead of grief, to build something that would mean no one else would have to lose the
+        way she did.
+      </p>
+      <p class="reveal reveal-delay-1">
+        She was in her seventies when she was still fighting. Still fundraising. Still arguing with
+        government officials. Still opening her own home to people who had nowhere else to go. When
+        three young girls  devadasis who had escaped  came to her door, she did not hand them a
+        pamphlet or a policy number. She brought them inside. She fed them. She called it Avvai Home,
+        after the ancient Tamil saint-poet who taught that all people are equal.
+      </p>
+      <p class="reveal reveal-delay-2">
+        She set the terms of her own marriage  an extraordinary act in 1914. She travelled to London
+        and Chicago to represent Indian women before international committees. She was the only woman
+        on the Hartog Commission on Indian education. At every table, in every room, she spoke.
+        <strong>Not for herself. For every woman who was not yet in the room.</strong>
+      </p>
+      <p class="reveal reveal-delay-3">
+        She died on July 22, 1968  eight days before her 82nd birthday. The world bowed.
+        The institutions she left behind kept standing.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HONORS ══════════════════════ -->
+<section>
+  <div class="reveal">
+    <div class="section-label">Recognition & Living Tributes</div>
+    <h2>The honours given.<br><em>The legacy that cannot be given back</em>.</h2>
+  </div>
+
+  <div class="honors-grid reveal" style="margin-top: 2.5rem;">
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Padma Bhushan, 1956</div>
+      <div class="honor-desc">India's third-highest civilian award  a formal acknowledgment of a life spent in service to her country's most vulnerable.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">The First National Flag</div>
+      <div class="honor-desc">Her name was inscribed on the flag raised at the Red Fort on India's Independence Day, 1947. A rare, irreplaceable honour.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Dr. Muthulakshmi Maternity Benefit Scheme</div>
+      <div class="honor-desc">The Government of Tamil Nadu named its landmark maternal nutrition programme after her  a scheme that continues to reach hundreds of thousands of women annually.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Google Doodle, 2019</div>
+      <div class="honor-desc">On her 133rd birth anniversary, Google honoured her with a Doodle  introducing her story to millions around the world who had never heard her name.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">July 30  Hospital Day, Tamil Nadu</div>
+      <div class="honor-desc">Her birth anniversary is commemorated each year as Hospital Day across Tamil Nadu, a state-wide tribute to her transformative impact on public health.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">✦</div>
+      <div class="honor-title">Avvai Home & Cancer Institute</div>
+      <div class="honor-desc">Her two living monuments  still standing, still serving  are the truest tributes: institutions that embody her belief that human dignity is not a privilege.</div>
+    </div>
+  </div>
+</section>
+
+<div class="fine-divider"></div>
+
+<!-- ══════════════════════ CLOSING ══════════════════════ -->
+<div class="closing full-bleed">
+  <div class="closing-inner">
+    <div class="reveal">
+      <div class="section-label" style="justify-content: center;">
+        <span style="width: 40px; height: 1px; background: var(--gold); opacity: 0.5; display: inline-block;"></span>
+        Her Legacy
+        <span style="width: 40px; height: 1px; background: var(--gold); opacity: 0.5; display: inline-block;"></span>
+      </div>
+    </div>
+
+    <h2 class="closing-title reveal">
+      She is gone.<br>
+      <em>But nothing she built has ever stopped.</em>
+    </h2>
+
+    <p class="closing-body reveal reveal-delay-1">
+      Every person who walks through the gates of this institute walks through a door
+      she opened  not with funding or fanfare, but with grief turned to purpose, prejudice
+      turned to fuel, and a quiet, unbreakable belief that the sick deserve care regardless
+      of who they are.
+    </p>
+
+    <p class="closing-body reveal reveal-delay-2">
+      She was the first woman in rooms that did not want her. She became the reason those
+      rooms changed. She was told cancer patients only die. She built a place where they
+      live  and fight, and hope, and sometimes win.
+    </p>
+
+    <div class="gold-rule reveal"></div>
+
+    <p class="closing-body reveal reveal-delay-1" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.6rem); color: var(--cream);">
+      Her legacy endures in every devadasi who won her freedom, in every girl who went to
+      school when the world said no, in every woman who became a doctor, and in every life
+      saved within these walls.
+    </p>
+
+    <div class="institute-badge reveal reveal-delay-2">
+      <span>Cancer Institute (WIA)</span>
+      <span>Adyar, Chennai · Founded 1954</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

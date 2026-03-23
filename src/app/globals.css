@@ -16,8 +16,8 @@
   --ci-white: #FFFFFF;
 
   /* Typography */
-  --font-heading: var(--font-pt-serif), Georgia, serif;
-  --font-body: var(--font-pt-sans-narrow), Arial, sans-serif;
+  --font-heading: var(--font-pt-serif), "PT Serif", Georgia, serif;
+  --font-body: var(--font-pt-sans-narrow), "PT Sans Narrow", Arial, sans-serif;
 
   /* Spacing */
   --section-padding: 80px;
@@ -49,9 +49,9 @@
   --color-ci-gray-600: var(--ci-gray-600);
   --color-ci-gray-900: var(--ci-gray-900);
 
-  /* Fonts */
-  --font-sans: var(--font-body);
-  --font-serif: var(--font-heading);
+  /* Fonts — override Tailwind defaults with brand fonts */
+  --font-sans: var(--font-pt-sans-narrow), "PT Sans Narrow", Arial, sans-serif;
+  --font-serif: var(--font-pt-serif), "PT Serif", Georgia, serif;
 }
 
 body {

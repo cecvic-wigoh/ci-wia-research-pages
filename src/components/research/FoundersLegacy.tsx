@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { founders } from "@/data/founders";
 
 const timelineYears = ["1954", "1960", "1984", "2000", "2010", "2021"];
@@ -35,11 +34,15 @@ export default function FoundersLegacy() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 items-end">
           {displayOrder.map((founder, i) => {
             const isCenter = i === 1;
+            const founderHref = founder.externalUrl || `/research/founders/${founder.slug}`;
             return (
-              <div
+              <a
                 key={founder.slug}
+                href={founderHref}
+                target={founder.externalUrl ? "_blank" : undefined}
+                rel={founder.externalUrl ? "noopener noreferrer" : undefined}
                 className={`
-                  relative rounded-2xl p-6 pt-8 text-center
+                  relative rounded-2xl p-6 pt-8 text-center block
                   border border-white/[0.12]
                   backdrop-blur-md
                   transition-transform duration-300 hover:-translate-y-1
@@ -84,14 +87,16 @@ export default function FoundersLegacy() {
 
                 {/* Read More button — center card */}
                 {isCenter && (
-                  <Link
-                    href={`/research/founders/${founder.slug}`}
+                  <a
+                    href={founder.externalUrl || `/research/founders/${founder.slug}`}
+                    target={founder.externalUrl ? "_blank" : undefined}
+                    rel={founder.externalUrl ? "noopener noreferrer" : undefined}
                     className="inline-block mt-5 px-6 py-2 border border-white/30 rounded text-white text-sm font-bold hover:bg-white/10 transition-colors"
                   >
                     Read More
-                  </Link>
+                  </a>
                 )}
-              </div>
+              </a>
             );
           })}
         </div>

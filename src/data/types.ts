@@ -149,4 +149,5 @@ export interface Founder {
   image: string;
   heroSubtitle?: string;
   bio: string[];
+  externalUrl?: string;
 }

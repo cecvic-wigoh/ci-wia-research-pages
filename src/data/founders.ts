@@ -9,6 +9,7 @@ export interface Founder {
   image: string;
   heroSubtitle?: string;
   bio: string[];
+  externalUrl?: string;
 }
 
 export const founders: Founder[] = [
@@ -24,6 +25,7 @@ export const founders: Founder[] = [
     initials: "MR",
     image: "/founders/dr-muthulakshmi-reddy.jpg",
     heroSubtitle: "A Legacy That Never Dies",
+    externalUrl: "https://ci-wia-chennai.vercel.app/founders/dr-muthulakshmi-reddy",
     bio: [
       "On July 30, 1886, in the small princely state of Pudukkottai in Tamil Nadu, a girl was born who would one day change the fate of thousands. Her father, Narayanaswami Iyer, was principal of the Maharaja's College. Her mother, Chandrammal, was a former devadasi. In that conservative, rigid society, this union was itself an act of defiance — and Muthulakshmi inherited every ounce of it.",
       "She was the first woman admitted to Maharaja's College, the first female student in Surgery at Madras Medical College in 1907, and the first woman House Surgeon at the Government Maternity and Ophthalmic Hospital. She graduated in 1912 and went on to become India's first woman legislator, nominated to the Madras Legislative Council in 1927.",
@@ -44,6 +46,7 @@ export const founders: Founder[] = [
     initials: "SK",
     image: "/founders/dr-s-krishnamurthi.jpg",
     heroSubtitle: "The Architect of Indian Oncology",
+    externalUrl: "https://ci-wia-chennai.vercel.app/founders/dr-s-krishnamurthi",
     bio: [
       "On September 12, 1919, Sundara Krishnamurthi was born to Dr. Sundara Reddy and Dr. Muthulakshmi Reddy, India's first woman medical graduate. Growing up in that household was not merely an education in medicine — it was an education in what medicine was for.",
       "He completed his MBBS in 1942 and his MS in 1946. He trained as a Fellow at the Ellis Fischel State Cancer Hospital in Missouri, USA, and later at the Royal Cancer Hospital in London. He returned to India in 1949 to fight cancer — and found a system riddled with corruption that he refused to accept.",
@@ -64,6 +67,7 @@ export const founders: Founder[] = [
     initials: "VS",
     image: "/founders/dr-v-shanta.jpg",
     heroSubtitle: "The Mother of Oncology in India",
+    externalUrl: "https://ci-wia-chennai.vercel.app/founders/dr-v-shanta",
     bio: [
       "On March 11, 1927, in Mylapore, Chennai, Viswanathan Shanta was born into a family of extraordinary minds. Her grand uncle was Sir C. V. Raman, the Nobel Prize-winning physicist. Her maternal uncle was Subrahmanyan Chandrasekhar, who would win the Nobel Prize in Physics in 1983. Science ran through her blood, but the path she chose was her own.",
       "In April 1955, she declined a prestigious government post as Assistant Surgeon at the Women and Children's Hospital and instead walked into the Cancer Institute (WIA) — a year-old institution occupying a small hut in Adyar with twelve beds and exactly two doctors. She worked without pay for the first year. She would not leave for sixty-six years.",

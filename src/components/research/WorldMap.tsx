@@ -67,8 +67,8 @@ export default function WorldMap({
           </defs>
 
           <ZoomableGroup
-            center={createCoordinates(50, 20)}
-            zoom={1}
+            center={createCoordinates(65, 20)}
+            zoom={1.25}
           >
             {/* Country outlines */}
             <Geographies geography={geoData}>
@@ -134,7 +134,7 @@ export default function WorldMap({
               </Marker>
             ))}
 
-            {/* Hub marker — Cancer Institute (WIA), Adyar */}
+            {/* Hub marker — Cancer Institute (WIA), Adyar — always visible label */}
             <Marker coordinates={ADYAR_COORDS}>
               {/* Large outer pulse */}
               <circle
@@ -156,9 +156,41 @@ export default function WorldMap({
                 style={{
                   filter: "drop-shadow(0 0 8px rgba(35,205,192,0.8))",
                 }}
-                data-tooltip-id="map-tooltip"
-                data-tooltip-html={`<strong>Cancer Institute (WIA)</strong><br/><span style="color:#9ca3af">Adyar, Chennai, India</span><br/><span style="font-size:11px;color:#9ca3af">Research Hub</span>`}
               />
+              {/* Always-visible name card */}
+              <g transform="translate(12, -20)">
+                <rect
+                  x={0}
+                  y={0}
+                  width={140}
+                  height={36}
+                  rx={6}
+                  fill="rgba(0,0,0,0.7)"
+                  stroke="var(--ci-teal)"
+                  strokeWidth={1}
+                  style={{
+                    filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.3))",
+                  }}
+                />
+                <text
+                  x={10}
+                  y={15}
+                  fontSize={9}
+                  fontWeight={700}
+                  fill="white"
+                  fontFamily="var(--font-heading), serif"
+                >
+                  Cancer Institute (WIA)
+                </text>
+                <text
+                  x={10}
+                  y={28}
+                  fontSize={7.5}
+                  fill="var(--ci-teal)"
+                >
+                  Adyar, Chennai · Research Hub
+                </text>
+              </g>
             </Marker>
           </ZoomableGroup>
         </ComposableMap>

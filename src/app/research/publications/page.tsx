@@ -5,11 +5,13 @@ import { Search, X } from "lucide-react";
 import Breadcrumb from "@/components/research/Breadcrumb";
 import PublicationCard from "@/components/research/PublicationCard";
 import { publications } from "@/data/publications";
+import { cancerTypes } from "@/data/cancerTypes";
 
 export default function PublicationsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
+  const [selectedCancerType, setSelectedCancerType] = useState("");
   const [visibleCount, setVisibleCount] = useState(10);
 
   const departments = useMemo(() => {
@@ -35,9 +37,12 @@ export default function PublicationsPage() {
       const matchesYear =
         !selectedYear || pub.year === parseInt(selectedYear);
 
-      return matchesSearch && matchesDepartment && matchesYear;
+      const matchesCancerType =
+        !selectedCancerType || (pub.cancerTypes?.includes(selectedCancerType));
+
+      return matchesSearch && matchesDepartment && matchesYear && matchesCancerType;
     });
-  }, [searchQuery, selectedDepartment, selectedYear]);
+  }, [searchQuery, selectedDepartment, selectedYear, selectedCancerType]);
 
   const visiblePubs = filteredPubs.slice(0, visibleCount);
   const hasMore = visibleCount < filteredPubs.length;
@@ -46,9 +51,10 @@ export default function PublicationsPage() {
     setSearchQuery("");
     setSelectedDepartment("");
     setSelectedYear("");
+    setSelectedCancerType("");
   };
 
-  const hasFilters = searchQuery || selectedDepartment || selectedYear;
+  const hasFilters = searchQuery || selectedDepartment || selectedYear || selectedCancerType;
 
   return (
     <>
@@ -114,6 +120,19 @@ export default function PublicationsPage() {
                       .split("-")
                       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
                       .join(" ")}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={selectedCancerType}
+                onChange={(e) => setSelectedCancerType(e.target.value)}
+                className="px-4 py-2.5 border border-[var(--ci-gray-200)] rounded-lg text-sm bg-white focus:outline-none focus:border-[var(--ci-blue)] focus:ring-1 focus:ring-[var(--ci-blue)]"
+              >
+                <option value="">All Cancer Types</option>
+                {cancerTypes.map((ct) => (
+                  <option key={ct.slug} value={ct.slug}>
+                    {ct.name}
                   </option>
                 ))}
               </select>

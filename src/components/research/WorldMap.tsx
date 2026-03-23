@@ -5,12 +5,16 @@ import {
   ComposableMap,
   Geographies,
   Geography,
+  Line,
   Marker,
   ZoomableGroup,
   createCoordinates,
 } from "@vnedyalk0v/react19-simple-maps";
 import { Tooltip } from "react-tooltip";
 import type { Collaborator } from "@/data/types";
+
+// Cancer Institute (WIA), Adyar, Chennai — the hub
+const ADYAR_COORDS = createCoordinates(80.26, 13.0);
 
 export default function WorldMap({
   collaborators,
@@ -25,7 +29,6 @@ export default function WorldMap({
       .then((res) => res.json())
       .then((data) => setGeoData(data))
       .catch(() => {
-        // Fallback: try local
         fetch("/countries-110m.json")
           .then((res) => res.json())
           .then((data) => setGeoData(data));
@@ -54,22 +57,32 @@ export default function WorldMap({
           }}
           style={{ width: "100%", height: "auto" }}
         >
+          <defs>
+            {/* Gradient for the arc lines — teal fading out */}
+            <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="var(--ci-teal)" stopOpacity={0.6} />
+              <stop offset="50%" stopColor="var(--ci-teal)" stopOpacity={0.3} />
+              <stop offset="100%" stopColor="var(--ci-teal)" stopOpacity={0.6} />
+            </linearGradient>
+          </defs>
+
           <ZoomableGroup
-            center={createCoordinates(10, 20)}
+            center={createCoordinates(50, 20)}
             zoom={1}
           >
+            {/* Country outlines */}
             <Geographies geography={geoData}>
               {({ geographies }) =>
                 geographies.map((geo) => (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill="rgba(255,255,255,0.08)"
-                    stroke="rgba(255,255,255,0.18)"
-                    strokeWidth={0.5}
+                    fill="rgba(255,255,255,0.07)"
+                    stroke="rgba(255,255,255,0.15)"
+                    strokeWidth={0.4}
                     style={{
                       default: { outline: "none" },
-                      hover: { fill: "rgba(255,255,255,0.12)", outline: "none" },
+                      hover: { fill: "rgba(255,255,255,0.10)", outline: "none" },
                       pressed: { outline: "none" },
                     }}
                   />
@@ -77,26 +90,41 @@ export default function WorldMap({
               }
             </Geographies>
 
+            {/* Arc lines from Adyar to each collaborator */}
+            {collaborators.map((collaborator) => (
+              <Line
+                key={`arc-${collaborator.name}`}
+                from={ADYAR_COORDS}
+                to={createCoordinates(collaborator.lng, collaborator.lat)}
+                stroke="url(#arcGradient)"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                fill="none"
+                style={{
+                  filter: "drop-shadow(0 0 2px rgba(35,205,192,0.4))",
+                }}
+              />
+            ))}
+
+            {/* Collaborator markers */}
             {collaborators.map((collaborator) => (
               <Marker
                 key={collaborator.name}
                 coordinates={createCoordinates(collaborator.lng, collaborator.lat)}
               >
-                {/* Outer glow ring */}
                 <circle
-                  r={8}
-                  fill="rgba(35,205,192,0.15)"
+                  r={7}
+                  fill="rgba(35,205,192,0.12)"
                   className="animate-pulse"
                 />
-                {/* Inner marker */}
                 <circle
-                  r={4}
+                  r={3.5}
                   fill="var(--ci-teal)"
                   stroke="white"
-                  strokeWidth={1.5}
+                  strokeWidth={1}
                   className="cursor-pointer"
                   style={{
-                    filter: "drop-shadow(0 0 6px rgba(35,205,192,0.7))",
+                    filter: "drop-shadow(0 0 4px rgba(35,205,192,0.6))",
                   }}
                   data-tooltip-id="map-tooltip"
                   data-tooltip-html={`<strong>${collaborator.name}</strong><br/><span style="color:#9ca3af">${collaborator.city}, ${collaborator.country}</span><br/><span style="font-size:11px;color:#9ca3af">${collaborator.project}</span>`}
@@ -105,6 +133,33 @@ export default function WorldMap({
                 />
               </Marker>
             ))}
+
+            {/* Hub marker — Cancer Institute (WIA), Adyar */}
+            <Marker coordinates={ADYAR_COORDS}>
+              {/* Large outer pulse */}
+              <circle
+                r={16}
+                fill="rgba(35,205,192,0.08)"
+                className="animate-pulse"
+              />
+              {/* Medium ring */}
+              <circle
+                r={10}
+                fill="rgba(35,205,192,0.15)"
+              />
+              {/* Inner marker — larger than collaborator markers */}
+              <circle
+                r={5}
+                fill="var(--ci-teal)"
+                stroke="white"
+                strokeWidth={2}
+                style={{
+                  filter: "drop-shadow(0 0 8px rgba(35,205,192,0.8))",
+                }}
+                data-tooltip-id="map-tooltip"
+                data-tooltip-html={`<strong>Cancer Institute (WIA)</strong><br/><span style="color:#9ca3af">Adyar, Chennai, India</span><br/><span style="font-size:11px;color:#9ca3af">Research Hub</span>`}
+              />
+            </Marker>
           </ZoomableGroup>
         </ComposableMap>
 

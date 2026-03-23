@@ -7,7 +7,7 @@ import GlobalCollaborations from "@/components/research/GlobalCollaborations";
 
 export default function ResearchLandingPage() {
   return (
-    <>
+    <main>
       {/* 1. Hero */}
       <HeroSection />
 
@@ -38,6 +38,6 @@ export default function ResearchLandingPage() {
 
       {/* 7. Global Collaborations */}
       <GlobalCollaborations />
-    </>
+    </main>
   );
 }

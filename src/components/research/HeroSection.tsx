@@ -18,13 +18,13 @@ export default function HeroSection() {
             href="/research/people"
             className="bg-ci-teal text-white px-6 py-3 rounded font-bold inline-flex items-center gap-2 hover:bg-ci-teal-dark transition-colors"
           >
-            Meet Our Researchers <ArrowRight className="h-4 w-4" />
+            Meet Our Researchers <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
           <Link
             href="/research/cancers"
             className="text-white/90 hover:text-white inline-flex items-center gap-2"
           >
-            Cancers We Study <ArrowRight className="h-4 w-4" />
+            Cancers We Study <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

@@ -95,48 +95,100 @@ export default function ResearchLandingPage() {
       {/* 4. Stats Band */}
       <StatisticsBar />
 
-      {/* 5. Meet Our Researchers */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-heading text-3xl font-bold text-[var(--ci-blue)] mb-4">
-            Meet Our Researchers
-          </h2>
-          <p className="text-[var(--ci-gray-600)] text-lg mb-8 max-w-3xl">
-            Our faculty spans molecular oncology, diagnostics, clinical trials,
-            and epidemiology — united by a mission to conquer cancer through
-            rigorous science.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-            {internalPeople.map((person) => (
-              <Link
-                key={person.slug}
-                href={`/research/people/${person.slug}`}
-                className="bg-[var(--ci-gray-100)] rounded-lg p-4 text-center hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 group"
-              >
-                <div className="w-12 h-12 rounded-full bg-[var(--ci-blue)] text-white font-heading font-bold text-sm flex items-center justify-center mx-auto mb-2 group-hover:bg-[var(--ci-blue-dark)] transition-colors">
-                  {person.initials}
-                </div>
-                <p className="font-bold text-xs text-[var(--ci-gray-900)] leading-tight mb-0.5">
-                  {person.name.replace("Dr. ", "Dr. ").length > 18
-                    ? person.name.split(" ").slice(0, 2).join(" ").replace("Dr.", "Dr.")
-                    : person.name}
-                </p>
-                <p className="text-[10px] text-[var(--ci-gray-600)] leading-tight">
-                  {person.department}
-                </p>
-              </Link>
-            ))}
+      {/* 5. Meet Our Faculty and Scientists */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+          {/* Left — Text */}
+          <div className="lg:w-5/12 flex-shrink-0">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-[var(--ci-blue)] mb-6 leading-tight">
+              Meet Our Faculty and Scientists
+            </h2>
+            <p className="text-[var(--ci-gray-600)] text-base leading-relaxed mb-4">
+              Cancer Institute (WIA) is home to a dedicated community of
+              researchers and clinician-scientists who work across the full
+              spectrum of cancer science — from molecular discovery and
+              biomarker development to clinical trials and population-level
+              epidemiology. Supported by seven decades of institutional legacy
+              and world-class core facilities, our faculty are advancing the
+              frontiers of oncology research with a commitment to translational
+              impact.
+            </p>
+            <p className="text-[var(--ci-gray-600)] text-base leading-relaxed mb-8">
+              Each researcher brings a unique perspective, united by a shared
+              mission: to make cancer care more effective and accessible for
+              every patient.
+            </p>
             <Link
               href="/research/people"
-              className="flex flex-col items-center justify-center border-2 border-dashed border-[var(--ci-gray-200)] rounded-lg p-4 hover:border-[var(--ci-teal)] transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] px-6 py-3 rounded-md font-bold hover:bg-[var(--ci-blue)] hover:text-white transition-colors"
             >
-              <span className="text-2xl font-bold text-[var(--ci-blue)] mb-1">
-                +{people.length - internalPeople.length}
-              </span>
-              <span className="text-[var(--ci-teal-dark)] text-xs font-bold flex items-center gap-1">
-                View All <ArrowRight className="h-3 w-3" />
-              </span>
+              Browse Faculty Directory <ArrowRight className="h-4 w-4" />
             </Link>
+          </div>
+
+          {/* Right — 4×4 Photo Mosaic */}
+          <div className="lg:w-7/12 grid grid-cols-4 gap-2">
+            {(() => {
+              const gradients = [
+                "linear-gradient(135deg, #c4d3e0 0%, #a8bdd0 100%)",
+                "linear-gradient(135deg, #b8cce0 0%, #d0dce8 100%)",
+                "linear-gradient(135deg, #d0e0e8 0%, #b0c8d8 100%)",
+                "linear-gradient(135deg, #c0d8e0 0%, #a8c8d0 100%)",
+                "linear-gradient(135deg, #bcd0e0 0%, #c8dce8 100%)",
+                "linear-gradient(135deg, #d0dce0 0%, #b8d0d8 100%)",
+                "linear-gradient(135deg, #c8d8e8 0%, #b0c0d0 100%)",
+                "linear-gradient(135deg, #b0d0d8 0%, #c0dce0 100%)",
+              ];
+              const totalSlots = 16;
+              const slots: React.ReactNode[] = [];
+
+              // Fill with real photos first
+              internalPeople.forEach((person, i) => {
+                slots.push(
+                  <Link
+                    key={person.slug}
+                    href={`/research/people/${person.slug}`}
+                    className="relative aspect-square overflow-hidden rounded group"
+                  >
+                    {person.photo ? (
+                      <img
+                        src={person.photo}
+                        alt={person.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center text-white font-heading font-bold text-xl"
+                        style={{ background: gradients[i % gradients.length] }}
+                      >
+                        {person.initials}
+                      </div>
+                    )}
+                    {/* Hover overlay with name */}
+                    <div className="absolute inset-0 bg-[var(--ci-blue)]/0 group-hover:bg-[var(--ci-blue)]/70 transition-colors duration-200 flex items-end p-2">
+                      <p className="text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200 leading-tight">
+                        {person.name}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              });
+
+              // Fill remaining slots with soft gradient placeholders
+              for (let i = internalPeople.length; i < totalSlots; i++) {
+                slots.push(
+                  <div
+                    key={`placeholder-${i}`}
+                    className="aspect-square rounded"
+                    style={{
+                      background: gradients[i % gradients.length],
+                    }}
+                  />
+                );
+              }
+
+              return slots;
+            })()}
           </div>
         </div>
       </section>

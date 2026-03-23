@@ -80,20 +80,20 @@ export default function PersonProfilePage({
 
         <div className="relative section-inner py-16 md:py-24">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            {/* Circular Photo */}
+            {/* Rectangular Photo */}
             {member.photo ? (
-              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full shrink-0 shadow-2xl overflow-hidden">
+              <div className="w-48 h-60 md:w-56 md:h-72 rounded-lg shrink-0 shadow-2xl overflow-hidden">
                 <Image
                   src={member.photo}
                   alt={member.name}
                   width={224}
-                  height={224}
+                  height={288}
                   className="w-full h-full object-cover object-top"
                   priority
                 />
               </div>
             ) : (
-              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full shrink-0 shadow-2xl bg-gradient-to-br from-white/20 to-white/5 border-4 border-white/30 flex items-center justify-center">
+              <div className="w-48 h-60 md:w-56 md:h-72 rounded-lg shrink-0 shadow-2xl bg-gradient-to-br from-white/20 to-white/5 border-4 border-white/30 flex items-center justify-center">
                 <span className="text-5xl font-heading font-bold text-white/60">
                   {member.initials}
                 </span>
@@ -175,7 +175,7 @@ export default function PersonProfilePage({
           }
         />
 
-        <div className="lg:ml-64 space-y-16">
+        <div className="lg:ml-64 divide-y divide-gray-100">
           {/* Research Quote */}
           {member.researchQuote && (
             <blockquote className="border-l-4 border-[var(--ci-teal)] pl-6 py-2">
@@ -186,8 +186,8 @@ export default function PersonProfilePage({
           )}
 
           {/* Research Narrative */}
-          <section id="research">
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
+          <section id="research" className="pb-16">
+            <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
               Research
             </h2>
 
@@ -226,8 +226,8 @@ export default function PersonProfilePage({
           </section>
 
           {/* Research Interests */}
-          <section id="interests">
-            <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-4">
+          <section id="interests" className="pb-16">
+            <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
               Research Interests
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -239,8 +239,8 @@ export default function PersonProfilePage({
 
           {/* Projects */}
           {member.projects.length > 0 && (
-            <section id="projects">
-              <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-6">
+            <section id="projects" className="pb-16">
+              <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
                 Research Projects
               </h2>
               <ProjectTable projects={member.projects} />
@@ -249,8 +249,8 @@ export default function PersonProfilePage({
 
           {/* Awards */}
           {member.awards.length > 0 && (
-            <section id="awards">
-              <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-4">
+            <section id="awards" className="pb-16">
+              <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
                 Awards &amp; Achievements
               </h2>
               <ul className="space-y-3">
@@ -274,8 +274,8 @@ export default function PersonProfilePage({
 
           {/* Team Members */}
           {member.teamMembers.length > 0 && (
-            <section id="team">
-              <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-6">
+            <section id="team" className="pb-16">
+              <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
                 Our Team
               </h2>
               <TeamMemberGallery members={member.teamMembers} />
@@ -284,8 +284,8 @@ export default function PersonProfilePage({
 
           {/* Publications */}
           {memberPubs.length > 0 && (
-            <section id="publications">
-              <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-6">
+            <section id="publications" className="pb-16">
+              <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
                 Selected Publications
               </h2>
               <div>
@@ -313,11 +313,11 @@ export default function PersonProfilePage({
 
           {/* Opportunities */}
           {member.fellowshipRequirements && (
-            <section id="opportunities">
-              <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-4">
+            <section id="opportunities" className="pb-16">
+              <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
                 Join Our Lab
               </h2>
-              <div className="bg-[var(--ci-light)] rounded-lg p-6">
+              <div className="border border-gray-100 rounded-lg p-6">
                 <p className="text-[var(--ci-gray-900)] mb-4">
                   We are looking for motivated researchers to join our team.
                 </p>
@@ -328,7 +328,7 @@ export default function PersonProfilePage({
                   href="https://cancerinstitutewia.in/career/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors text-sm"
+                  className="inline-flex items-center gap-2 border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] px-6 py-3 rounded font-bold hover:bg-[var(--ci-blue)] hover:text-white transition-colors text-sm"
                 >
                   View Open Positions
                   <ExternalLink className="h-3.5 w-3.5" />
@@ -338,8 +338,8 @@ export default function PersonProfilePage({
           )}
 
           {/* Contact */}
-          <section id="contact">
-            <h2 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-6">
+          <section id="contact" className="pb-16">
+            <h2 className="text-2xl font-[family-name:var(--font-heading)] font-bold text-[var(--ci-blue)] mt-16 mb-6">
               Contact
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -431,7 +431,7 @@ export default function PersonProfilePage({
                     </div>
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--ci-blue)] text-white font-bold rounded-lg hover:bg-[var(--ci-blue-dark)] transition-colors text-sm"
+                      className="inline-flex items-center gap-2 border-2 border-[var(--ci-blue)] text-[var(--ci-blue)] px-6 py-3 rounded font-bold hover:bg-[var(--ci-blue)] hover:text-white transition-colors text-sm"
                     >
                       Send Message
                       <Send className="h-3.5 w-3.5" />

@@ -51,6 +51,7 @@ export interface CancerType {
   slug: string;
   name: string;
   icon: string;
+  image?: string;
   description: string;
   overviewHtml: string;
   impactStats: { label: string; value: string }[];

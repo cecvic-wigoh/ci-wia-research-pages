@@ -29,18 +29,21 @@ export const facilities: Facility[] = [
             description:
               "High-throughput sequencer for whole-genome, exome, and targeted sequencing applications.",
             icon: "🧬",
+            image: "/equipment/nextseq-sequencer.jpg",
           },
           {
             name: "Oxford Nanopore MinION",
             description:
               "Long-read sequencing platform for structural variant detection and full-length transcript analysis.",
             icon: "🧬",
+            image: "/equipment/nanopore-sequencer.jpg",
           },
           {
             name: "Applied Biosystems QuantStudio 5",
             description:
               "Real-time PCR system for gene expression profiling, genotyping, and pathogen detection.",
             icon: "🧬",
+            image: "/equipment/pcr-machine.jpg",
           },
         ],
       },
@@ -53,12 +56,14 @@ export const facilities: Facility[] = [
             description:
               "High-speed cell sorter enabling isolation of rare cell populations for downstream functional studies.",
             icon: "🔵",
+            image: "/equipment/cell-sorter.jpg",
           },
           {
             name: "BD LSRFortessa Analyzer",
             description:
               "Multi-laser flow cytometer for immunophenotyping and intracellular signaling analysis.",
             icon: "🔵",
+            image: "/equipment/flow-analyzer.jpg",
           },
         ],
       },
@@ -71,12 +76,14 @@ export const facilities: Facility[] = [
             description:
               "Laser scanning confocal system for high-resolution imaging of fixed and live specimens.",
             icon: "🔍",
+            image: "/equipment/confocal-microscope.jpg",
           },
           {
             name: "EVOS M7000 Imaging System",
             description:
               "Automated fluorescence imaging platform for multi-well plate screening and time-lapse experiments.",
             icon: "🔍",
+            image: "/equipment/fluorescence-imager.jpg",
           },
         ],
       },
@@ -89,12 +96,14 @@ export const facilities: Facility[] = [
             description:
               "Automated nucleic acid extraction system for consistent, high-quality DNA and RNA isolation.",
             icon: "🧪",
+            image: "/equipment/dna-extraction.jpg",
           },
           {
             name: "Bio-Rad ChemiDoc MP Imaging System",
             description:
               "Gel and western blot documentation system with quantitative fluorescence and chemiluminescence detection.",
             icon: "🧪",
+            image: "/equipment/gel-imaging.jpg",
           },
         ],
       },

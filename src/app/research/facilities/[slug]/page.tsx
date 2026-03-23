@@ -68,35 +68,19 @@ export default async function FacilityDetailPage({
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-[var(--ci-blue)] mb-8">
                 Equipment &amp; Instruments
               </h2>
-              <div className="space-y-16">
-                {facility.equipmentGroups.map((group: EquipmentGroup, groupIndex: number) => (
+              <div className="space-y-14">
+                {facility.equipmentGroups.map((group: EquipmentGroup) => (
                   <div key={group.name}>
-                    {/* Group header with image */}
-                    <div className={`flex flex-col lg:flex-row gap-8 items-center mb-8 ${groupIndex % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}>
-                      {group.image && (
-                        <div className="lg:w-2/5 w-full">
-                          <div className="aspect-[16/10] rounded-xl overflow-hidden shadow-lg">
-                            <img
-                              src={group.image}
-                              alt={group.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        </div>
-                      )}
-                      <div className={group.image ? "lg:w-3/5" : "w-full"}>
-                        <h3 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-3">
-                          {group.name}
-                        </h3>
-                        <p className="text-[var(--ci-gray-600)] text-sm leading-relaxed">
-                          {group.items.length} instrument{group.items.length !== 1 ? "s" : ""} available for researcher use
-                        </p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                          {group.items.map((item) => (
-                            <EquipmentCard key={item.name} item={item} />
-                          ))}
-                        </div>
-                      </div>
+                    <h3 className="font-heading text-2xl font-bold text-[var(--ci-blue)] mb-2">
+                      {group.name}
+                    </h3>
+                    <p className="text-[var(--ci-gray-600)] text-sm mb-6">
+                      {group.items.length} instrument{group.items.length !== 1 ? "s" : ""} available for researcher use
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {group.items.map((item) => (
+                        <EquipmentCard key={item.name} item={item} />
+                      ))}
                     </div>
                   </div>
                 ))}

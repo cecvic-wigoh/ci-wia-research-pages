@@ -4,7 +4,7 @@ interface EquipmentCardProps {
 
 export default function EquipmentCard({ item }: EquipmentCardProps) {
   return (
-    <div className="flex items-start gap-4 bg-[var(--ci-gray-100,#f3f4f6)] rounded-lg p-4">
+    <div className="flex items-start gap-4 bg-white border border-gray-200 rounded-lg p-4">
       <span className="text-2xl shrink-0 mt-0.5">{item.icon}</span>
       <div>
         <h4 className="font-bold text-[var(--ci-gray-900)] text-sm mb-1">

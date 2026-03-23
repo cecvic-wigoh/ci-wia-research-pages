@@ -18,7 +18,7 @@ export default function FacultyGrid() {
   const internalPeople = people.filter((p) => p.category === "internal");
 
   return (
-    <section className="py-24 px-6">
+    <section className="bg-white py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-ci-blue font-[family-name:var(--font-heading)] text-center mb-12">
           Meet Our Faculty and Scientists
